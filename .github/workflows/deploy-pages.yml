@@ -66,3 +66,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  indexnow:
+    # Tell IndexNow engines (Bing, Yandex, Seznam, Naver...) that every URL in the sitemap
+    # may have changed, so they recrawl soon after each deploy. Never fails the deploy.
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: |
+          KEY=064589c8fe2bf62647ad6b743eba2967
+          URLS=$(curl -fsS https://nepfinder.com.np/sitemap.xml | grep -o '<loc>[^<]*</loc>' | sed -e 's/<loc>//' -e 's#</loc>##' | grep '^https://nepfinder.com.np' | jq -R . | jq -sc .)
+          echo "Submitting $(echo "$URLS" | jq length) URLs"
+          curl -sS -o /dev/null -w 'IndexNow HTTP %{http_code}\n' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"nepfinder.com.np\",\"key\":\"$KEY\",\"keyLocation\":\"https://nepfinder.com.np/$KEY.txt\",\"urlList\":$URLS}"
