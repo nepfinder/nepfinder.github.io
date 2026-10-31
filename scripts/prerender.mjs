@@ -17,7 +17,26 @@ const { render, staticRoutes } = await import(pathToFileURL(path.join(ssrDir, 'e
 const today = new Date().toISOString().slice(0, 10)
 const sitemapEntries = []
 
-for (const route of staticRoutes) {
+/** Pages whose screenshots or artwork are worth indexing in Google Images. */
+const pageImages = {
+  '/': ['/images/og-default.png'],
+  '/ai-implementation': ['/images/og-ai.png'],
+  '/products/ninsurance': ['/images/ninsurance/home.webp', '/images/ninsurance/screen-2.webp', '/images/ninsurance/screen-3.webp'],
+  '/products/restaurant-billing': ['/images/restaurant-billing/hero.webp', '/images/restaurant-billing/pos-tables.webp', '/images/restaurant-billing/owner-app.webp', '/images/restaurant-billing/scan-pay.webp'],
+  '/products/ncafe': ['/images/restaurant-billing/ncafe-play.webp'],
+  '/projects/ninsurance-insurance-app': ['/images/ninsurance/home.webp'],
+  '/projects/restaurant-billing-desktop': ['/images/restaurant-billing/pos-tables.webp'],
+}
+
+const esc = (v) => v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+function urlEntry(route) {
+  const loc = `${SITE_URL}${route.path === '/' ? '/' : route.path}`
+  const images = (pageImages[route.path] ?? []).map((src) => `\n    <image:image><image:loc>${esc(SITE_URL + src)}</image:loc></image:image>`).join('')
+  return `  <url>\n    <loc>${esc(loc)}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${route.priority.toFixed(1)}</priority>${images}\n  </url>`
+}
+
+for (const route of staticRoutes.filter((r) => r.path !== '/ncafe/policy')) {
   const { html, head } = await render(route.path)
   const page = template.replace('<!--app-head-->', head).replace('<!--app-html-->', html)
   const outDir = route.path === '/' ? dist : path.join(dist, route.path)
@@ -25,9 +44,7 @@ for (const route of staticRoutes) {
   await writeFile(path.join(outDir, 'index.html'), page)
   // GitHub Pages serves `/route` from `route.html` without redirecting; `/route/` uses the directory index.
   if (route.path !== '/') await writeFile(path.join(dist, `${route.path}.html`), page)
-  sitemapEntries.push(
-    `  <url>\n    <loc>${SITE_URL}${route.path === '/' ? '/' : route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${route.priority.toFixed(1)}</priority>\n  </url>`,
-  )
+  sitemapEntries.push(urlEntry(route))
   console.log(`prerendered ${route.path}`)
 }
 
@@ -39,7 +56,7 @@ for (const route of staticRoutes) {
 
 await writeFile(
   path.join(dist, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.join('\n')}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.join('\n')}\n</urlset>\n`,
 )
 
 await rm(ssrDir, { recursive: true, force: true })
