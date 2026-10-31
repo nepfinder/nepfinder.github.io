@@ -12,6 +12,7 @@ import { ArchitectureDiagram } from '@/components/home/ArchitectureDiagram'
 import { erpnextCapabilities } from '@/components/home/ErpnextFrappe'
 import NotFound from './NotFound'
 import { Infographic } from '@/components/ui/Infographic'
+import { CapabilityIcon } from '@/components/ui/CapabilityIcon'
 import { useI18n } from '@/i18n'
 import { useLocalizedService, useLocalizedServices } from '@/i18n/useLocalized'
 
@@ -112,12 +113,18 @@ function ServiceDetailView({ slug }: { slug: string }) {
             </ul>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="glass rounded-3xl p-6 sm:p-8">
-              <h2 className="font-display text-xl font-semibold text-text">{t('detail.capabilities')}</h2>
-              <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+            <div className="rounded-[var(--radius-tile)] bg-bg-2 p-6 sm:p-8">
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="font-display text-2xl font-semibold text-text">{t('detail.capabilities')}</h2>
+                <span className="text-sm text-muted">{service.capabilities.length}</span>
+              </div>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {service.capabilities.map((c) => (
-                  <li key={c} className="rounded-2xl bg-surface px-3.5 py-2.5 text-sm text-text/80">
-                    {c}
+                  <li key={c} className="flex items-center gap-3.5 rounded-2xl bg-surface p-3.5">
+                    <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                      <CapabilityIcon label={c} className="size-[18px]" />
+                    </span>
+                    <span className="text-[15px] font-medium leading-snug text-text">{c}</span>
                   </li>
                 ))}
               </ul>

@@ -10,29 +10,40 @@ const blue = '#0071E3'
 const light = '#2997FF'
 
 function Modules() {
-  const cells = ['Accounts', 'Stock', 'Sales', 'Buying', 'CRM', 'HR', 'Projects', 'Production', 'Reports']
+  // Module icons from ERPNext and Frappe HRMS, GPL-3.0 (see public/icons/erpnext/LICENSE.md).
+  const cells = [
+    { label: 'Accounting', icon: 'accounting' },
+    { label: 'Stock', icon: 'stock' },
+    { label: 'Selling', icon: 'selling' },
+    { label: 'Buying', icon: 'buying' },
+    { label: 'CRM', icon: 'crm' },
+    { label: 'HR', icon: 'hr' },
+    { label: 'Projects', icon: 'projects' },
+    { label: 'Manufacturing', icon: 'manufacturing' },
+    { label: 'Reports', icon: 'financial_reports' },
+  ]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="ERP modules connected to one shared database">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="ERPNext modules connected to one shared database">
       {cells.map((c, i) => {
         const x = 30 + (i % 3) * 125
-        const y = 24 + Math.floor(i / 3) * 70
+        const y = 12 + Math.floor(i / 3) * 74
         return (
-          <g key={c}>
-            <rect x={x} y={y} width={110} height={52} rx={12} fill="var(--color-surface)" stroke="var(--color-line)" />
-            <rect x={x + 14} y={y + 14} width={22} height={22} rx={6} fill={i === 4 ? blue : 'var(--color-bg-2)'} />
-            <text x={x + 46} y={y + 31} fontSize={12} fontWeight={600} fill="var(--color-text)">
-              {c}
+          <g key={c.label}>
+            <rect x={x} y={y} width={110} height={64} rx={14} fill="var(--color-surface)" stroke="var(--color-line)" />
+            <image href={`/icons/erpnext/${c.icon}.svg`} x={x + 41} y={y + 8} width={28} height={28} />
+            <text x={x + 55} y={y + 52} textAnchor="middle" fontSize={11} fontWeight={600} fill="var(--color-text)">
+              {c.label}
             </text>
           </g>
         )
       })}
-      <rect x={30} y={244} width={360} height={36} rx={12} fill={blue} />
-      <text x={210} y={267} textAnchor="middle" fontSize={12} fontWeight={600} fill="#fff">
+      {[0, 1, 2].map((i) => (
+        <line key={i} x1={85 + i * 125} y1={224} x2={85 + i * 125} y2={248} stroke="var(--color-line)" strokeWidth={2} strokeDasharray="3 4" />
+      ))}
+      <rect x={30} y={248} width={360} height={36} rx={12} fill={blue} />
+      <text x={210} y={271} textAnchor="middle" fontSize={12} fontWeight={600} fill="#fff">
         One shared database · one source of truth
       </text>
-      {[0, 1, 2].map((i) => (
-        <line key={i} x1={85 + i * 125} y1={216} x2={85 + i * 125} y2={244} stroke="var(--color-line)" strokeWidth={2} strokeDasharray="3 4" />
-      ))}
     </svg>
   )
 }
