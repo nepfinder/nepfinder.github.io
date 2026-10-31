@@ -38,7 +38,7 @@ jobs:
           # Optional external form endpoint (Formspree / Web3Forms / Getform URL). Leave unset to use the mailto fallback.
           VITE_CONTACT_ENDPOINT: ${{ vars.CONTACT_ENDPOINT }}
           # Web3Forms access key (public). Setting only this sends the form to api.web3forms.com.
-          VITE_CONTACT_ACCESS_KEY: ${{ vars.CONTACT_ACCESS_KEY }}
+          VITE_CONTACT_ACCESS_KEY: ${{ vars.CONTACT_ACCESS_KEY || '11d5c3fb-a9f3-46f3-aabc-84548542aa2b' }}
           # Analytics IDs are public identifiers (not secrets). Leave unset to keep tracking off.
           # GTM-PWL7LJKK = 'nepfinder.com.np' web container (loads GA4 G-Z8JNWXXVH6). A GTM_ID repo variable overrides it.
           VITE_GTM_ID: ${{ vars.GTM_ID || 'GTM-PWL7LJKK' }}
