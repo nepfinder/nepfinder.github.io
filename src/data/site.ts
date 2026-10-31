@@ -25,10 +25,14 @@ export const site = {
   },
   /**
    * Optional contact form endpoint (e.g. a Formspree / Getform / Web3Forms URL).
-   * Configure through VITE_CONTACT_ENDPOINT at build time. When unset, the contact
+   * Configure through VITE_CONTACT_ENDPOINT, or set only VITE_CONTACT_ACCESS_KEY to use Web3Forms. When unset, the contact
    * form falls back to composing an email to the company inbox.
    */
-  contactEndpoint: (import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined) ?? '',
+  contactEndpoint:
+    (import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined)?.trim() ||
+    ((import.meta.env.VITE_CONTACT_ACCESS_KEY as string | undefined)?.trim() ? 'https://api.web3forms.com/submit' : ''),
+  /** Web3Forms access key (public by design; it only lets the form send to the inbox it was issued for). */
+  contactAccessKey: (import.meta.env.VITE_CONTACT_ACCESS_KEY as string | undefined)?.trim() ?? '',
   trademarkNotice:
     'Nepfinder is an independent software development and ERP implementation provider and is not an official partner of or affiliated with Frappe Technologies. ERPNext and Frappe are trademarks of Frappe Technologies Pvt. Ltd.',
 }

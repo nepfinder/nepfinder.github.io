@@ -98,6 +98,10 @@ export function ContactForm() {
             service: values.service,
             message: values.message,
             _subject: `Project inquiry: ${values.service} — ${values.name}`,
+            // Web3Forms fields (ignored by other services)
+            ...(site.contactAccessKey
+              ? { access_key: site.contactAccessKey, subject: `Project inquiry: ${values.service} — ${values.name}`, from_name: 'Nepfinder website', botcheck: '' }
+              : {}),
           }),
         })
         if (!res.ok) throw new Error(`Request failed (${res.status})`)
