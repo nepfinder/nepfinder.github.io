@@ -135,7 +135,9 @@ export const en = {
   'footer.legal': 'Legal',
   'footer.contact': 'Contact',
   'footer.rights': 'All rights reserved.',
-  'footer.location': 'Nepal',
+  'footer.location': 'Basundhara, Kathmandu, Nepal',
+  'footer.reg': 'Company Reg. No.',
+  'footer.vat': 'VAT No.',
 
   // Contact page
   'contact.title': "Let's discuss your project",

@@ -14,7 +14,11 @@ export function ProjectsGrid() {
           <Link to={`/projects/${p.slug}`} className="card card-border group flex h-full flex-col overflow-hidden !p-0">
             <div className="relative aspect-[16/10] overflow-hidden bg-[#e8e8ed]">
                             {p.image ? (
-                <img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width={1344} height={1920} className="absolute left-1/2 top-6 w-[42%] -translate-x-1/2 drop-shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+                p.image.wide ? (
+                  <img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width={1360} height={768} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                ) : (
+                  <img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width={1344} height={1920} className="absolute left-1/2 top-6 w-[42%] -translate-x-1/2 drop-shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+                )
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-accent/60">
                   <FolderKanban className="size-14" aria-hidden />

@@ -10,6 +10,7 @@ import { Card, Pill } from '@/components/ui/Card'
 import { CtaSection } from '@/components/home/CtaSection'
 import NotFound from './NotFound'
 import { SupportHeroVisual } from '@/components/ui/SupportHeroVisual'
+import { RestaurantBillingSections } from '@/components/products/RestaurantBillingSections'
 import { useLocalizedProducts } from '@/i18n/useLocalized'
 
 export default function ProductDetail() {
@@ -23,6 +24,8 @@ function ProductView({ slug }: { slug: string }) {
   const base = getProduct(slug)!
   const product = useLocalizedProducts([base])[0]
   const isSupport = slug === 'enterprise-support'
+  const isRestaurant = slug === 'restaurant-billing'
+  const isPhone = slug === 'ninsurance'
   // Split the headline into sentences so the two key promises can be emphasised.
   const headline = isSupport ? (
     <>
@@ -53,7 +56,13 @@ function ProductView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero title={headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]} visual={isSupport ? <SupportHeroVisual /> : undefined}>
+      <PageHero title={headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]} visual={
+          isSupport ? (
+            <SupportHeroVisual />
+          ) : isRestaurant ? (
+            <img src="/images/restaurant-billing/hero.webp" alt={base.images[0].alt} width={1600} height={1200} className="w-full rounded-[var(--radius-tile)]" />
+          ) : undefined
+        }>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {product.links.map((l) => (
             <Button key={l.href} to={l.href} external={l.external} variant={l === product.links[0] ? 'primary' : 'secondary'}>
@@ -66,6 +75,10 @@ function ProductView({ slug }: { slug: string }) {
         </Reveal>
       </PageHero>
 
+      {isRestaurant ? (
+        <RestaurantBillingSections />
+      ) : (
+        <>
       <section className="section pt-0">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr]">
           <Reveal className="prose-dark">
@@ -79,7 +92,12 @@ function ProductView({ slug }: { slug: string }) {
               </div>
             )}
           </Reveal>
-          {product.images.length > 0 && (
+          {product.images.length > 0 && !isPhone && (
+            <Reveal delay={0.1}>
+              <img src={product.images[0].src} alt={product.images[0].alt} loading="lazy" className="w-full rounded-[var(--radius-tile)] bg-bg-2" />
+            </Reveal>
+          )}
+          {product.images.length > 0 && isPhone && (
             <Reveal delay={0.1}>
               <div className="glass relative overflow-hidden rounded-3xl bg-bg-2 p-6">
                                 <div className="relative flex items-end justify-center gap-4">
@@ -119,6 +137,8 @@ function ProductView({ slug }: { slug: string }) {
           </ul>
         </div>
       </section>
+        </>
+      )}
       <CtaSection />
     </>
   )

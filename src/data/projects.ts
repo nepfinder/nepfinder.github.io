@@ -2,7 +2,8 @@ export interface Project {
   slug: string
   title: string
   category: string
-  image?: { src: string; alt: string }
+  /** `wide` images are landscape screenshots shown edge to edge; others are phone mockups. */
+  image?: { src: string; alt: string; wide?: boolean }
   summary: string
   challenge: string
   solution: string
@@ -36,28 +37,41 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'ncafe-mobile-app',
-    title: 'nCafe — Mobile Application',
-    category: 'Mobile Application',
-    summary: 'A Google Play mobile application by Nepfinder with Google account sign-in and a published privacy policy.',
+    slug: 'restaurant-billing-desktop',
+    title: 'Restaurant Billing System',
+    category: 'Restaurant Management · Desktop, Mobile & Online',
+    image: { src: '/images/restaurant-billing/pos-tables.webp', alt: 'Table-wise counter billing screen', wide: true },
+    summary: 'Billing, reports, stock, an owner app, and QR scan-and-pay for restaurants, hotels, and cafés across Nepal.',
     challenge:
-      'Deliver a mobile application on the Google platform with account sign-in while meeting Google Play privacy and data-deletion requirements.',
+      'Restaurants, hotels, and cafés needed fast table-wise billing at the counter, reliable records for owners, and an easier way for guests to pay, without complicated software.',
     solution:
-      'Nepfinder developed the nCafe mobile application with Google sign-in, published a privacy policy, and provided a user data deletion request process on the company website.',
-    outcomes: ['Published privacy policy', 'User data deletion request flow'],
-    technologies: ['Mobile App', 'Google Sign-In'],
-    links: [{ label: 'Privacy policy', href: '/ncafe/privacy' }],
+      'Nepfinder built a Windows counter billing application with table-wise orders, one-click printing, expense and stock records, and flexible reports; the nCafe Android app for owners; QR codes on printed bills for scan-and-pay; and an online version with recipe, kitchen, and stock management and an analytical dashboard.',
+    outcomes: [
+      'Used by restaurants and cafés including Sakwo Resort, Cafe Tara, Himalayan Coffee Stop, and Cafe Pokhara',
+      'Owners follow sales and expenses in real time on their phones',
+      'Guests can pay any bill by scanning its QR code',
+    ],
+    technologies: ['Windows desktop', 'Android', 'Cloud sync', 'QR payments', 'eSewa', 'Khalti'],
+    links: [
+      { label: 'Product details', href: '/products/restaurant-billing' },
+      { label: 'Download installer', href: '/download/restaurant/update/NepFinderResturentBIlling.exe' },
+    ],
   },
   {
-    slug: 'restaurant-billing-desktop',
-    title: 'Restaurant Billing — Windows Desktop Application',
-    category: 'Desktop Software',
-    summary: 'A Windows restaurant billing application distributed and updated from the Nepfinder website.',
-    challenge: 'Restaurants needed reliable billing software that runs on standard Windows machines without constant connectivity.',
-    solution: 'Nepfinder developed a desktop billing application and distributes installer updates directly from nepfinder.com.np.',
-    outcomes: ['Installable Windows application', 'Update distribution from the company website'],
-    technologies: ['Windows Desktop'],
-    links: [{ label: 'Download installer', href: '/download/restaurant/update/NepFinderResturentBIlling.exe' }],
+    slug: 'ncafe-mobile-app',
+    title: 'nCafe — Restaurant Owner App',
+    category: 'Mobile Application',
+    image: { src: '/images/restaurant-billing/ncafe-play.webp', alt: 'nCafe on Google Play', wide: true },
+    summary: 'An Android app that gives restaurant owners real-time sales, bills, and expenses from the billing system.',
+    challenge: 'Owners wanted to see how the restaurant was doing without standing at the billing counter.',
+    solution:
+      'Nepfinder built nCafe, an Android app with quick information, real-time cloud data, graphical views, and Google sign-in, connected to the Restaurant Billing System. A privacy policy and data deletion request flow are published on this website.',
+    outcomes: ['Published on Google Play', 'Real-time view of daily sales and expenses', 'Published privacy policy and data deletion flow'],
+    technologies: ['Android', 'Cloud sync', 'Google Sign-In'],
+    links: [
+      { label: 'Product details', href: '/products/ncafe' },
+      { label: 'Privacy policy', href: '/ncafe/privacy' },
+    ],
   },
 ]
 

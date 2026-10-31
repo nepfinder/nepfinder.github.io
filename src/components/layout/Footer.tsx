@@ -98,6 +98,9 @@ export function Footer() {
       </div>
       <div className="border-t border-line">
         <div className="container-x flex flex-col gap-2 py-6 text-xs text-muted">
+          <p>
+            {site.legalName} · {t('footer.location')} · {t('footer.reg')} {site.registrationNo} · {t('footer.vat')} {site.vatNo}
+          </p>
           <p className="text-[11px] xl:whitespace-nowrap">{site.trademarkNotice}</p>
           <p>© {new Date().getFullYear()} {site.legalName}. {t('footer.rights')}</p>
         </div>

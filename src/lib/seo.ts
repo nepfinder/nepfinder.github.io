@@ -48,13 +48,15 @@ export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: site.name,
+  legalName: site.legalName,
+  vatID: site.vatNo,
   url: site.url,
   logo: `${site.url}${site.logo.wordmark}`,
   email: site.email,
   foundingDate: site.foundedDate,
   slogan: site.tagline,
   description: site.description,
-  address: { '@type': 'PostalAddress', addressCountry: 'NP' },
+  address: { '@type': 'PostalAddress', streetAddress: site.address.street, addressLocality: site.address.city, addressCountry: site.address.countryCode },
   sameAs: [site.social.twitter, site.social.instagram],
 }
 

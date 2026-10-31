@@ -1,6 +1,9 @@
 export const site = {
   name: 'Nepfinder',
-  legalName: 'NepFinder',
+  legalName: 'Nepfinder Innovative IT Solution Pvt. Ltd',
+  address: { street: 'Basundhara', city: 'Kathmandu', country: 'Nepal', countryCode: 'NP' },
+  registrationNo: '121059/070/071',
+  vatNo: '601860669',
   url: 'https://nepfinder.com.np',
   tagline: 'Engineering Software. Empowering Businesses.',
   positioning: 'Software Development & Enterprise ERP Solutions',
@@ -9,7 +12,7 @@ export const site = {
   // Verified facts from the existing website and repository README.
   foundedDate: '2014-03-30',
   email: 'info@nepfinder.com.np',
-  location: 'Nepal',
+  location: 'Basundhara, Kathmandu, Nepal',
   social: {
     twitter: 'https://www.twitter.com/nepfinder',
     instagram: 'https://www.instagram.com/nepfinder',

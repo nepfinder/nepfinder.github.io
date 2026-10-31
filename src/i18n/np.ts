@@ -123,7 +123,9 @@ export const np: Record<TKey, string> = {
   'footer.legal': 'कानुनी',
   'footer.contact': 'सम्पर्क',
   'footer.rights': 'सर्वाधिकार सुरक्षित।',
-  'footer.location': 'नेपाल',
+  'footer.location': 'बसुन्धरा, काठमाडौं, नेपाल',
+  'footer.reg': 'कम्पनी दर्ता नं.',
+  'footer.vat': 'भ्याट नं.',
 
   'contact.title': 'तपाईंको परियोजनाबारे कुरा गरौँ',
   'contact.text':
