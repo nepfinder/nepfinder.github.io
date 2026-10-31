@@ -73,7 +73,9 @@ export function installClickTracking() {
         }
       }
     },
-    { passive: true },
+    // Capture phase: runs before React Router's link handler changes the URL,
+    // so page_path and the service slug still describe the page the click happened on.
+    { capture: true, passive: true },
   )
 }
 
