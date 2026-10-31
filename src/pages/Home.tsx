@@ -1,5 +1,4 @@
-import { useSeo, organizationJsonLd } from '@/lib/seo'
-import { site } from '@/data/site'
+import { useSeo, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 import { Hero } from '@/components/home/Hero'
 import { AboutPreview } from '@/components/home/AboutPreview'
 import { ServicesGrid } from '@/components/home/ServicesGrid'
@@ -20,13 +19,7 @@ const seo = {
   path: '/',
   jsonLd: [
     organizationJsonLd,
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: site.name,
-      url: site.url,
-      description: site.description,
-    },
+    websiteJsonLd,
   ],
 }
 

@@ -17,6 +17,17 @@ function escapeHtml(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site.url}/#website`,
+  name: site.name,
+  url: site.url,
+  publisher: { '@id': `${site.url}/#organization` },
+  inLanguage: ['en', 'ne'],
+  potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/services?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
+}
+
 export function buildHead(p: SeoProps) {
   const fullTitle = p.title.includes('Nepfinder') ? p.title : `${p.title} | Nepfinder`
   const url = `${site.url}${p.path === '/' ? '/' : p.path.replace(/\/$/, '')}`
@@ -47,16 +58,27 @@ export function buildHead(p: SeoProps) {
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${site.url}/#organization`,
   name: site.name,
+  alternateName: ['NepFinder', 'Nepfinder Innovative IT Solution'],
   legalName: site.legalName,
   vatID: site.vatNo,
   url: site.url,
-  logo: `${site.url}${site.logo.wordmark}`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${site.url}/logos/nepfinder-logo-stacked.png`,
+    contentUrl: `${site.url}/logos/nepfinder-logo-stacked.png`,
+  },
+  image: `${site.url}/images/og-default.png`,
   email: site.email,
   foundingDate: site.foundedDate,
   slogan: site.tagline,
   description: site.description,
   address: { '@type': 'PostalAddress', streetAddress: site.address.street, addressLocality: site.address.city, addressCountry: site.address.countryCode },
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer service', email: site.email, areaServed: 'NP', availableLanguage: ['English', 'Nepali'] }],
+  areaServed: 'Nepal',
+  knowsAbout: ['ERPNext', 'Frappe Framework', 'ERP implementation', 'Custom software development', 'AI implementation', 'Model Context Protocol'],
+  // Only profiles the company actually controls. Add more (LinkedIn, Facebook, YouTube, Wikidata) once they exist.
   sameAs: [site.social.twitter, site.social.instagram],
 }
 
