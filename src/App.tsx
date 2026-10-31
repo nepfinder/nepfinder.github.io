@@ -28,6 +28,7 @@ export default function App({ pages: P }: { pages: PageMap }) {
                 <Route path="projects" element={<P.Projects />} />
                 <Route path="projects/:slug" element={<P.ProjectDetail />} />
                 <Route path="contact" element={<P.Contact />} />
+                <Route path="ai-implementation" element={<P.AiImplementation />} />
                 <Route path="ncafe/privacy" element={<P.NcafePrivacy />} />
                 <Route path="ncafe/policy" element={<P.NcafePrivacy />} />
                 <Route path="user-data-delete-request" element={<P.DataDeletion />} />

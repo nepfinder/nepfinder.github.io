@@ -6,7 +6,7 @@ import { Card, IconBadge } from '@/components/ui/Card'
 import { Scene } from '@/components/three/Scene'
 import { NetworkFallback } from '@/components/three/StaticFallback'
 import { CtaSection } from '@/components/home/CtaSection'
-import { services } from '@/data/services'
+import { services, serviceHref } from '@/data/services'
 import { Link } from 'react-router'
 
 const approach = [
@@ -89,7 +89,7 @@ export default function About() {
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="card card-border flex items-center gap-3 !rounded-2xl !p-4">
+                <Link to={serviceHref(s)} className="card card-border flex items-center gap-3 !rounded-2xl !p-4">
                   <span className={`inline-flex size-9 items-center justify-center rounded-lg bg-brand/10 text-brand`}>
                     <s.icon className="size-4" aria-hidden />
                   </span>

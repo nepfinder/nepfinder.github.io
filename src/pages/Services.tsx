@@ -5,7 +5,7 @@ import { ServiceCard } from '@/components/services/ServiceCard'
 import { ErpnextFrappe } from '@/components/home/ErpnextFrappe'
 import { ProcessTimeline } from '@/components/home/ProcessTimeline'
 import { CtaSection } from '@/components/home/CtaSection'
-import { services } from '@/data/services'
+import { services, serviceHref } from '@/data/services'
 import { site } from '@/data/site'
 import { useLocalizedServices } from '@/i18n/useLocalized'
 
@@ -17,7 +17,7 @@ const seo = {
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.title, url: `${site.url}/services/${s.slug}` })),
+    itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.title, url: `${site.url}${serviceHref(s)}` })),
   },
 }
 

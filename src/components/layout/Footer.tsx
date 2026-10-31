@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { Instagram, Mail, Twitter } from 'lucide-react'
 import { site } from '@/data/site'
-import { services } from '@/data/services'
+import { services, serviceHref } from '@/data/services'
 import { products } from '@/data/products'
 import { useT } from '@/i18n'
 import type { TKey } from '@/i18n/en'
@@ -46,7 +46,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {svc.map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="text-sm text-muted hover:text-text">
+                <Link to={serviceHref(s)} className="text-sm text-muted hover:text-text">
                   {s.navLabel}
                 </Link>
               </li>
@@ -103,9 +103,6 @@ export function Footer() {
       </div>
       <div className="border-t border-line">
         <div className="container-x flex flex-col gap-2 py-6 text-xs text-muted">
-          <p>
-            {site.legalName} · {t('footer.location')} · {t('footer.reg')} {site.registrationNo} · {t('footer.vat')} {site.vatNo}
-          </p>
           <p className="text-[11px] xl:whitespace-nowrap">{site.trademarkNotice}</p>
           <p>© {new Date().getFullYear()} {site.legalName}. {t('footer.rights')}</p>
         </div>

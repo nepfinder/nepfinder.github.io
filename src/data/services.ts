@@ -8,6 +8,7 @@ import {
   MonitorSmartphone,
   Plug,
   Workflow,
+  BrainCircuit,
 } from 'lucide-react'
 
 export interface ServiceStep {
@@ -17,6 +18,8 @@ export interface ServiceStep {
 
 export interface Service {
   slug: string
+  /** Set when the service has its own dedicated page instead of /services/:slug. */
+  href?: string
   navLabel: string
   title: string
   short: string
@@ -34,6 +37,51 @@ export interface Service {
 }
 
 export const services: Service[] = [
+  {
+    slug: 'ai-implementation',
+    href: '/ai-implementation',
+    navLabel: 'AI Implementation',
+    title: 'AI Implementation for Enterprise',
+    short: 'AI assistants, agents, and MCP integrations that work with your ERP and enterprise software.',
+    description:
+      'Practical AI for your ERP and enterprise software: AI assistants that answer from live business data, Model Context Protocol (MCP) servers that connect AI safely to your systems, and automation across the whole company.',
+    intro:
+      'Nepfinder implements AI on top of the systems your business already runs, such as ERPNext and other ERP, CRM, and internal software. We connect AI assistants to your data through secure MCP servers, automate document-heavy and repetitive work, and roll it out with permissions, audit trails, and human approval where it matters.',
+    icon: BrainCircuit,
+    accent: 'bg-brand/10 text-brand',
+    capabilities: [
+      'AI Assistants for ERP',
+      'MCP Server Development',
+      'AI Agents & Workflow Automation',
+      'Document & Invoice Processing',
+      'AI Reports & Insights',
+      'Knowledge Base Assistants',
+      'Company-wide Automation Roadmap',
+      'Security, Permissions & Audit',
+    ],
+    useCases: [
+      'Ask questions about sales, stock, or receivables in plain language and get answers from live ERP data',
+      'Turn supplier invoices and purchase documents into draft ERP entries for review',
+      'Let AI agents prepare follow-ups, reminders, and reports that people approve before they go out',
+      'Give staff an assistant that answers from company policies, manuals, and product data',
+    ],
+    steps: [
+      { title: 'Assess', text: 'Find the processes where AI saves the most time, with the lowest risk.' },
+      { title: 'Pilot', text: 'Build one focused use case on real data and measure it with your team.' },
+      { title: 'Integrate', text: 'Connect AI to ERP, CRM, and documents through secure MCP servers.' },
+      { title: 'Scale & govern', text: 'Roll out across departments with permissions, audit logs, and monitoring.' },
+    ],
+    infographic: 'hub',
+    glance: {
+      what: ['AI that works with your ERP data, not beside it', 'Secure MCP connections with role-based access', 'Automation rolled out step by step, with people in control'],
+      who: 'Companies running ERPNext or other enterprise software that want practical AI',
+    },
+    seo: {
+      title: 'AI Implementation for Enterprise | ERP & MCP',
+      description:
+        'AI implementation for enterprise: AI assistants for ERPNext and ERP, MCP server development, AI agents, and company-wide automation by Nepfinder in Nepal.',
+    },
+  },
   {
     slug: 'custom-software-development',
     navLabel: 'Custom Software Development',
@@ -365,3 +413,6 @@ export const services: Service[] = [
 ]
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug)
+
+/** Link target for a service card, menu item, or footer link. */
+export const serviceHref = (s: Pick<Service, 'slug' | 'href'>) => s.href ?? `/services/${s.slug}`

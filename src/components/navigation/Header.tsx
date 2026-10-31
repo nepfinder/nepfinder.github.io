@@ -7,7 +7,7 @@ import type { TKey } from '@/i18n/en'
 import { useLocalizedProducts, useLocalizedServices } from '@/i18n/useLocalized'
 import { LanguageSwitch } from './LanguageSwitch'
 import { SearchOverlay } from './SearchOverlay'
-import { services } from '@/data/services'
+import { services, serviceHref } from '@/data/services'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
 import { cn } from '@/utils/cn'
@@ -40,7 +40,7 @@ function useMenu(): MenuItem[] {
       label: 'nav.services',
       to: '/services',
       columns: [
-        { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: `/services/${s.slug}` }))] },
+        { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: serviceHref(s) }))] },
         {
           heading: 'nav.erp.frappe',
           size: 'small',
@@ -63,6 +63,7 @@ function useMenu(): MenuItem[] {
         },
       ],
     },
+    { key: 'ai', label: 'nav.ai', to: '/ai-implementation' },
     { key: 'solutions', label: 'nav.solutions', to: '/solutions' },
     { key: 'technologies', label: 'nav.technologies', to: '/technologies' },
     {

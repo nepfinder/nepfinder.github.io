@@ -3,6 +3,11 @@
  * Keys are the slugs used in src/data.
  */
 export const servicesNp: Record<string, { title: string; short: string; description: string }> = {
+  'ai-implementation': {
+    title: 'इन्टरप्राइजका लागि AI कार्यान्वयन',
+    short: 'तपाईंको ERP र इन्टरप्राइज सफ्टवेयरसँग काम गर्ने AI सहायक, एजेन्ट र MCP एकीकरण।',
+    description: 'ERP र इन्टरप्राइज सफ्टवेयरका लागि व्यावहारिक AI: प्रत्यक्ष व्यावसायिक डेटाबाट जवाफ दिने AI सहायक, AI लाई सुरक्षित रूपमा जोड्ने MCP सर्भर र कम्पनीभरको स्वचालन।',
+  },
   'custom-software-development': {
     title: 'कस्टम सफ्टवेयर विकास',
     short: 'व्यावसायिक आवश्यकता अनुसार स्केलेबल सफ्टवेयर एप्लिकेसन डिजाइन र विकास।',

@@ -1,4 +1,4 @@
-import { services } from '@/data/services'
+import { services, serviceHref } from '@/data/services'
 import { products } from '@/data/products'
 import { projects } from '@/data/projects'
 import { industries } from '@/data/industries'
@@ -29,7 +29,7 @@ const pages: SearchEntry[] = [
 ]
 
 export const searchIndex: SearchEntry[] = [
-  ...services.map((s) => ({ group: 'services' as const, title: s.title, text: s.short, to: `/services/${s.slug}`, keywords: [...s.capabilities, ...s.useCases, s.description].join(' ') })),
+  ...services.map((s) => ({ group: 'services' as const, title: s.title, text: s.short, to: serviceHref(s), keywords: [...s.capabilities, ...s.useCases, s.description, s.slug === 'ai-implementation' ? 'ai artificial intelligence mcp model context protocol llm agent copilot chatgpt claude' : ''].join(' ') })),
   ...products.map((p) => ({ group: 'products' as const, title: p.name, text: p.summary, to: `/products/${p.slug}`, keywords: [p.category, p.description, ...p.features.map((f) => f.title)].join(' ') })),
   ...projects.map((p) => ({ group: 'projects' as const, title: p.title, text: p.summary, to: `/projects/${p.slug}`, keywords: [p.category, ...p.technologies].join(' ') })),
   ...industries.map((i) => ({ group: 'industries' as const, title: i.name, text: i.text, to: `/solutions#${i.slug}`, keywords: i.solutions.join(' ') })),

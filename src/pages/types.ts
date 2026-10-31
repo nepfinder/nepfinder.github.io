@@ -11,6 +11,7 @@ export type PageName =
   | 'Projects'
   | 'ProjectDetail'
   | 'Contact'
+  | 'AiImplementation'
   | 'NcafePrivacy'
   | 'DataDeletion'
   | 'NotFound'

@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { ArrowUpRight } from 'lucide-react'
-import type { Service } from '@/data/services'
+import { serviceHref, type Service } from '@/data/services'
 import { Card, IconBadge } from '@/components/ui/Card'
 import { cn } from '@/utils/cn'
 import { useT } from '@/i18n'
@@ -10,7 +10,7 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
   const t = useT()
   return (
     <Card className="h-full">
-      <Link to={`/services/${service.slug}`} className="flex h-full flex-col focus-visible:outline-none">
+      <Link to={serviceHref(service)} className="flex h-full flex-col focus-visible:outline-none">
         <div className="flex items-start justify-between">
           <IconBadge>
             <Icon className="size-5" aria-hidden />
