@@ -18,6 +18,7 @@ export const site = {
     wordmark: '/logos/nepfinder-logo.png',
     icon: '/logos/nepfinder-icon.png',
     mark: '/logos/nepfinder-mark.svg',
+    stacked: '/logos/nepfinder-logo-stacked.png',
   },
   /**
    * Optional contact form endpoint (e.g. a Formspree / Getform / Web3Forms URL).
