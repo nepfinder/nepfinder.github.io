@@ -7,11 +7,12 @@ import { ProcessTimeline } from '@/components/home/ProcessTimeline'
 import { CtaSection } from '@/components/home/CtaSection'
 import { services } from '@/data/services'
 import { site } from '@/data/site'
+import { useLocalizedServices } from '@/i18n/useLocalized'
 
 const seo = {
   title: 'Software Development & ERP Services in Nepal',
   description:
-    'Custom software development, ERP implementation, ERPNext implementation, Frappe Framework development, web and mobile apps, API integration, and business process automation by Nepfinder.',
+    'Custom software, ERP and ERPNext implementation, Frappe Framework development, web and mobile apps, API integration, and process automation by Nepfinder.',
   path: '/services',
   jsonLd: {
     '@context': 'https://schema.org',
@@ -22,12 +23,13 @@ const seo = {
 
 export default function Services() {
   useSeo(seo)
+  const list = useLocalizedServices(services)
   return (
     <>
       <PageHero title="Software engineering and enterprise solutions" text="Every engagement starts with your business requirements. These are the services we deliver to turn them into working software." crumbs={[{ label: 'Services' }]} />
       <section className="section pt-0">
         <div className="container-x grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, i) => (
+          {list.map((s, i) => (
             <Reveal key={s.slug} delay={Math.min(i, 5) * 0.06} className="h-full">
               <ServiceCard service={s} />
             </Reveal>

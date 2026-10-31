@@ -2,6 +2,8 @@ import { useId, useState, type FormEvent } from 'react'
 import { CheckCircle2, Loader2, Mail, AlertCircle } from 'lucide-react'
 import { site } from '@/data/site'
 import { cn } from '@/utils/cn'
+import { useT } from '@/i18n'
+import type { TKey } from '@/i18n/en'
 
 const serviceOptions = [
   'Custom Software Development',
@@ -30,12 +32,12 @@ const empty: Values = { name: '', company: '', email: '', phone: '', service: ''
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'sent'; via: 'endpoint' | 'mail' } | { kind: 'error'; message: string }
 
 function validate(v: Values) {
-  const errors: Partial<Record<keyof Values, string>> = {}
-  if (v.name.trim().length < 2) errors.name = 'Please enter your full name.'
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = 'Please enter a valid email address.'
-  if (v.phone && !/^[+\d][\d\s().-]{5,}$/.test(v.phone)) errors.phone = 'Please enter a valid phone number.'
-  if (!v.service) errors.service = 'Please choose the service you are interested in.'
-  if (v.message.trim().length < 20) errors.message = 'Please describe your project in at least 20 characters.'
+  const errors: Partial<Record<keyof Values, TKey>> = {}
+  if (v.name.trim().length < 2) errors.name = 'form.err.name'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = 'form.err.email'
+  if (v.phone && !/^[+\d][\d\s().-]{5,}$/.test(v.phone)) errors.phone = 'form.err.phone'
+  if (!v.service) errors.service = 'form.err.service'
+  if (v.message.trim().length < 20) errors.message = 'form.err.message'
   return errors
 }
 
@@ -44,8 +46,9 @@ const inputClass =
 
 export function ContactForm() {
   const id = useId()
+  const t = useT()
   const [values, setValues] = useState<Values>(empty)
-  const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof Values, TKey>>>({})
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
 
   const update = (k: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -116,20 +119,18 @@ export function ContactForm() {
         <span className="inline-flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent">
           <CheckCircle2 className="size-7" aria-hidden />
         </span>
-        <h3 className="h-display mt-5 text-2xl">Thank you!</h3>
+        <h3 className="h-display mt-5 text-2xl">{t('form.thanks')}</h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-          {status.via === 'endpoint'
-            ? 'Your message has been sent. We will get back to you shortly.'
-            : `Your email client should now open with your message addressed to ${site.email}. If it did not open, please email us directly.`}
+          {status.via === 'endpoint' ? t('form.sent.endpoint') : t('form.sent.mail', { email: site.email })}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           {status.via === 'mail' && (
             <a href={buildMailto()} className="btn-primary">
-              <Mail className="size-4" aria-hidden /> Open email again
+              <Mail className="size-4" aria-hidden /> {t('form.open.again')}
             </a>
           )}
           <button type="button" className="btn-secondary" onClick={() => setStatus({ kind: 'idle' })}>
-            Send another message
+            {t('form.another')}
           </button>
         </div>
       </div>
@@ -144,7 +145,7 @@ export function ContactForm() {
       {el}
       {errors[k] && (
         <p id={`${id}-${k}-error`} className="mt-1.5 flex items-center gap-1 text-xs text-red-700" role="alert">
-          <AlertCircle className="size-3.5" aria-hidden /> {errors[k]}
+          <AlertCircle className="size-3.5" aria-hidden /> {t(errors[k]!)}
         </p>
       )}
     </div>
@@ -159,17 +160,17 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="rounded-[var(--radius-tile)] bg-bg-2 p-6 sm:p-8" aria-describedby={`${id}-note`}>
       <div className="grid gap-5 sm:grid-cols-2">
-        {field('name', 'Full Name', <input {...a11y('name')} className={inputClass} autoComplete="name" value={values.name} onChange={update('name')} placeholder="Your name" required />)}
-        {field('company', 'Company Name', <input {...a11y('company')} className={inputClass} autoComplete="organization" value={values.company} onChange={update('company')} placeholder="Company or organisation" />, false)}
-        {field('email', 'Email Address', <input {...a11y('email')} type="email" className={inputClass} autoComplete="email" value={values.email} onChange={update('email')} placeholder="you@company.com" required />)}
-        {field('phone', 'Phone Number', <input {...a11y('phone')} type="tel" className={inputClass} autoComplete="tel" value={values.phone} onChange={update('phone')} placeholder="+977" />, false)}
+        {field('name', t('form.name'), <input {...a11y('name')} className={inputClass} autoComplete="name" value={values.name} onChange={update('name')} placeholder={t('form.name.placeholder')} required />)}
+        {field('company', t('form.company'), <input {...a11y('company')} className={inputClass} autoComplete="organization" value={values.company} onChange={update('company')} placeholder={t('form.company.placeholder')} />, false)}
+        {field('email', t('form.email'), <input {...a11y('email')} type="email" className={inputClass} autoComplete="email" value={values.email} onChange={update('email')} placeholder="you@company.com" required />)}
+        {field('phone', t('form.phone'), <input {...a11y('phone')} type="tel" className={inputClass} autoComplete="tel" value={values.phone} onChange={update('phone')} placeholder="+977" />, false)}
         <div className="sm:col-span-2">
           {field(
             'service',
-            'Service Interested In',
+            t('form.service'),
             <select {...a11y('service')} className={cn(inputClass, 'appearance-none')} value={values.service} onChange={update('service')} required>
               <option value="" disabled>
-                Select a service
+                {t('form.service.placeholder')}
               </option>
               {serviceOptions.map((s) => (
                 <option key={s} value={s}>
@@ -180,7 +181,7 @@ export function ContactForm() {
           )}
         </div>
         <div className="sm:col-span-2">
-          {field('message', 'Project Description', <textarea {...a11y('message')} className={cn(inputClass, 'min-h-[140px] resize-y')} value={values.message} onChange={update('message')} placeholder="Tell us about your business, the problem you want to solve, and any timeline." required />)}
+          {field('message', t('form.message'), <textarea {...a11y('message')} className={cn(inputClass, 'min-h-[140px] resize-y')} value={values.message} onChange={update('message')} placeholder={t('form.message.placeholder')} required />)}
         </div>
         {/* Honeypot: hidden from humans and assistive tech, bots tend to fill it. */}
         <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
@@ -193,7 +194,7 @@ export function ContactForm() {
         <p role="alert" className="mt-5 flex items-start gap-2 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-800">
           <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden />
           <span>
-            We could not send your message ({status.message}). Please try again or email us at{' '}
+            {t('form.err.send', { reason: status.message })}{' '}
             <a className="underline" href={`mailto:${site.email}`}>
               {site.email}
             </a>
@@ -204,15 +205,15 @@ export function ContactForm() {
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p id={`${id}-note`} className="text-xs text-muted">
-          Your details are used only to respond to your inquiry.
+          {t('form.note')}
         </p>
         <button type="submit" className="btn-primary min-w-[180px]" disabled={status.kind === 'sending'}>
           {status.kind === 'sending' ? (
             <>
-              <Loader2 className="size-4 animate-spin" aria-hidden /> Sending…
+              <Loader2 className="size-4 animate-spin" aria-hidden /> {t('form.sending')}
             </>
           ) : (
-            'Send Inquiry'
+            t('form.submit')
           )}
         </button>
       </div>

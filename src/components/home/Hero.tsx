@@ -5,10 +5,14 @@ import { Scene } from '@/components/three/Scene'
 import { NetworkFallback } from '@/components/three/StaticFallback'
 import { heroModules } from '@/components/three/HeroScene'
 import { usePrefersReducedMotion } from '@/hooks/useMediaFlags'
+import { useT } from '@/i18n'
+import { useHeroModules } from '@/i18n/useLocalized'
 
 export function Hero() {
   const root = useRef<HTMLDivElement>(null)
   const reduce = usePrefersReducedMotion()
+  const t = useT()
+  const modules = useHeroModules(heroModules)
 
   useEffect(() => {
     if (reduce || !root.current) return
@@ -26,16 +30,15 @@ export function Hero() {
     <section ref={root} className="relative isolate overflow-hidden pt-11">
       <div className="container-x flex flex-col items-center pt-16 text-center sm:pt-24">
         <h1 data-hero-item className="h-display max-w-4xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]" style={{ opacity: reduce ? 1 : 0 }}>
-          Engineering Smarter Businesses Through <span className="text-highlight">Software &amp; ERP Solutions</span>
+          {t('hero.title.a')} <span className="text-highlight">{t('hero.title.b')}</span>
         </h1>
         <p data-hero-item className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={{ opacity: reduce ? 1 : 0 }}>
-          We design, develop, and implement scalable business software, ERPNext solutions, and Frappe-powered applications that
-          streamline operations, connect business processes, and accelerate digital transformation.
+          {t('hero.text')}
         </p>
         <div data-hero-item className="mt-9 flex flex-col gap-3 sm:flex-row" style={{ opacity: reduce ? 1 : 0 }}>
-          <Button to="/contact">Discuss your project</Button>
+          <Button to="/contact">{t('hero.cta.primary')}</Button>
           <Button to="/services" variant="secondary">
-            Explore our services
+            {t('hero.cta.secondary')}
           </Button>
         </div>
       </div>
@@ -46,7 +49,7 @@ export function Hero() {
             scene="hero"
             className="absolute inset-0"
             camera={{ position: [0, 5.2, 7.4], fov: 30 }}
-            fallback={<NetworkFallback labels={heroModules} />}
+            fallback={<NetworkFallback labels={modules} />}
           />
         </div>
       </div>

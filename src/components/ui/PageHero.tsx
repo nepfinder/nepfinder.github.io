@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { ChevronRight } from 'lucide-react'
 import { SectionHeading } from './SectionHeading'
+import { useT } from '@/i18n'
 
 interface Crumb {
   label: string
@@ -9,6 +10,7 @@ interface Crumb {
 }
 
 export function PageHero({ title, text, crumbs, children }: { title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode }) {
+  const t = useT()
   return (
     <section className="relative overflow-hidden pt-11">
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -20,7 +22,7 @@ export function PageHero({ title, text, crumbs, children }: { title: ReactNode; 
             <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
               <li>
                 <Link to="/" className="hover:text-text">
-                  Home
+                  {t('common.home')}
                 </Link>
               </li>
               {crumbs.map((c) => (

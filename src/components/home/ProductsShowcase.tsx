@@ -5,14 +5,18 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
 import { Card, Pill } from '@/components/ui/Card'
+import { useT } from '@/i18n'
+import { useLocalizedProducts } from '@/i18n/useLocalized'
 
 export function ProductsShowcase() {
-  const ninsurance = products.find((p) => p.slug === 'ninsurance')!
-  const others = products.filter((p) => p.slug !== 'ninsurance')
+  const t = useT()
+  const list = useLocalizedProducts(products)
+  const ninsurance = list.find((p) => p.slug === 'ninsurance')!
+  const others = list.filter((p) => p.slug !== 'ninsurance')
   return (
     <section id="products" className="section relative">
       <div className="container-x">
-        <SectionHeading title="Products built and maintained by Nepfinder" text="Alongside client projects, Nepfinder develops its own software products, led by nInsurance for the insurance sector." />
+        <SectionHeading title={t('products.title')} text={t('products.text')} />
 
         <Reveal className="mt-12">
           <div className="card relative grid overflow-hidden !p-0 lg:grid-cols-[1.1fr_0.9fr]">
@@ -30,7 +34,7 @@ export function ProductsShowcase() {
               </ul>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button to={`/products/${ninsurance.slug}`}>
-                  Explore nInsurance
+                  {t('products.explore')}
                 </Button>
                 <Button to={ninsurance.links[0].href} variant="secondary" external>
                   <Smartphone className="size-4" aria-hidden /> {ninsurance.links[0].label}
@@ -62,7 +66,7 @@ export function ProductsShowcase() {
                   </div>
                   <h3 className="mt-4 font-display text-xl font-semibold text-text">{p.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{p.summary}</p>
-                  <span className="mt-auto pt-5 text-sm font-semibold text-accent">View product</span>
+                  <span className="mt-auto pt-5 text-sm font-semibold text-accent">{t('products.view')}</span>
                 </Link>
               </Card>
             </Reveal>

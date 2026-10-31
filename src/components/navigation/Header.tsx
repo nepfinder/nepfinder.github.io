@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ChevronDown, Mail, Menu, X } from 'lucide-react'
+import { ChevronDown, Mail, Menu, Search, X } from 'lucide-react'
+import { useT } from '@/i18n'
+import type { TKey } from '@/i18n/en'
+import { useLocalizedProducts, useLocalizedServices } from '@/i18n/useLocalized'
+import { LanguageSwitch } from './LanguageSwitch'
+import { SearchOverlay } from './SearchOverlay'
 import { services } from '@/data/services'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
@@ -12,87 +17,84 @@ import { cn } from '@/utils/cn'
 /* ------------------------------------------------------------------ */
 
 interface FlyoutColumn {
-  heading: string
+  heading: TKey
   size: 'large' | 'small'
-  links: { label: string; to: string }[]
+  links: { label: string; to: string; key?: TKey }[]
 }
 
 interface MenuItem {
   key: string
-  label: string
+  label: TKey
   to: string
   columns?: FlyoutColumn[]
 }
 
-const menu: MenuItem[] = [
-  { key: 'home', label: 'Home', to: '/' },
-  { key: 'about', label: 'About', to: '/about' },
-  {
-    key: 'services',
-    label: 'Services',
-    to: '/services',
-    columns: [
-      {
-        heading: 'Explore Services',
-        size: 'large',
-        links: [{ label: 'All Services', to: '/services' }, ...services.map((s) => ({ label: s.title, to: `/services/${s.slug}` }))],
-      },
-      {
-        heading: 'ERP & Frappe',
-        size: 'small',
-        links: [
-          { label: 'ERPNext Implementation', to: '/services/erpnext-implementation' },
-          { label: 'Frappe Framework Development', to: '/services/frappe-framework-development' },
-          { label: 'ERP Solutions & Implementation', to: '/services/erp-implementation' },
-          { label: 'Enterprise ERP Support', to: '/products/enterprise-support' },
-        ],
-      },
-      {
-        heading: 'More from Nepfinder',
-        size: 'small',
-        links: [
-          { label: 'Industry Solutions', to: '/solutions' },
-          { label: 'Technologies', to: '/technologies' },
-          { label: 'Our Process', to: '/services#process' },
-          { label: 'Get a Consultation', to: '/contact' },
-        ],
-      },
-    ],
-  },
-  { key: 'solutions', label: 'Solutions', to: '/solutions' },
-  { key: 'technologies', label: 'Technologies', to: '/technologies' },
-  {
-    key: 'products',
-    label: 'Products',
-    to: '/products',
-    columns: [
-      {
-        heading: 'Explore Products',
-        size: 'large',
-        links: [{ label: 'All Products', to: '/products' }, ...products.map((p) => ({ label: p.name, to: `/products/${p.slug}` }))],
-      },
-      {
-        heading: 'Support',
-        size: 'small',
-        links: [
-          { label: 'Enterprise ERP Support', to: '/products/enterprise-support' },
-          { label: 'Request a Quote', to: '/contact' },
-          { label: 'nInsurance on Google Play', to: 'https://play.google.com/store/apps/details?id=com.nlg.NLGInsurance' },
-        ],
-      },
-      {
-        heading: 'Legal',
-        size: 'small',
-        links: [
-          { label: 'nCafe Privacy Policy', to: '/ncafe/privacy' },
-          { label: 'Data Deletion Request', to: '/user-data-delete-request' },
-        ],
-      },
-    ],
-  },
-  { key: 'projects', label: 'Projects', to: '/projects' },
-  { key: 'contact', label: 'Contact', to: '/contact' },
-]
+function useMenu(): MenuItem[] {
+  const svc = useLocalizedServices(services)
+  const prod = useLocalizedProducts(products)
+  return [
+    { key: 'home', label: 'nav.home', to: '/' },
+    { key: 'about', label: 'nav.about', to: '/about' },
+    {
+      key: 'services',
+      label: 'nav.services',
+      to: '/services',
+      columns: [
+        { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: `/services/${s.slug}` }))] },
+        {
+          heading: 'nav.erp.frappe',
+          size: 'small',
+          links: [
+            { label: svc.find((x) => x.slug === 'erpnext-implementation')?.title ?? '', to: '/services/erpnext-implementation' },
+            { label: svc.find((x) => x.slug === 'frappe-framework-development')?.title ?? '', to: '/services/frappe-framework-development' },
+            { label: svc.find((x) => x.slug === 'erp-implementation')?.title ?? '', to: '/services/erp-implementation' },
+            { label: prod.find((x) => x.slug === 'enterprise-support')?.name ?? '', to: '/products/enterprise-support' },
+          ],
+        },
+        {
+          heading: 'nav.more',
+          size: 'small',
+          links: [
+            { label: '', key: 'nav.industry', to: '/solutions' },
+            { label: '', key: 'nav.technologies', to: '/technologies' },
+            { label: '', key: 'nav.process', to: '/services#process' },
+            { label: '', key: 'nav.consultation', to: '/contact' },
+          ],
+        },
+      ],
+    },
+    { key: 'solutions', label: 'nav.solutions', to: '/solutions' },
+    { key: 'technologies', label: 'nav.technologies', to: '/technologies' },
+    {
+      key: 'products',
+      label: 'nav.products',
+      to: '/products',
+      columns: [
+        { heading: 'nav.explore.products', size: 'large', links: [{ label: '', key: 'nav.all.products', to: '/products' }, ...prod.map((p) => ({ label: p.name, to: `/products/${p.slug}` }))] },
+        {
+          heading: 'nav.support',
+          size: 'small',
+          links: [
+            { label: prod.find((x) => x.slug === 'enterprise-support')?.name ?? '', to: '/products/enterprise-support' },
+            { label: '', key: 'nav.quote', to: '/contact' },
+            { label: '', key: 'nav.play', to: 'https://play.google.com/store/apps/details?id=com.nlg.NLGInsurance' },
+          ],
+        },
+        {
+          heading: 'nav.legal',
+          size: 'small',
+          links: [
+            { label: '', key: 'nav.privacy', to: '/ncafe/privacy' },
+            { label: '', key: 'nav.deletion', to: '/user-data-delete-request' },
+          ],
+        },
+      ],
+    },
+    { key: 'projects', label: 'nav.projects', to: '/projects' },
+    { key: 'contact', label: 'nav.contact', to: '/contact' },
+  ]
+}
+
 
 function MenuLink({ to, className, children, onClick }: { to: string; className?: string; children: React.ReactNode; onClick?: () => void }) {
   if (to.startsWith('http')) {
@@ -114,6 +116,9 @@ function MenuLink({ to, className, children, onClick }: { to: string; className?
 /* ------------------------------------------------------------------ */
 
 export function Header() {
+  const t = useT()
+  const menu = useMenu()
+  const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation()
   const reduce = useReducedMotion()
   const [openKey, setOpenKey] = useState<string | null>(null)
@@ -139,16 +144,17 @@ export function Header() {
     setOpenKey(null)
     setMobileOpen(false)
     setMobileGroup(null)
+    setSearchOpen(false)
   }, [location.pathname, location.hash])
 
   // Lock body scroll while a panel is open.
   useEffect(() => {
-    const lock = mobileOpen || openKey !== null
+    const lock = mobileOpen || searchOpen || openKey !== null
     document.body.style.overflow = lock ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [mobileOpen, openKey])
+  }, [mobileOpen, openKey, searchOpen])
 
   // Escape closes; clicking outside the header closes.
   useEffect(() => {
@@ -156,6 +162,7 @@ export function Header() {
       if (e.key === 'Escape') {
         setOpenKey(null)
         setMobileOpen(false)
+        setSearchOpen(false)
       }
     }
     document.addEventListener('keydown', onKey)
@@ -163,12 +170,13 @@ export function Header() {
   }, [])
 
   const active = menu.find((m) => m.key === openKey)
+  const label = (l: { label: string; key?: TKey }) => (l.key ? t(l.key) : l.label)
 
   return (
     <>
       {/* Blurred page behind an open flyout */}
       <AnimatePresence>
-        {(openKey || mobileOpen) && (
+        {(openKey || mobileOpen || searchOpen) && (
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
@@ -179,6 +187,7 @@ export function Header() {
             onClick={() => {
               setOpenKey(null)
               setMobileOpen(false)
+              setSearchOpen(false)
             }}
             aria-hidden
           />
@@ -187,14 +196,14 @@ export function Header() {
 
       <header
         ref={headerRef}
-        className={cn('fixed inset-x-0 top-0 z-50 text-[#f5f5f7]', openKey || mobileOpen ? 'bg-[#1d1d1f]' : 'bg-black')}
+        className={cn('fixed inset-x-0 top-0 z-50 text-[#f5f5f7]', openKey || mobileOpen || searchOpen ? 'bg-[#1d1d1f]' : 'bg-black')}
         onMouseLeave={scheduleClose}
       >
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
         >
-          Skip to content
+          {t('nav.skip')}
         </a>
 
         <nav aria-label="Primary" className="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-5 sm:px-6">
@@ -218,7 +227,7 @@ export function Header() {
                       (openKey === item.key || location.pathname.startsWith(item.to)) && 'text-[#f5f5f7]',
                     )}
                   >
-                    {item.label}
+                    {t(item.label)}
                   </button>
                 ) : (
                   <NavLink
@@ -228,7 +237,7 @@ export function Header() {
                       cn('block px-3 py-2 text-[12px] font-normal tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]', isActive && 'text-[#f5f5f7]')
                     }
                   >
-                    {item.label}
+                    {t(item.label)}
                   </NavLink>
                 )}
               </li>
@@ -236,10 +245,25 @@ export function Header() {
           </ul>
 
           <div className="flex items-center gap-1">
+            <button
+              type="button"
+              aria-label={t('nav.search')}
+              aria-expanded={searchOpen}
+              aria-controls="site-search"
+              onClick={() => {
+                setOpenKey(null)
+                setSearchOpen((v) => !v)
+              }}
+              onMouseEnter={scheduleClose}
+              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
+            >
+              <Search className="size-[17px]" strokeWidth={1.6} aria-hidden />
+            </button>
+            <LanguageSwitch className="hidden sm:inline-flex" />
             <Link
               to="/contact"
-              aria-label="Get a consultation"
-              title="Get a consultation"
+              aria-label={t('nav.consultation')}
+              title={t('nav.consultation')}
               className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
               onMouseEnter={scheduleClose}
             >
@@ -248,7 +272,7 @@ export function Header() {
             <button
               type="button"
               className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 hover:text-[#f5f5f7] lg:hidden"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileOpen ? t('nav.menu.close') : t('nav.menu.open')}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen((v) => !v)}
@@ -274,10 +298,10 @@ export function Header() {
               <div className="mx-auto grid max-w-[1024px] grid-cols-[1.4fr_1fr_1fr] gap-10 px-5 pb-16 pt-10 sm:px-6">
                 {active.columns.map((col) => (
                   <div key={col.heading}>
-                    <p className="text-[12px] text-[#86868b]">{col.heading}</p>
+                    <p className="text-[12px] text-[#86868b]">{t(col.heading)}</p>
                     <ul className={cn('mt-4', col.size === 'large' ? 'space-y-2' : 'space-y-2.5')}>
                       {col.links.map((l) => (
-                        <li key={l.to + l.label}>
+                        <li key={l.to + (l.key ?? l.label)}>
                           <MenuLink
                             to={l.to}
                             className={cn(
@@ -285,7 +309,7 @@ export function Header() {
                               col.size === 'large' ? 'font-display text-2xl font-semibold tracking-[-0.01em]' : 'text-[12px] font-medium',
                             )}
                           >
-                            {l.label}
+                            {label(l)}
                           </MenuLink>
                         </li>
                       ))}
@@ -296,6 +320,11 @@ export function Header() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Site search */}
+        <div id="site-search">
+          <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+        </div>
 
         {/* Mobile menu */}
         <AnimatePresence>
@@ -309,6 +338,9 @@ export function Header() {
               transition={{ duration: 0.25 }}
               className="h-[calc(100dvh-44px)] overflow-y-auto bg-[#1d1d1f] lg:hidden"
             >
+              <div className="mx-auto max-w-[1024px] px-6 pt-4 sm:hidden">
+                <LanguageSwitch />
+              </div>
               <ul className="mx-auto max-w-[1024px] px-6 pb-12 pt-4">
                 {menu.map((item) => (
                   <li key={item.key} className="border-b border-white/10">
@@ -320,19 +352,19 @@ export function Header() {
                           aria-expanded={mobileGroup === item.key}
                           onClick={() => setMobileGroup((g) => (g === item.key ? null : item.key))}
                         >
-                          {item.label}
+                          {t(item.label)}
                           <ChevronDown className={cn('size-5 text-[#86868b] transition-transform', mobileGroup === item.key && 'rotate-180')} aria-hidden />
                         </button>
                         {mobileGroup === item.key && (
                           <div className="space-y-6 pb-6">
                             {item.columns.map((col) => (
                               <div key={col.heading}>
-                                <p className="text-[12px] text-[#86868b]">{col.heading}</p>
+                                <p className="text-[12px] text-[#86868b]">{t(col.heading)}</p>
                                 <ul className="mt-2 space-y-2">
                                   {col.links.map((l) => (
-                                    <li key={l.to + l.label}>
+                                    <li key={l.to + (l.key ?? l.label)}>
                                       <MenuLink to={l.to} className="block text-[15px] font-medium text-[#f5f5f7]">
-                                        {l.label}
+                                        {label(l)}
                                       </MenuLink>
                                     </li>
                                   ))}
@@ -344,7 +376,7 @@ export function Header() {
                       </>
                     ) : (
                       <NavLink to={item.to} end={item.to === '/'} className="block py-4 font-display text-[1.75rem] font-semibold tracking-[-0.01em] text-[#f5f5f7]">
-                        {item.label}
+                        {t(item.label)}
                       </NavLink>
                     )}
                   </li>

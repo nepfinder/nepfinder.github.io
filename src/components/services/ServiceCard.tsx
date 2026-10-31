@@ -3,9 +3,11 @@ import { ArrowUpRight } from 'lucide-react'
 import type { Service } from '@/data/services'
 import { Card, IconBadge } from '@/components/ui/Card'
 import { cn } from '@/utils/cn'
+import { useT } from '@/i18n'
 
 export function ServiceCard({ service, compact = false }: { service: Service; compact?: boolean }) {
   const Icon = service.icon
+  const t = useT()
   return (
     <Card className="h-full">
       <Link to={`/services/${service.slug}`} className="flex h-full flex-col focus-visible:outline-none">
@@ -24,10 +26,10 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
                 {c}
               </li>
             ))}
-            {service.capabilities.length > 4 && <li className="px-1 py-1 text-[11px] text-muted">+{service.capabilities.length - 4} more</li>}
+            {service.capabilities.length > 4 && <li className="px-1 py-1 text-[11px] text-muted">+{service.capabilities.length - 4} {t('services.more')}</li>}
           </ul>
         )}
-        <span className="mt-auto pt-5 text-sm font-semibold text-accent">Learn more</span>
+        <span className="mt-auto pt-5 text-sm font-semibold text-accent">{t('services.learn')}</span>
       </Link>
     </Card>
   )

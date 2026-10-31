@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: 'Enterprise ERP Support',
     headline: 'Enterprise ERP Support — a dedicated team, one fixed monthly price',
     summary:
-      'Monthly maintenance and support for your ERP from a team of technical and functional ERP experts, available during office hours (10:00 to 18:00), for a fixed monthly fee.',
+      'Monthly ERP maintenance and support from technical and functional ERP experts, available 10:00 to 18:00 on working days, for one fixed monthly fee.',
     description:
       'Enterprise ERP Support gives your business a standing team of ERP experts without hiring in-house. For one fixed price per month you get both technical and functional specialists who keep your ERPNext or other ERP system running, resolve issues, make configuration changes, and help your users during office hours, 10:00 to 18:00 on working days. The plan is sized to your organisation and billed monthly, so costs stay predictable.',
     category: 'Managed Support Plan',

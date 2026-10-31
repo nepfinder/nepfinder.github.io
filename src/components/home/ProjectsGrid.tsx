@@ -3,8 +3,10 @@ import { ArrowUpRight, FolderKanban } from 'lucide-react'
 import { projects } from '@/data/projects'
 import { Reveal } from '@/components/ui/Reveal'
 import { Pill } from '@/components/ui/Card'
+import { useT } from '@/i18n'
 
 export function ProjectsGrid() {
+  const t = useT()
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((p, i) => (
@@ -24,7 +26,7 @@ export function ProjectsGrid() {
               <h3 className="mt-4 font-display text-xl font-semibold text-text">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{p.summary}</p>
               <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-accent">
-                View case study <ArrowUpRight className="size-4" aria-hidden />
+                {t('projects.view')} <ArrowUpRight className="size-4" aria-hidden />
               </span>
             </div>
           </Link>

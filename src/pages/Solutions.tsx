@@ -6,7 +6,7 @@ import { CtaSection } from '@/components/home/CtaSection'
 
 const seo = {
   title: 'Business Solutions & Industries',
-  description: 'Software and ERP solutions from Nepfinder for insurance, retail and distribution, logistics, manufacturing, professional services, e-commerce, and enterprise operations.',
+  description: 'Nepfinder software and ERP solutions for insurance, retail, logistics, manufacturing, professional services, e-commerce, and enterprise operations.',
   path: '/solutions',
 }
 

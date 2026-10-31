@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
+import type { InfographicKind } from '@/components/ui/Infographic'
 import {
   Code2,
   Boxes,
@@ -26,6 +27,9 @@ export interface Service {
   capabilities: string[]
   useCases: string[]
   steps: ServiceStep[]
+  infographic: InfographicKind
+  /** Plain-language summary shown at the top of the service page. */
+  glance: { what: string[]; who: string }
   seo: { title: string; description: string }
 }
 
@@ -61,6 +65,15 @@ export const services: Service[] = [
       { title: 'Iterative development', text: 'Short delivery cycles with working software reviewed by your team.' },
       { title: 'Launch & support', text: 'Deployment, training, documentation, and ongoing improvements.' },
     ],
+    infographic: 'blueprint',
+    glance: {
+      what: [
+        'Software built around your processes, not a template',
+        'A clear roadmap, working releases every few weeks',
+        'Training, documentation, and ongoing support',
+      ],
+      who: 'Businesses outgrowing spreadsheets or off-the-shelf tools',
+    },
     seo: {
       title: 'Custom Software Development Company in Nepal',
       description:
@@ -99,6 +112,15 @@ export const services: Service[] = [
       { title: 'Data migration', text: 'Clean, transform, validate, and import master and transactional data.' },
       { title: 'Training & go-live support', text: 'Role-based training, user acceptance testing, and hyper-care after launch.' },
     ],
+    infographic: 'modules',
+    glance: {
+      what: [
+        'One system for finance, stock, sales, purchasing, and people',
+        'Your data migrated and your processes mapped',
+        'Trained users and support after go-live',
+      ],
+      who: 'Growing companies with disconnected systems or branches',
+    },
     seo: {
       title: 'ERP Implementation Services in Nepal',
       description:
@@ -138,6 +160,15 @@ export const services: Service[] = [
       { title: 'Integration', text: 'Connect ERPNext to payment, e-commerce, and third-party systems via REST APIs.' },
       { title: 'Deployment & support', text: 'Production deployment, backups, upgrades, and technical support.' },
     ],
+    infographic: 'modules',
+    glance: {
+      what: [
+        'ERPNext set up for the modules you actually use',
+        'Custom fields, reports, print formats, and workflows',
+        'Integrations, deployment, upgrades, and support',
+      ],
+      who: 'Trading, distribution, service, and manufacturing businesses',
+    },
     seo: {
       title: 'ERPNext Implementation in Nepal | Independent ERPNext Services',
       description:
@@ -178,10 +209,19 @@ export const services: Service[] = [
       { title: 'Reporting & portals', text: 'Script and query reports, dashboards, and portal pages.' },
       { title: 'Integration & release', text: 'APIs, webhooks, testing, deployment, and version upgrades.' },
     ],
+    infographic: 'stack',
+    glance: {
+      what: [
+        'Custom apps and modules that extend or stand beside ERPNext',
+        'Portals, dashboards, and REST APIs for your teams and partners',
+        'Clean upgrades thanks to app-based customisation',
+      ],
+      who: 'Organisations with needs that standard ERP modules do not cover',
+    },
     seo: {
       title: 'Frappe Framework Development in Nepal | Custom Frappe Apps',
       description:
-        'Custom Frappe Framework application development: DocTypes, workflows, dashboards, portals, and API integrations by Nepfinder, an independent Frappe developer in Nepal.',
+        'Custom Frappe Framework apps: DocTypes, workflows, dashboards, portals, and API integrations by Nepfinder, an independent Frappe developer in Nepal.',
     },
   },
   {
@@ -215,6 +255,15 @@ export const services: Service[] = [
       { title: 'Backend & APIs', text: 'Secure services and integrations behind the interface.' },
       { title: 'Release', text: 'App store or web deployment, analytics, and support.' },
     ],
+    infographic: 'devices',
+    glance: {
+      what: [
+        'Websites, portals, web apps, and mobile apps',
+        'Fast, responsive, accessible interfaces',
+        'One secure backend and API behind every screen',
+      ],
+      who: 'Companies that want customers and staff to self-serve',
+    },
     seo: {
       title: 'Web & Mobile Application Development in Nepal',
       description:
@@ -252,6 +301,15 @@ export const services: Service[] = [
       { title: 'Implementation', text: 'Connectors, transformation logic, retries, and monitoring.' },
       { title: 'Validation', text: 'End-to-end testing with real scenarios before production.' },
     ],
+    infographic: 'hub',
+    glance: {
+      what: [
+        'Systems that exchange data automatically',
+        'Payment, e-commerce, ERP, and partner connections',
+        'Monitoring and retries so nothing is lost',
+      ],
+      who: 'Businesses re-typing data between two or more systems',
+    },
     seo: {
       title: 'API Development & System Integration Services in Nepal',
       description:
@@ -289,6 +347,15 @@ export const services: Service[] = [
       { title: 'Automation build', text: 'Configure workflows, rules, notifications, and reports.' },
       { title: 'Measurement', text: 'Track turnaround time and refine the process.' },
     ],
+    infographic: 'flow',
+    glance: {
+      what: [
+        'Approvals, notifications, and reports that run themselves',
+        'Fewer manual steps and faster turnaround',
+        'An audit trail for every action',
+      ],
+      who: 'Teams spending hours on repetitive internal tasks',
+    },
     seo: {
       title: 'Business Process Automation Services in Nepal',
       description:

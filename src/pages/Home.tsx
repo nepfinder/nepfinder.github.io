@@ -15,7 +15,7 @@ import { CtaSection } from '@/components/home/CtaSection'
 const seo = {
   title: 'Nepfinder | Software Development & ERP Solutions in Nepal',
   description:
-    'Nepfinder is a software development company in Nepal offering custom software, ERP implementation, independent ERPNext implementation, Frappe Framework development, and system integration.',
+    'Software development company in Nepal: custom software, ERP and independent ERPNext implementation, Frappe Framework development, and system integration.',
   path: '/',
   jsonLd: [
     organizationJsonLd,

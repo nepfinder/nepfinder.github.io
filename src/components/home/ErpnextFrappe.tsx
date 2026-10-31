@@ -3,6 +3,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
 import { ArchitectureDiagram } from './ArchitectureDiagram'
 import { site } from '@/data/site'
+import { useT } from '@/i18n'
 
 export const erpnextCapabilities = [
   'ERPNext Implementation',
@@ -20,6 +21,7 @@ export const erpnextCapabilities = [
 ]
 
 export function ErpnextFrappe() {
+  const t = useT()
   return (
     <section id="erpnext-frappe" className="section">
       <div className="container-x">
@@ -27,10 +29,9 @@ export function ErpnextFrappe() {
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Reveal>
-              <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">Transform Your Business with ERPNext &amp; Frappe</h2>
+              <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">{t('erp.title')}</h2>
               <p className="mt-5 text-muted leading-relaxed sm:text-lg">
-                Build connected and efficient business systems with ERPNext and the Frappe Framework. We provide independent implementation,
-                customization, application development, integration, and technical support services.
+                {t('erp.text')}
               </p>
             </Reveal>
             <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
@@ -45,10 +46,10 @@ export function ErpnextFrappe() {
             </ul>
             <Reveal className="mt-9 flex flex-col gap-3 sm:flex-row" delay={0.15}>
               <Button to="/services/erpnext-implementation">
-                ERPNext Implementation
+                {t('erp.cta1')}
               </Button>
               <Button to="/services/frappe-framework-development" variant="secondary">
-                Frappe Development
+                {t('erp.cta2')}
               </Button>
             </Reveal>
             <Reveal delay={0.2}>

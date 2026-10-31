@@ -101,7 +101,7 @@ export function ArchitectureDiagram() {
         <p className="mt-2 text-sm leading-relaxed text-muted">{current.text}</p>
         <div className="mt-3 flex gap-1.5" aria-hidden>
           {nodes.map((n, i) => (
-            <button key={n.id} type="button" tabIndex={-1} onClick={() => setActive(i)} className={cn('h-1.5 rounded-full transition-all', i === active ? 'w-8 bg-accent' : 'w-3 bg-line')} />
+            <button key={n.id} type="button" tabIndex={-1} aria-label={`Show ${n.label}`} onClick={() => setActive(i)} className={cn('h-1.5 rounded-full transition-all', i === active ? 'w-8 bg-accent' : 'w-3 bg-line')} />
           ))}
         </div>
       </div>

@@ -1,14 +1,17 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { processSteps } from '@/data/process'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
 import { usePrefersReducedMotion } from '@/hooks/useMediaFlags'
+import { useT } from '@/i18n'
+import { useLocalizedProcess } from '@/i18n/useLocalized'
 
 export function ProcessTimeline() {
   const root = useRef<HTMLDivElement>(null)
   const reduce = usePrefersReducedMotion()
+  const t = useT()
+  const processSteps = useLocalizedProcess()
 
   useEffect(() => {
     if (reduce || !root.current) return
@@ -38,7 +41,7 @@ export function ProcessTimeline() {
   return (
     <section id="process" className="section relative">
       <div className="container-x">
-        <SectionHeading title="Our development process" text="A clear, collaborative path from the first conversation to long-term optimisation." />
+        <SectionHeading title={t('process.title')} text={t('process.text')} />
         <div ref={root} className="relative mt-14">
           <div className="absolute left-[19px] top-2 bottom-2 w-px bg-line md:left-1/2" aria-hidden />
           <div data-timeline-line className="absolute left-[19px] top-2 bottom-2 w-px bg-accent md:left-1/2" aria-hidden style={{ transform: reduce ? undefined : 'scaleY(0)' }} />
@@ -56,7 +59,7 @@ export function ProcessTimeline() {
                   </span>
                   <Reveal className={left ? 'md:col-start-1 md:text-right' : 'md:col-start-2'} y={16}>
                     <div className="card card-border inline-block w-full text-left md:max-w-md">
-                      <span className="font-display text-xs font-bold tracking-widest text-accent">STEP {s.step}</span>
+                      <span className="font-display text-xs font-semibold text-accent">{t('process.step')} {s.step}</span>
                       <h3 className="mt-2 font-display text-xl font-semibold text-text">{s.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
                     </div>
