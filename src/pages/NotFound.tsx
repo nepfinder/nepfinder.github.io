@@ -12,7 +12,7 @@ export default function NotFound() {
         <p className="mx-auto mt-4 max-w-md text-muted">{t('common.notfound.text')}</p>
         <div className="mt-8 flex justify-center gap-3">
           <Button to="/">{t('common.back')}</Button>
-          <Button to="/contact" variant="secondary">
+          <Button to="/contact" data-track="consultation_cta" variant="secondary">
             {t('nav.contact')}
           </Button>
         </div>

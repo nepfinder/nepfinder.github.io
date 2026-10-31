@@ -17,6 +17,45 @@ function escapeHtml(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
+/** ProfessionalService: the business type Google and AI engines use for service firms. Shares the Organization @id. */
+export const professionalServiceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['ProfessionalService', 'SoftwareCompany'],
+  '@id': `${site.url}/#organization`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  email: site.email,
+  logo: `${site.url}/logos/nepfinder-logo-stacked.png`,
+  image: `${site.url}/images/og-default.png`,
+  priceRange: 'NPR',
+  address: { '@type': 'PostalAddress', streetAddress: site.address.street, addressLocality: site.address.city, addressCountry: site.address.countryCode },
+  areaServed: [{ '@type': 'Country', name: 'Nepal' }],
+  availableLanguage: ['English', 'Nepali'],
+  openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
+  makesOffer: [
+    'Custom software development',
+    'ERP implementation',
+    'ERPNext implementation',
+    'Frappe Framework development',
+    'Web and mobile application development',
+    'API and system integration',
+    'Business process automation',
+    'AI implementation for enterprise',
+    'Enterprise ERP support',
+  ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name, areaServed: 'Nepal' } })),
+  sameAs: [site.social.twitter, site.social.instagram],
+}
+
+/** Breadcrumb trail for inner pages. `items` are [name, path] pairs in order; the last item is the current page. */
+export function breadcrumbJsonLd(items: [string, string][]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${site.url}${path}` })),
+  }
+}
+
 export const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',

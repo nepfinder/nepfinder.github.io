@@ -36,7 +36,7 @@ export function Hero() {
           {t('hero.text')}
         </p>
         <div data-hero-item className="mt-9 flex flex-col gap-3 sm:flex-row" style={{ opacity: reduce ? 1 : 0 }}>
-          <Button to="/contact">{t('hero.cta.primary')}</Button>
+          <Button to="/contact" data-track="consultation_cta">{t('hero.cta.primary')}</Button>
           <Button to="/services" variant="secondary">
             {t('hero.cta.secondary')}
           </Button>

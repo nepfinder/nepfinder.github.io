@@ -1,4 +1,4 @@
-import { useSeo, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
+import { useSeo, professionalServiceJsonLd, websiteJsonLd } from '@/lib/seo'
 import { Hero } from '@/components/home/Hero'
 import { AboutPreview } from '@/components/home/AboutPreview'
 import { ServicesGrid } from '@/components/home/ServicesGrid'
@@ -18,7 +18,7 @@ const seo = {
     'Software development company in Nepal: custom software, ERP and independent ERPNext implementation, Frappe Framework development, and system integration.',
   path: '/',
   jsonLd: [
-    organizationJsonLd,
+    professionalServiceJsonLd,
     websiteJsonLd,
   ],
 }

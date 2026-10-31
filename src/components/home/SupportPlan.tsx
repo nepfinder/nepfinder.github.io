@@ -26,7 +26,7 @@ export function SupportPlan() {
             {t('support.text')}
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button to="/contact">{t('support.quote')}</Button>
+            <Button to="/contact" data-track="consultation_cta">{t('support.quote')}</Button>
             <Button to={`/products/${plan.slug}`} variant="secondary">
               {t('support.included')}
             </Button>

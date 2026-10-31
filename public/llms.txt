@@ -1,0 +1,32 @@
+# Nepfinder
+
+> Nepfinder Innovative IT Solution Pvt. Ltd. is a software development company in Basundhara, Kathmandu, Nepal, founded in 2014. It builds custom software, ERP implementations, independent ERPNext and Frappe Framework applications, web and mobile apps, system integrations, business process automation, AI implementation (including MCP servers), and monthly Enterprise ERP Support. Working hours are 10:00 to 18:00, Sunday to Friday.
+
+Nepfinder is an independent provider. It is not an official partner of, or affiliated with, Frappe Technologies.
+
+## Services
+- [AI Implementation for Enterprise](https://nepfinder.com.np/ai-implementation): AI assistants for ERP, MCP server development, AI agents, document processing, company-wide automation
+- [ERPNext Implementation](https://nepfinder.com.np/services/erpnext-implementation): independent ERPNext setup, customisation, data migration, integration and support
+- [Frappe Framework Development](https://nepfinder.com.np/services/frappe-framework-development): custom Frappe apps, DocTypes, workflows, portals and APIs
+- [ERP Solutions & Implementation](https://nepfinder.com.np/services/erp-implementation): ERP consulting, process mapping, data migration and training
+- [Custom Software Development](https://nepfinder.com.np/services/custom-software-development): enterprise applications, internal software, dashboards and portals
+- [Web & Mobile Development](https://nepfinder.com.np/services/web-mobile-development): business websites, customer portals, web and mobile apps
+- [API & System Integration](https://nepfinder.com.np/services/api-system-integration): REST APIs, ERP, payment gateway and e-commerce integration, webhooks
+- [Business Process Automation](https://nepfinder.com.np/services/business-process-automation): approval workflows, notifications, reporting and document workflows
+- [Enterprise ERP Support](https://nepfinder.com.np/products/enterprise-support): monthly ERP maintenance by technical and functional experts for a fixed fee
+
+## Products
+- [nInsurance](https://nepfinder.com.np/products/ninsurance): insurance app for policy purchase, renewal, payment and claims, developed with major Nepali insurance companies
+- [Restaurant Billing](https://nepfinder.com.np/products/restaurant-billing): counter billing, reports and stock for restaurants and cafes
+- [nCafe](https://nepfinder.com.np/products/ncafe): Android owner app for Restaurant Billing ([privacy policy](https://nepfinder.com.np/ncafe/privacy))
+
+## Company
+- [About Nepfinder](https://nepfinder.com.np/about)
+- [Technologies](https://nepfinder.com.np/technologies): ERPNext, Frappe, Python, React, MariaDB, Docker and more
+- [Solutions by industry](https://nepfinder.com.np/solutions)
+- [Projects](https://nepfinder.com.np/projects)
+- [Contact](https://nepfinder.com.np/contact): info@nepfinder.com.np
+
+## Optional
+- [Sitemap](https://nepfinder.com.np/sitemap.xml)
+- [Data deletion request](https://nepfinder.com.np/user-data-delete-request)

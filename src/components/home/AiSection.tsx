@@ -36,7 +36,7 @@ export function AiSection() {
         </ul>
         <Reveal className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Button to="/ai-implementation">{t('ai.cta1')}</Button>
-          <Button to="/contact" variant="secondary">
+          <Button to="/contact" data-track="consultation_cta" variant="secondary">
             {t('ai.cta2')}
           </Button>
         </Reveal>

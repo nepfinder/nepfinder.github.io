@@ -217,7 +217,7 @@ export function RestaurantBillingSections() {
               <Button to="/download/restaurant/update/NepFinderResturentBIlling.exe" external>
                 <Download className="size-4" aria-hidden /> Download for Windows
               </Button>
-              <Button to="/contact" variant="secondary">
+              <Button to="/contact" data-track="consultation_cta" variant="secondary">
                 Request a demo
               </Button>
             </div>

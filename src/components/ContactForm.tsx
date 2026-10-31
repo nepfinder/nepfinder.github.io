@@ -3,6 +3,7 @@ import { CheckCircle2, Loader2, Mail, AlertCircle } from 'lucide-react'
 import { site } from '@/data/site'
 import { cn } from '@/utils/cn'
 import { useT } from '@/i18n'
+import { track } from '@/lib/analytics'
 import type { TKey } from '@/i18n/en'
 
 const serviceOptions = [
@@ -100,6 +101,7 @@ export function ContactForm() {
           }),
         })
         if (!res.ok) throw new Error(`Request failed (${res.status})`)
+        track('generate_lead', { form_name: 'contact', service_interest: values.service, lead_channel: 'form_endpoint' })
         setStatus({ kind: 'sent', via: 'endpoint' })
         setValues(empty)
         return
@@ -110,6 +112,7 @@ export function ContactForm() {
     }
 
     // No form endpoint configured: hand the message to the visitor's email client.
+    track('generate_lead', { form_name: 'contact', service_interest: values.service, lead_channel: 'mailto_fallback' })
     window.location.href = buildMailto()
     setStatus({ kind: 'sent', via: 'mail' })
   }

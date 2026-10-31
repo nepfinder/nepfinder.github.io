@@ -176,7 +176,7 @@ export function AiRecommender() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button to="/contact">Book an AI assessment</Button>
+                <Button to="/contact" data-track="consultation_cta">Book an AI assessment</Button>
                 <button type="button" onClick={() => setAnswers({})} className="btn-ghost">
                   Start again
                 </button>

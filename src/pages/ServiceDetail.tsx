@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { CheckCircle2 } from 'lucide-react'
-import { useSeo } from '@/lib/seo'
+import { breadcrumbJsonLd, useSeo } from '@/lib/seo'
 import { getService, services, serviceHref } from '@/data/services'
 import { site } from '@/data/site'
 import { PageHero } from '@/components/ui/PageHero'
@@ -32,7 +32,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
     title: service.seo.title,
     description: service.seo.description,
     path: `/services/${service.slug}`,
-    jsonLd: {
+    jsonLd: [breadcrumbJsonLd([['Home', '/'], ['Services', '/services'], [service.title, `/services/${service.slug}`]]), {
       '@context': 'https://schema.org',
       '@type': 'Service',
       name: service.title,
@@ -41,7 +41,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
       areaServed: 'Nepal',
       provider: { '@type': 'Organization', name: site.name, url: site.url },
       url: `${site.url}/services/${service.slug}`,
-    },
+    }],
   })
 
   const related = useLocalizedServices(services.filter((s) => s.slug !== service.slug).slice(0, 3))
@@ -50,7 +50,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
     <>
       <PageHero title={service.title} text={service.description} crumbs={[{ label: t('nav.services'), to: '/services' }, { label: service.title }]}>
         <Reveal className="mt-8 flex flex-col gap-3 sm:flex-row" delay={0.1}>
-          <Button to="/contact" arrow>
+          <Button to="/contact" data-track="consultation_cta" arrow>
             {t('detail.request')}
           </Button>
           <Button to="/services" variant="secondary">

@@ -37,6 +37,9 @@ jobs:
         env:
           # Optional external form endpoint (Formspree / Web3Forms / Getform URL). Leave unset to use the mailto fallback.
           VITE_CONTACT_ENDPOINT: ${{ vars.CONTACT_ENDPOINT }}
+          # Analytics IDs are public identifiers (not secrets). Leave unset to keep tracking off.
+          VITE_GTM_ID: ${{ vars.GTM_ID }}
+          VITE_GA_ID: ${{ vars.GA_ID }}
       - name: Verify build output
         run: |
           test -f dist/index.html

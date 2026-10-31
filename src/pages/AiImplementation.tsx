@@ -61,7 +61,7 @@ export default function AiImplementation() {
         visual={<AiHeroVisual />}
       >
         <Reveal className="mt-8 flex flex-col gap-3 sm:flex-row" delay={0.1}>
-          <Button to="/contact">Book an AI assessment</Button>
+          <Button to="/contact" data-track="consultation_cta">Book an AI assessment</Button>
           <Button to="/ai-implementation#mcp" variant="secondary">
             How MCP works
           </Button>

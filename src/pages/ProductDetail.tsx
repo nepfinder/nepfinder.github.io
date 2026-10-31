@@ -1,7 +1,7 @@
 import { useParams } from 'react-router'
 import { ExternalLink } from 'lucide-react'
 import { GooglePlayIcon } from '@/components/ui/GooglePlayIcon'
-import { useSeo } from '@/lib/seo'
+import { breadcrumbJsonLd, useSeo } from '@/lib/seo'
 import { getProduct } from '@/data/products'
 import { site } from '@/data/site'
 import { PageHero } from '@/components/ui/PageHero'
@@ -44,7 +44,7 @@ function ProductView({ slug }: { slug: string }) {
     description: product.summary,
     path: `/products/${product.slug}`,
     image: product.images[0]?.src.replace('.webp', '.png'),
-    jsonLd: {
+    jsonLd: [breadcrumbJsonLd([['Home', '/'], ['Products', '/products'], [product.name, `/products/${product.slug}`]]), {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
       name: product.name,
@@ -52,7 +52,7 @@ function ProductView({ slug }: { slug: string }) {
       applicationCategory: product.category,
       author: { '@type': 'Organization', name: site.name, url: site.url },
       ...(product.images[0] ? { image: `${site.url}${product.images[0].src}` } : {}),
-    },
+    }],
   })
 
   return (
@@ -71,7 +71,7 @@ function ProductView({ slug }: { slug: string }) {
               {l.label} {l.href.startsWith('http') && !l.href.includes('play.google.com') && <ExternalLink className="size-4" aria-hidden />}
             </Button>
           ))}
-          <Button to="/contact" variant="secondary">
+          <Button to="/contact" data-track="consultation_cta" variant="secondary">
             Ask about {product.name}
           </Button>
         </Reveal>

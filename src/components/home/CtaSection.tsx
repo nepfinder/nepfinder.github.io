@@ -14,7 +14,7 @@ export function CtaSection() {
               {t('cta.text')}
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button to="/contact">{t('cta.primary')}</Button>
+              <Button to="/contact" data-track="consultation_cta">{t('cta.primary')}</Button>
               <Button to="mailto:info@nepfinder.com.np" variant="secondary" external>
                 {t('cta.secondary')}
               </Button>
