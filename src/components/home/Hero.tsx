@@ -32,10 +32,6 @@ export function Hero() {
 
       <div className="container-x grid min-h-[calc(100dvh-72px)] items-center gap-10 py-16 lg:grid-cols-[1.1fr_1fr] lg:py-10">
         <div className="relative z-10 max-w-2xl">
-          <span data-hero-item className="eyebrow mb-6" style={{ opacity: reduce ? 1 : 0 }}>
-            <span className="size-1.5 rounded-full bg-accent" aria-hidden />
-            Software Development &amp; Enterprise ERP Solutions
-          </span>
           <h1 data-hero-item className="h-display text-4xl leading-[1.06] sm:text-5xl lg:text-[3.4rem] xl:text-[3.9rem]" style={{ opacity: reduce ? 1 : 0 }}>
             Engineering Smarter Businesses Through <span className="text-highlight">Software &amp; ERP Solutions</span>
           </h1>
