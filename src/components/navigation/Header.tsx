@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ChevronDown, Mail, Menu, Search, X } from 'lucide-react'
+import { ChevronDown, Mail, Menu, Search, Sparkles, X } from 'lucide-react'
 import { useT } from '@/i18n'
 import type { TKey } from '@/i18n/en'
 import { useLocalizedProducts, useLocalizedServices } from '@/i18n/useLocalized'
@@ -235,9 +235,13 @@ export function Header() {
                     to={item.to}
                     end={item.to === '/'}
                     className={({ isActive }) =>
-                      cn('block px-3 py-2 text-[12px] font-normal tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]', isActive && 'text-[#f5f5f7]')
+                      cn(
+                        'flex items-center gap-1 px-3 py-2 text-[12px] font-normal tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                        isActive && 'text-[#f5f5f7]',
+                      )
                     }
                   >
+                    {item.key === 'ai' && <Sparkles className="size-3 animate-twinkle text-[#2997ff]" aria-hidden />}
                     {t(item.label)}
                   </NavLink>
                 )}
@@ -376,7 +380,8 @@ export function Header() {
                         )}
                       </>
                     ) : (
-                      <NavLink to={item.to} end={item.to === '/'} className="block py-4 font-display text-[1.75rem] font-semibold tracking-[-0.01em] text-[#f5f5f7]">
+                      <NavLink to={item.to} end={item.to === '/'} className="flex items-center gap-2 py-4 font-display text-[1.75rem] font-semibold tracking-[-0.01em] text-[#f5f5f7]">
+                        {item.key === 'ai' && <Sparkles className="size-5 animate-twinkle text-[#2997ff]" aria-hidden />}
                         {t(item.label)}
                       </NavLink>
                     )}
