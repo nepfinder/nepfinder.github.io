@@ -17,7 +17,7 @@ export function AboutPreview() {
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal>
-            <h2 className="h-display text-4xl leading-[1.08] sm:text-5xl">Technology Solutions Built Around Your Business</h2>
+            <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">Technology Solutions Built Around Your Business</h2>
             <p className="mt-5 text-muted leading-relaxed sm:text-lg">
               At Nepfinder, we focus on understanding business challenges and delivering practical technology solutions. From custom
               software platforms and enterprise applications to ERP implementation and business process automation, our goal is to make

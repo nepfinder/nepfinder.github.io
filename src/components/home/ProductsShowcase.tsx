@@ -18,7 +18,7 @@ export function ProductsShowcase() {
           <div className="card relative grid overflow-hidden !p-0 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-7 sm:p-10">
               <Pill className="border-accent/30 text-accent">{ninsurance.category}</Pill>
-              <h3 className="h-display mt-5 text-3xl sm:text-4xl">{ninsurance.headline}</h3>
+              <h3 className="h-display mt-5 text-2xl sm:text-3xl">{ninsurance.headline}</h3>
               <p className="mt-4 text-muted leading-relaxed">{ninsurance.summary}</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {ninsurance.features.slice(0, 6).map((f) => (

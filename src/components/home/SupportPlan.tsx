@@ -17,8 +17,8 @@ export function SupportPlan() {
     <section id="support" className="theme-dark section bg-evergreen">
       <div className="container-x">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 className="h-display text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]">Enterprise ERP Support</h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
+          <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl lg:text-[2.75rem]">Enterprise ERP Support</h2>
+          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
             A dedicated team of ERP experts for your business, every month, for one fixed price.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">

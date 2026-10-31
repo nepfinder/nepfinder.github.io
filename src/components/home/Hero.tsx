@@ -25,10 +25,10 @@ export function Hero() {
   return (
     <section ref={root} className="relative isolate overflow-hidden pt-[64px]">
       <div className="container-x flex flex-col items-center pt-16 text-center sm:pt-24">
-        <h1 data-hero-item className="h-display max-w-4xl text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.75rem]" style={{ opacity: reduce ? 1 : 0 }}>
+        <h1 data-hero-item className="h-display max-w-4xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]" style={{ opacity: reduce ? 1 : 0 }}>
           Engineering Smarter Businesses Through <span className="text-highlight">Software &amp; ERP Solutions</span>
         </h1>
-        <p data-hero-item className="mt-7 max-w-2xl text-lg leading-relaxed text-muted sm:text-[1.375rem]" style={{ opacity: reduce ? 1 : 0 }}>
+        <p data-hero-item className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={{ opacity: reduce ? 1 : 0 }}>
           We design, develop, and implement scalable business software, ERPNext solutions, and Frappe-powered applications that
           streamline operations, connect business processes, and accelerate digital transformation.
         </p>

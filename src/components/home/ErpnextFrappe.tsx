@@ -30,7 +30,7 @@ export function ErpnextFrappe() {
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Reveal>
-              <h2 className="h-display text-4xl leading-[1.08] sm:text-5xl">Transform Your Business with ERPNext &amp; Frappe</h2>
+              <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">Transform Your Business with ERPNext &amp; Frappe</h2>
               <p className="mt-5 text-muted leading-relaxed sm:text-lg">
                 Build connected and efficient business systems with ERPNext and the Frappe Framework. We provide independent implementation,
                 customization, application development, integration, and technical support services.

@@ -11,7 +11,7 @@ export function CtaSection() {
           <Scene scene="network" className="absolute inset-0 opacity-60" camera={{ position: [0, 0, 7], fov: 50 }} fallback={<NetworkFallback className="opacity-60" />} />
           
           <Reveal className="relative mx-auto max-w-2xl">
-            <h2 className="h-display text-4xl sm:text-5xl lg:text-[3.5rem]">Ready to Build a Smarter Business?</h2>
+            <h2 className="h-display text-3xl sm:text-4xl lg:text-[2.75rem]">Ready to Build a Smarter Business?</h2>
             <p className="mt-5 text-muted leading-relaxed sm:text-lg">
               Whether you need custom software, ERPNext implementation, a Frappe-powered application, or a connected business platform,
               let&apos;s discuss a solution that fits your requirements.
