@@ -43,7 +43,7 @@ export const servicesNp: Record<string, { title: string; short: string; descript
 export const productsNp: Record<string, { name?: string; headline: string; summary: string }> = {
   'enterprise-support': {
     name: 'इन्टरप्राइज ERP सहयोग',
-    headline: 'इन्टरप्राइज ERP सहयोग — समर्पित टोली, एउटै निश्चित मासिक मूल्य',
+    headline: 'समर्पित ERP टोली। एउटै निश्चित मासिक मूल्य।',
     summary: 'प्राविधिक र कार्यात्मक ERP विज्ञहरूबाट मासिक ERP मर्मत र सहयोग, कार्यदिनमा १०:०० देखि १८:०० सम्म उपलब्ध, एउटै निश्चित मासिक शुल्कमा।',
   },
   ninsurance: {

@@ -9,7 +9,7 @@ interface Crumb {
   to?: string
 }
 
-export function PageHero({ title, text, crumbs, children }: { title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode }) {
+export function PageHero({ title, text, crumbs, children, visual }: { title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode; visual?: ReactNode }) {
   const t = useT()
   return (
     <section className="relative overflow-hidden pt-11">
@@ -42,8 +42,20 @@ export function PageHero({ title, text, crumbs, children }: { title: ReactNode; 
             </ol>
           </nav>
         )}
-        <SectionHeading as="h1" title={title} text={text} align="left" />
-        {children}
+        {visual ? (
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <SectionHeading as="h1" title={title} text={text} align="left" className="max-w-none" />
+              {children}
+            </div>
+            <div className="relative mx-auto w-full max-w-[520px] lg:max-w-none">{visual}</div>
+          </div>
+        ) : (
+          <>
+            <SectionHeading as="h1" title={title} text={text} align="left" />
+            {children}
+          </>
+        )}
       </div>
     </section>
   )

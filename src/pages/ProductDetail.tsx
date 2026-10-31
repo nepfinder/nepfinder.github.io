@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/Button'
 import { Card, Pill } from '@/components/ui/Card'
 import { CtaSection } from '@/components/home/CtaSection'
 import NotFound from './NotFound'
+import { SupportHeroVisual } from '@/components/ui/SupportHeroVisual'
+import { useLocalizedProducts } from '@/i18n/useLocalized'
 
 export default function ProductDetail() {
   const { slug = '' } = useParams()
@@ -18,7 +20,21 @@ export default function ProductDetail() {
 }
 
 function ProductView({ slug }: { slug: string }) {
-  const product = getProduct(slug)!
+  const base = getProduct(slug)!
+  const product = useLocalizedProducts([base])[0]
+  const isSupport = slug === 'enterprise-support'
+  // Split the headline into sentences so the two key promises can be emphasised.
+  const headline = isSupport ? (
+    <>
+      {product.headline.split(/(?<=[.।])\s+/).map((part, i) => (
+        <span key={i} className={i === 1 ? 'text-brand' : undefined}>
+          {part}{' '}
+        </span>
+      ))}
+    </>
+  ) : (
+    product.headline
+  )
   useSeo({
     title: `${product.name} | ${product.category}`,
     description: product.summary,
@@ -37,11 +53,11 @@ function ProductView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero title={product.headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]}>
+      <PageHero title={headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]} visual={isSupport ? <SupportHeroVisual /> : undefined}>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {product.links.map((l) => (
             <Button key={l.href} to={l.href} external={l.external} variant={l === product.links[0] ? 'primary' : 'secondary'}>
-              {l.label} <ExternalLink className="size-4" aria-hidden />
+              {l.label} {l.href.startsWith('http') && <ExternalLink className="size-4" aria-hidden />}
             </Button>
           ))}
           <Button to="/contact" variant="secondary">

@@ -21,7 +21,7 @@ export const products: Product[] = [
   {
     slug: 'enterprise-support',
     name: 'Enterprise ERP Support',
-    headline: 'Enterprise ERP Support — a dedicated team, one fixed monthly price',
+    headline: 'A dedicated ERP team. One fixed monthly price.',
     summary:
       'Monthly ERP maintenance and support from technical and functional ERP experts, available 10:00 to 18:00 on working days, for one fixed monthly fee.',
     description:
