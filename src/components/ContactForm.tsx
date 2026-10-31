@@ -101,7 +101,7 @@ export function ContactForm() {
           }),
         })
         if (!res.ok) throw new Error(`Request failed (${res.status})`)
-        track('generate_lead', { form_name: 'contact', service_interest: values.service, lead_channel: 'form_endpoint' })
+        track('generate_lead', { form_name: 'contact', service: values.service, service_interest: values.service, lead_type: 'form_submission', lead_channel: 'form_endpoint' })
         setStatus({ kind: 'sent', via: 'endpoint' })
         setValues(empty)
         return
@@ -113,7 +113,7 @@ export function ContactForm() {
 
     // No form endpoint configured: hand the message to the visitor's email client.
     // Not a confirmed lead (the visitor may never press send), so it is tracked separately from generate_lead.
-    track('contact_email_handoff', { form_name: 'contact', service_interest: values.service, lead_channel: 'mailto_fallback' })
+    track('contact_email_handoff', { form_name: 'contact', service: values.service, service_interest: values.service, lead_type: 'email_handoff', lead_channel: 'mailto_fallback' })
     window.location.href = buildMailto()
     setStatus({ kind: 'sent', via: 'mail' })
   }

@@ -66,8 +66,22 @@ export function installClickTracking() {
         track('phone_click', { link_url: href })
       } else if (el.dataset.track) {
         track(el.dataset.track, { link_text: el.textContent?.trim().slice(0, 80), link_url: href || undefined })
+        // A consultation request from a service page is a service inquiry for that service.
+        const service = serviceFromPath(window.location.pathname)
+        if (el.dataset.track === 'consultation_cta' && service) {
+          track('service_inquiry', { service, form_name: 'service_page_cta', lead_type: 'consultation_request' })
+        }
       }
     },
     { passive: true },
   )
+}
+
+/** Service slug for service-related pages, or '' elsewhere. */
+function serviceFromPath(path: string) {
+  const m = path.match(/^\/services\/([^/]+)/)
+  if (m) return m[1]
+  if (path.startsWith('/ai-implementation')) return 'ai-implementation'
+  if (path.startsWith('/products/enterprise-support')) return 'enterprise-support'
+  return ''
 }
