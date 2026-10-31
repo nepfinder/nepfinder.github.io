@@ -82,7 +82,7 @@ export function ArchitectureDiagram() {
               >
                 <circle cx={cx} cy={120} r={isActive ? 92 : 80} fill={n.color} opacity={isActive ? 0.14 : 0.06} className="transition-all duration-300" />
                 <rect x={cx - 88} y={78} width={176} height={84} rx={18} fill="var(--color-bg-2)" stroke={isActive ? n.color : 'var(--color-line)'} strokeWidth={isActive ? 2 : 1} className="transition-all duration-300" />
-                <text x={cx} y={115} textAnchor="middle" fill="var(--color-text)" fontSize={14} fontWeight={700} fontFamily="Manrope, Inter, sans-serif">
+                <text x={cx} y={115} textAnchor="middle" fill="var(--color-text)" fontSize={14} fontWeight={700} fontFamily="inherit">
                   {n.label}
                 </text>
                 <text x={cx} y={138} textAnchor="middle" fill="var(--color-muted)" fontSize={9.5} fontFamily="Inter, sans-serif">

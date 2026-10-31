@@ -1,3 +1,4 @@
+import { ChartColumn, Factory, FolderKanban, Handshake, Landmark, Package, ShoppingCart, Store, Users, type LucideIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
 
 /**
@@ -10,29 +11,30 @@ const blue = '#0071E3'
 const light = '#2997FF'
 
 function Modules() {
-  // Module icons from ERPNext and Frappe HRMS, GPL-3.0 (see public/icons/erpnext/LICENSE.md).
-  const cells = [
-    { label: 'Accounting', icon: 'accounting' },
-    { label: 'Stock', icon: 'stock' },
-    { label: 'Selling', icon: 'selling' },
-    { label: 'Buying', icon: 'buying' },
-    { label: 'CRM', icon: 'crm' },
-    { label: 'HR', icon: 'hr' },
-    { label: 'Projects', icon: 'projects' },
-    { label: 'Manufacturing', icon: 'manufacturing' },
-    { label: 'Reports', icon: 'financial_reports' },
+  // Lucide icons (ISC). These are the same icon names ERPNext uses for its workspace sidebar.
+  const cells: { label: string; Icon: LucideIcon }[] = [
+    { label: 'Accounting', Icon: Landmark },
+    { label: 'Stock', Icon: Package },
+    { label: 'Selling', Icon: Store },
+    { label: 'Buying', Icon: ShoppingCart },
+    { label: 'CRM', Icon: Handshake },
+    { label: 'HR', Icon: Users },
+    { label: 'Projects', Icon: FolderKanban },
+    { label: 'Manufacturing', Icon: Factory },
+    { label: 'Reports', Icon: ChartColumn },
   ]
   return (
     <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="ERPNext modules connected to one shared database">
-      {cells.map((c, i) => {
+      {cells.map(({ label, Icon }, i) => {
         const x = 30 + (i % 3) * 125
         const y = 12 + Math.floor(i / 3) * 74
         return (
-          <g key={c.label}>
+          <g key={label}>
             <rect x={x} y={y} width={110} height={64} rx={14} fill="var(--color-surface)" stroke="var(--color-line)" />
-            <image href={`/icons/erpnext/${c.icon}.svg`} x={x + 41} y={y + 8} width={28} height={28} />
+            <rect x={x + 41} y={y + 8} width={28} height={28} rx={8} fill="#E5F1FE" />
+            <Icon x={x + 47} y={y + 14} width={16} height={16} color={blue} strokeWidth={2} aria-hidden />
             <text x={x + 55} y={y + 52} textAnchor="middle" fontSize={11} fontWeight={600} fill="var(--color-text)">
-              {c.label}
+              {label}
             </text>
           </g>
         )

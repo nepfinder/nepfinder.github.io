@@ -88,6 +88,11 @@ export function Footer() {
                 {t('nav.deletion')}
               </Link>
             </li>
+            <li>
+              <a href="/third-party-notices.txt" className="text-sm text-muted hover:text-text">
+                {t('nav.licenses')}
+              </a>
+            </li>
           </ul>
           <h3 className="mt-8 text-sm font-semibold text-text">{t('footer.contact')}</h3>
           <a href={`mailto:${site.email}`} className="mt-3 block text-sm text-muted hover:text-text">

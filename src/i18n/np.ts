@@ -28,6 +28,7 @@ export const np: Record<TKey, string> = {
   'nav.legal': 'कानुनी',
   'nav.privacy': 'nCafe गोपनीयता नीति',
   'nav.deletion': 'डेटा मेटाउने अनुरोध',
+  'nav.licenses': 'ओपन-सोर्स लाइसेन्स',
   'nav.skip': 'मुख्य सामग्रीमा जानुहोस्',
   'lang.switch': 'भाषा परिवर्तन गर्नुहोस्',
 

@@ -27,6 +27,7 @@ export const en = {
   'nav.legal': 'Legal',
   'nav.privacy': 'nCafe Privacy Policy',
   'nav.deletion': 'Data Deletion Request',
+  'nav.licenses': 'Open-source licenses',
   'nav.skip': 'Skip to content',
   'lang.switch': 'Switch language',
 
