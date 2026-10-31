@@ -38,8 +38,10 @@ export function initAnalytics() {
     s.async = true
     s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`
     document.head.appendChild(s)
-    window.gtag = function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args as unknown as Record<string, unknown>)
+    // gtag.js only reads the `arguments` object, not a rest-parameter array.
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments as unknown as Record<string, unknown>)
     }
     window.gtag('js', new Date())
     window.gtag('config', GA_ID)

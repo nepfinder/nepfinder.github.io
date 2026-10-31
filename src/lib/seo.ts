@@ -28,11 +28,10 @@ export const professionalServiceJsonLd = {
   email: site.email,
   logo: `${site.url}/logos/nepfinder-logo-stacked.png`,
   image: `${site.url}/images/og-default.png`,
-  priceRange: 'NPR',
   address: { '@type': 'PostalAddress', streetAddress: site.address.street, addressLocality: site.address.city, addressCountry: site.address.countryCode },
   areaServed: [{ '@type': 'Country', name: 'Nepal' }],
   availableLanguage: ['English', 'Nepali'],
-  openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
+  openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
   makesOffer: [
     'Custom software development',
     'ERP implementation',
@@ -64,7 +63,6 @@ export const websiteJsonLd = {
   url: site.url,
   publisher: { '@id': `${site.url}/#organization` },
   inLanguage: ['en', 'ne'],
-  potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/services?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
 }
 
 export function buildHead(p: SeoProps) {

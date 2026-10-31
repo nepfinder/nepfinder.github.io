@@ -3,6 +3,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { breadcrumbJsonLd, useSeo } from '@/lib/seo'
 import { getService, services, serviceHref } from '@/data/services'
 import { site } from '@/data/site'
+import { serviceFaqs, faqJsonLd } from '@/data/faqs'
 import { PageHero } from '@/components/ui/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
@@ -28,6 +29,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
   const service = useLocalizedService(base)
   const { t, lang } = useI18n()
   const isErp = slug === 'erpnext-implementation' || slug === 'frappe-framework-development'
+  const faqs = serviceFaqs[slug] ?? []
   useSeo({
     title: service.seo.title,
     description: service.seo.description,
@@ -39,9 +41,9 @@ function ServiceDetailView({ slug }: { slug: string }) {
       description: service.description,
       serviceType: service.title,
       areaServed: 'Nepal',
-      provider: { '@type': 'Organization', name: site.name, url: site.url },
+      provider: { '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: site.url },
       url: `${site.url}/services/${service.slug}`,
-    }],
+    }, ...(faqs.length ? [faqJsonLd(faqs)] : [])],
   })
 
   const related = useLocalizedServices(services.filter((s) => s.slug !== service.slug).slice(0, 3))
@@ -171,6 +173,26 @@ function ServiceDetailView({ slug }: { slug: string }) {
           </ol>
         </div>
       </section>
+
+      {faqs.length > 0 && (
+        <section className="section pt-0" aria-labelledby="faq-heading">
+          <div className="container-x max-w-3xl">
+            <Reveal>
+              <h2 id="faq-heading" className="h-display text-2xl sm:text-3xl">Frequently asked questions</h2>
+            </Reveal>
+            <div className="mt-6 divide-y divide-line rounded-[var(--radius-tile)] bg-bg-2 px-5 sm:px-6">
+              {faqs.map((f) => (
+                <details key={f.q} className="group py-4">
+                  <summary className="cursor-pointer list-none font-display text-base font-semibold text-text sm:text-lg">
+                    <h3 className="inline">{f.q}</h3>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section pt-0">
         <div className="container-x">
