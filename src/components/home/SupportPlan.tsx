@@ -14,8 +14,9 @@ const pillars = [
 export function SupportPlan() {
   const plan = getProduct('enterprise-support')!
   return (
-    <section id="support" className="theme-dark section bg-evergreen">
+    <section id="support" className="section">
       <div className="container-x">
+        <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl lg:text-[2.5rem]">Enterprise ERP Support</h2>
           <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
@@ -49,6 +50,7 @@ export function SupportPlan() {
             </Link>
           </p>
         </Reveal>
+        </div>
       </div>
     </section>
   )

@@ -187,7 +187,7 @@ export function Header() {
 
       <header
         ref={headerRef}
-        className={cn('fixed inset-x-0 top-0 z-50 text-[#f5f5f7]', openKey || mobileOpen ? 'bg-[#1d1d1f]' : 'bg-[rgba(22,22,23,0.8)] backdrop-blur-xl backdrop-saturate-[1.8]')}
+        className={cn('fixed inset-x-0 top-0 z-50 text-[#f5f5f7]', openKey || mobileOpen ? 'bg-[#1d1d1f]' : 'bg-black')}
         onMouseLeave={scheduleClose}
       >
         <a

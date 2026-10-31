@@ -21,12 +21,9 @@ export const erpnextCapabilities = [
 
 export function ErpnextFrappe() {
   return (
-    <section id="erpnext-frappe" className="theme-dark section relative overflow-hidden bg-evergreen">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-px w-[80%] -translate-x-1/2 bg-white/10" />
-        
-      </div>
+    <section id="erpnext-frappe" className="section">
       <div className="container-x">
+        <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Reveal>
@@ -61,6 +58,7 @@ export function ErpnextFrappe() {
           <Reveal delay={0.1}>
             <ArchitectureDiagram />
           </Reveal>
+        </div>
         </div>
       </div>
     </section>
