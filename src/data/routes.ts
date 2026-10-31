@@ -2,8 +2,8 @@ import { services } from './services'
 import { products } from './products'
 import { projects } from './projects'
 
-/** Every route that is prerendered to a static HTML entry page and listed in sitemap.xml. */
-export const staticRoutes: { path: string; priority: number }[] = [
+/** Every route that is prerendered to a static HTML entry page; listed in sitemap.xml unless `sitemap: false`. */
+export const staticRoutes: { path: string; priority: number; sitemap?: false }[] = [
   { path: '/', priority: 1 },
   { path: '/about', priority: 0.8 },
   { path: '/services', priority: 0.9 },
@@ -16,6 +16,8 @@ export const staticRoutes: { path: string; priority: number }[] = [
   { path: '/projects', priority: 0.7 },
   ...projects.map((p) => ({ path: `/projects/${p.slug}`, priority: 0.6 })),
   { path: '/contact', priority: 0.8 },
+  // Post-submission page: prerendered for direct loads, but noindex and not in the sitemap.
+  { path: '/contact/thank-you', priority: 0, sitemap: false },
   { path: '/ncafe/privacy', priority: 0.3 },
   { path: '/user-data-delete-request', priority: 0.3 },
 ]

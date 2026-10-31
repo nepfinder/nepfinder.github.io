@@ -44,7 +44,7 @@ for (const route of staticRoutes.filter((r) => r.path !== '/ncafe/policy')) {
   await writeFile(path.join(outDir, 'index.html'), page)
   // GitHub Pages serves `/route` from `route.html` without redirecting; `/route/` uses the directory index.
   if (route.path !== '/') await writeFile(path.join(dist, `${route.path}.html`), page)
-  sitemapEntries.push(urlEntry(route))
+  if (route.sitemap !== false) sitemapEntries.push(urlEntry(route))
   console.log(`prerendered ${route.path}`)
 }
 

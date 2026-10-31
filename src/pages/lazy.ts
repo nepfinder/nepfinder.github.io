@@ -13,6 +13,7 @@ export const lazyPages: PageMap = {
   Projects: lazy(() => import('./Projects')),
   ProjectDetail: lazy(() => import('./ProjectDetail')),
   Contact: lazy(() => import('./Contact')),
+  ContactThankYou: lazy(() => import('./ContactThankYou')),
   AiImplementation: lazy(() => import('./AiImplementation')),
   NcafePrivacy: lazy(() => import('./NcafePrivacy')),
   DataDeletion: lazy(() => import('./DataDeletion')),

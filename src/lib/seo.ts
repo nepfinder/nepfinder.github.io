@@ -8,6 +8,8 @@ export interface SeoProps {
   image?: string
   type?: 'website' | 'article'
   jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+  /** Adds robots noindex (for utility pages such as the contact thank-you page). */
+  noindex?: boolean
 }
 
 /** During SSR, each render collects its <head> tags here; the prerender script reads them. */
@@ -73,6 +75,7 @@ export function buildHead(p: SeoProps) {
     `<title>${escapeHtml(fullTitle)}</title>`,
     `<meta name="description" content="${escapeHtml(p.description)}" />`,
     `<link rel="canonical" href="${url}" />`,
+    ...(p.noindex ? ['<meta name="robots" content="noindex, follow" />'] : []),
     `<meta property="og:type" content="${p.type ?? 'website'}" />`,
     `<meta property="og:site_name" content="Nepfinder" />`,
     `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`,
@@ -145,6 +148,8 @@ export function useSeo(p: SeoProps) {
         return m
       })
     meta('name', 'description', p.description)
+    if (p.noindex) meta('name', 'robots', 'noindex, follow')
+    else document.head.querySelector('meta[name="robots"]')?.remove()
     meta('property', 'og:title', fullTitle)
     meta('property', 'og:description', p.description)
     meta('property', 'og:url', url)

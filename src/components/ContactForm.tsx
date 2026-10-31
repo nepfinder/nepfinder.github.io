@@ -1,4 +1,5 @@
 import { useId, useState, type FormEvent } from 'react'
+import { useNavigate } from 'react-router'
 import { CheckCircle2, Loader2, Mail, AlertCircle } from 'lucide-react'
 import { site } from '@/data/site'
 import { cn } from '@/utils/cn'
@@ -49,6 +50,7 @@ const inputClass =
 export function ContactForm() {
   const id = useId()
   const t = useT()
+  const navigate = useNavigate()
   const [values, setValues] = useState<Values>(empty)
   const [errors, setErrors] = useState<Partial<Record<keyof Values, TKey>>>({})
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
@@ -108,6 +110,9 @@ export function ContactForm() {
         track('generate_lead', { form_name: 'contact', service: values.service, service_interest: values.service, lead_type: 'form_submission', lead_channel: 'form_endpoint' })
         setStatus({ kind: 'sent', via: 'endpoint' })
         setValues(empty)
+        // Client-side navigation keeps the page alive so the lead hit is sent; Google Ads
+        // records the conversion on /contact/thank-you from the generate_lead event.
+        navigate('/contact/thank-you')
         return
       } catch (err) {
         setStatus({ kind: 'error', message: err instanceof Error ? err.message : 'Something went wrong.' })

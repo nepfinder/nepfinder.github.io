@@ -9,6 +9,7 @@ import ProductDetail from './ProductDetail'
 import Projects from './Projects'
 import ProjectDetail from './ProjectDetail'
 import Contact from './Contact'
+import ContactThankYou from './ContactThankYou'
 import AiImplementation from './AiImplementation'
 import NcafePrivacy from './NcafePrivacy'
 import DataDeletion from './DataDeletion'
@@ -26,6 +27,7 @@ export const eagerPages: PageMap = {
   Projects,
   ProjectDetail,
   Contact,
+  ContactThankYou,
   AiImplementation,
   NcafePrivacy,
   DataDeletion,
