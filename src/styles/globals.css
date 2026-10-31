@@ -103,6 +103,16 @@ html {
   background: var(--color-warm);
 }
 
+/* Nepali (Devanagari) pages: Mukta is a widely used open-source Nepali web font. */
+:root:lang(ne) {
+  --font-sans: 'Mukta', 'Noto Sans Devanagari', 'SF Pro Text', -apple-system, sans-serif;
+  --font-display: 'Mukta', 'Noto Sans Devanagari', 'SF Pro Display', -apple-system, sans-serif;
+}
+
+:lang(ne) body {
+  letter-spacing: 0;
+}
+
 body {
   @apply bg-bg text-text font-sans antialiased;
 }
