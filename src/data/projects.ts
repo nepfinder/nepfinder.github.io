@@ -46,7 +46,7 @@ export const projects: Project[] = [
       'Nepfinder developed the nCafe mobile application with Google sign-in, published a privacy policy, and provided a user data deletion request process on the company website.',
     outcomes: ['Published privacy policy', 'User data deletion request flow'],
     technologies: ['Mobile App', 'Google Sign-In'],
-    links: [{ label: 'Privacy policy', href: '/ncafe/privacy/' }],
+    links: [{ label: 'Privacy policy', href: '/ncafe/privacy' }],
   },
   {
     slug: 'restaurant-billing-desktop',

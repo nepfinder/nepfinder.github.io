@@ -11,6 +11,8 @@ export type PageName =
   | 'Projects'
   | 'ProjectDetail'
   | 'Contact'
+  | 'NcafePrivacy'
+  | 'DataDeletion'
   | 'NotFound'
 
 export type PageMap = Record<PageName, ComponentType>

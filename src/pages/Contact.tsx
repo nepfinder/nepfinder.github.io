@@ -30,7 +30,7 @@ export default function Contact() {
         <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>
             <div className="space-y-5">
-              <div className="glass rounded-2xl p-6">
+              <div className="rounded-[var(--radius-tile)] bg-bg-2 p-6">
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Mail className="size-5" aria-hidden />
                 </span>
@@ -40,7 +40,7 @@ export default function Contact() {
                 </a>
                 <p className="mt-2 text-xs text-muted">The fastest way to reach our team.</p>
               </div>
-              <div className="glass rounded-2xl p-6">
+              <div className="rounded-[var(--radius-tile)] bg-bg-2 p-6">
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <MapPin className="size-5" aria-hidden />
                 </span>
@@ -48,7 +48,7 @@ export default function Contact() {
                 <p className="mt-1 text-sm text-text/80">{site.location}</p>
                 <p className="mt-2 text-xs text-muted">Serving clients across Nepal and working remotely with teams elsewhere.</p>
               </div>
-              <div className="glass rounded-2xl p-6">
+              <div className="rounded-[var(--radius-tile)] bg-bg-2 p-6">
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Clock className="size-5" aria-hidden />
                 </span>

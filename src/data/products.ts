@@ -122,8 +122,8 @@ export const products: Product[] = [
     ],
     images: [],
     links: [
-      { label: 'nCafe Privacy Policy', href: '/ncafe/privacy/', external: true },
-      { label: 'User Data Deletion Request', href: '/user-data-delete-request/', external: true },
+      { label: 'nCafe Privacy Policy', href: '/ncafe/privacy' },
+      { label: 'User Data Deletion Request', href: '/user-data-delete-request' },
     ],
   },
   {

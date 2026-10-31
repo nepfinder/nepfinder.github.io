@@ -40,7 +40,7 @@ function validate(v: Values) {
 }
 
 const inputClass =
-  'w-full rounded-2xl bg-surface px-4 py-3 text-sm text-text placeholder:text-muted transition-colors focus:border-accent focus:bg-white focus:outline-none aria-[invalid=true]:border-red-500'
+  'w-full rounded-xl border border-transparent bg-white px-4 py-3 text-[15px] text-text placeholder:text-muted transition-colors focus:border-brand focus:outline-none aria-[invalid=true]:border-red-500'
 
 export function ContactForm() {
   const id = useId()
@@ -112,7 +112,7 @@ export function ContactForm() {
 
   if (status.kind === 'sent') {
     return (
-      <div role="status" className="glass flex flex-col items-center rounded-3xl p-10 text-center">
+      <div role="status" className="flex flex-col items-center rounded-[var(--radius-tile)] bg-bg-2 p-10 text-center">
         <span className="inline-flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent">
           <CheckCircle2 className="size-7" aria-hidden />
         </span>
@@ -157,7 +157,7 @@ export function ContactForm() {
   })
 
   return (
-    <form onSubmit={onSubmit} noValidate className="glass rounded-3xl p-6 sm:p-8" aria-describedby={`${id}-note`}>
+    <form onSubmit={onSubmit} noValidate className="rounded-[var(--radius-tile)] bg-bg-2 p-6 sm:p-8" aria-describedby={`${id}-note`}>
       <div className="grid gap-5 sm:grid-cols-2">
         {field('name', 'Full Name', <input {...a11y('name')} className={inputClass} autoComplete="name" value={values.name} onChange={update('name')} placeholder="Your name" required />)}
         {field('company', 'Company Name', <input {...a11y('company')} className={inputClass} autoComplete="organization" value={values.company} onChange={update('company')} placeholder="Company or organisation" />, false)}
@@ -167,7 +167,7 @@ export function ContactForm() {
           {field(
             'service',
             'Service Interested In',
-            <select {...a11y('service')} className={cn(inputClass, 'appearance-none bg-bg-2')} value={values.service} onChange={update('service')} required>
+            <select {...a11y('service')} className={cn(inputClass, 'appearance-none')} value={values.service} onChange={update('service')} required>
               <option value="" disabled>
                 Select a service
               </option>

@@ -3,7 +3,6 @@ import { Instagram, Mail, Twitter } from 'lucide-react'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
 import { products } from '@/data/products'
-import { Logo } from '@/components/ui/Logo'
 
 const company = [
   { label: 'About Us', to: '/about' },
@@ -20,8 +19,8 @@ export function Footer() {
       
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <Logo />
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
+          <p className="font-display text-xl font-semibold text-text">Nepfinder</p>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
             {site.positioning}. {site.tagline} Nepfinder has been delivering software to businesses across Nepal since 2014.
           </p>
           <div className="mt-6 flex items-center gap-3">
@@ -70,15 +69,18 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+          <h3 className="mt-8 text-sm font-semibold text-text">Legal</h3>
+          <ul className="mt-4 space-y-2.5">
             <li>
-              <a href="/ncafe/privacy/" className="text-sm text-muted hover:text-text">
+              <Link to="/ncafe/privacy" className="text-sm text-muted hover:text-text">
                 nCafe Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/user-data-delete-request/" className="text-sm text-muted hover:text-text">
+              <Link to="/user-data-delete-request" className="text-sm text-muted hover:text-text">
                 Data Deletion Request
-              </a>
+              </Link>
             </li>
           </ul>
           <h3 className="mt-8 text-sm font-semibold text-text">Contact</h3>
@@ -89,9 +91,9 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-line">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
+        <div className="container-x flex flex-col gap-2 py-6 text-xs text-muted">
+          <p className="text-[11px] xl:whitespace-nowrap">{site.trademarkNotice}</p>
           <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
-          <p className="max-w-2xl md:text-right">{site.trademarkNotice}</p>
         </div>
       </div>
     </footer>

@@ -9,6 +9,8 @@ import ProductDetail from './ProductDetail'
 import Projects from './Projects'
 import ProjectDetail from './ProjectDetail'
 import Contact from './Contact'
+import NcafePrivacy from './NcafePrivacy'
+import DataDeletion from './DataDeletion'
 import NotFound from './NotFound'
 
 /** Statically imported pages used by the prerender (SSR) build so full HTML is emitted. */
@@ -23,5 +25,7 @@ export const eagerPages: PageMap = {
   Projects,
   ProjectDetail,
   Contact,
+  NcafePrivacy,
+  DataDeletion,
   NotFound,
 }

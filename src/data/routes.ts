@@ -15,4 +15,7 @@ export const staticRoutes: { path: string; priority: number }[] = [
   { path: '/projects', priority: 0.7 },
   ...projects.map((p) => ({ path: `/projects/${p.slug}`, priority: 0.6 })),
   { path: '/contact', priority: 0.8 },
+  { path: '/ncafe/privacy', priority: 0.3 },
+  { path: '/ncafe/policy', priority: 0.2 },
+  { path: '/user-data-delete-request', priority: 0.3 },
 ]

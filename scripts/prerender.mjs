@@ -37,12 +37,6 @@ for (const route of staticRoutes) {
   await writeFile(path.join(dist, '404.html'), template.replace('<!--app-head-->', head).replace('<!--app-html-->', html))
 }
 
-// Legacy static pages (nCafe policy, data deletion, Google verification) are copied from public/ as-is.
-const legacy = ['/ncafe/privacy/', '/ncafe/policy/', '/user-data-delete-request/']
-for (const l of legacy) {
-  sitemapEntries.push(`  <url>\n    <loc>${SITE_URL}${l}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.3</priority>\n  </url>`)
-}
-
 await writeFile(
   path.join(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.join('\n')}\n</urlset>\n`,
