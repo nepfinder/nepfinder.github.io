@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Nepfinder design tokens — Forest Green + Warm White
+   Semantic tokens (bg, surface, text, muted, line) are overridden inside
+   `.theme-dark` sections so the same utilities work on deep evergreen.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-brand: #174a3c; /* Forest Green */
+  --color-accent: #2d8065; /* Emerald */
+  --color-evergreen: #102b25; /* Deep Evergreen */
+  --color-stone: #eef1ed; /* Soft Stone */
+  --color-warm: #f8f9f6; /* Warm White */
+  --color-charcoal: #182621;
+  --color-slate: #64716b;
+  --color-border: #dde5de;
+
+  --color-bg: var(--color-warm);
+  --color-bg-2: var(--color-stone);
+  --color-surface: #ffffff;
+  --color-surface-2: var(--color-stone);
+  --color-line: var(--color-border);
+  --color-text: var(--color-charcoal);
+  --color-muted: var(--color-slate);
+  --color-on-brand: #ffffff;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(24, 38, 33, 0.04), 0 8px 24px -16px rgba(24, 38, 33, 0.12);
+  --shadow-card-hover: 0 2px 4px rgba(24, 38, 33, 0.05), 0 20px 40px -20px rgba(23, 74, 60, 0.25);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-scroll-dot: scroll-dot 2s ease-in-out infinite;
+  --animate-dash: dash 3s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes scroll-dot {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(14px);
+      opacity: 0;
+    }
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+}
+
+/* Dark (deep evergreen) sections re-map the semantic tokens. */
+.theme-dark {
+  --color-bg: var(--color-evergreen);
+  --color-bg-2: #163a32;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-2: rgba(255, 255, 255, 0.08);
+  --color-line: rgba(255, 255, 255, 0.12);
+  --color-text: #ffffff;
+  --color-muted: #b7c7c0;
+  --color-accent: #5fb08f;
+  color: var(--color-text);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-warm);
+}
+
+body {
+  @apply bg-bg text-text font-sans antialiased;
+}
+
+::selection {
+  background: rgba(45, 128, 101, 0.2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold tracking-wide text-accent uppercase;
+  }
+  .h-display {
+    @apply font-display font-bold tracking-tight text-balance text-text;
+  }
+  .glass {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+  .card {
+    @apply relative rounded-2xl p-6 transition-all duration-300;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-card);
+  }
+  .card-border:hover,
+  .card-border:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .theme-dark .card,
+  .theme-dark .glass {
+    box-shadow: none;
+  }
+  .text-highlight {
+    color: var(--color-brand);
+  }
+  .theme-dark .text-highlight {
+    color: var(--color-accent);
+  }
+  .grid-fade {
+    background-image:
+      linear-gradient(rgba(23, 74, 60, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 74, 60, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .theme-dark .grid-fade {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  }
+  .logo-plate {
+    @apply inline-flex items-center rounded-lg bg-white px-2 py-1.5;
+  }
+  .theme-dark .logo-plate {
+    @apply border border-white/10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent focus-visible:outline-accent;
+  }
+  .theme-dark .btn-primary {
+    @apply bg-white text-brand hover:bg-stone;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-brand/30 bg-white px-6 py-3 text-sm font-semibold text-brand transition-colors duration-200 hover:border-brand hover:bg-stone focus-visible:outline-accent;
+  }
+  .theme-dark .btn-secondary {
+    @apply border-white/25 bg-transparent text-white hover:bg-white/10 hover:border-white/50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-sm font-semibold text-muted transition-colors duration-200 hover:text-brand;
+  }
+  .prose-dark p {
+    @apply text-muted leading-relaxed;
+  }
+  .icon-tile {
+    @apply inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand;
+  }
+  .theme-dark .icon-tile {
+    @apply bg-white/10 text-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

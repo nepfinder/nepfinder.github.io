@@ -1,0 +1,72 @@
+import { Clock, Mail, MapPin } from 'lucide-react'
+import { useSeo, organizationJsonLd } from '@/lib/seo'
+import { site } from '@/data/site'
+import { PageHero } from '@/components/ui/PageHero'
+import { Reveal } from '@/components/ui/Reveal'
+import { ContactForm } from '@/components/ContactForm'
+
+const seo = {
+  title: 'Contact Nepfinder | Discuss Your Software or ERP Project',
+  description: 'Contact Nepfinder to discuss custom software development, ERPNext implementation, Frappe Framework development, or system integration for your business.',
+  path: '/contact',
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    url: `${site.url}/contact`,
+    mainEntity: organizationJsonLd,
+  },
+}
+
+export default function Contact() {
+  useSeo(seo)
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact Us"
+        title="Let's discuss your project"
+        text="We make it our job to listen, to research, and to understand the requirements unique to your organization. Our mission is always to provide creative, quality solutions that target your goals."
+        crumbs={[{ label: 'Contact Us' }]}
+      />
+      <section className="section pt-0">
+        <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <Reveal>
+            <div className="space-y-5">
+              <div className="glass rounded-2xl p-6">
+                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <Mail className="size-5" aria-hidden />
+                </span>
+                <h2 className="mt-4 font-display text-base font-bold text-text">Email</h2>
+                <a href={`mailto:${site.email}`} className="mt-1 block text-sm text-accent hover:underline">
+                  {site.email}
+                </a>
+                <p className="mt-2 text-xs text-muted">The fastest way to reach our team.</p>
+              </div>
+              <div className="glass rounded-2xl p-6">
+                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <MapPin className="size-5" aria-hidden />
+                </span>
+                <h2 className="mt-4 font-display text-base font-bold text-text">Location</h2>
+                <p className="mt-1 text-sm text-text/80">{site.location}</p>
+                <p className="mt-2 text-xs text-muted">Serving clients across Nepal and working remotely with teams elsewhere.</p>
+              </div>
+              <div className="glass rounded-2xl p-6">
+                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <Clock className="size-5" aria-hidden />
+                </span>
+                <h2 className="mt-4 font-display text-base font-bold text-text">What happens next</h2>
+                <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm text-muted">
+                  <li>We review your inquiry and reply by email.</li>
+                  <li>We schedule a discovery call to understand your needs.</li>
+                  <li>You receive a proposed approach and next steps.</li>
+                </ol>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ContactForm />
+          </Reveal>
+        </div>
+      </section>
+    </>
+  )
+}
