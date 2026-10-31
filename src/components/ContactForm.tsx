@@ -6,6 +6,7 @@ import { cn } from '@/utils/cn'
 const serviceOptions = [
   'Custom Software Development',
   'ERP Implementation',
+  'ERP Support & Maintenance (monthly plan)',
   'ERPNext Implementation',
   'Frappe Framework Development',
   'Web Development',

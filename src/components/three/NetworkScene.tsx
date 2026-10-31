@@ -59,13 +59,13 @@ export default function NetworkScene({ count = 70, maxDist = 2.1 }: { count?: nu
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[pos, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.06} color="#9fd3bb" transparent opacity={0.9} sizeAttenuation depthWrite={false} />
+        <pointsMaterial size={0.06} color="#2997ff" transparent opacity={0.9} sizeAttenuation depthWrite={false} />
       </points>
       <lineSegments ref={lines}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePos, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#5fb08f" transparent opacity={0.25} />
+        <lineBasicMaterial color="#0071e3" transparent opacity={0.35} />
       </lineSegments>
     </>
   )

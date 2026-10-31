@@ -16,8 +16,32 @@ export interface Product {
   technologies?: string[]
 }
 
-/** Products and applications documented in the existing Nepfinder website and repository. */
+/** Products and services offered by Nepfinder (nInsurance, nCafe and Restaurant Billing come from the existing website). */
 export const products: Product[] = [
+  {
+    slug: 'enterprise-support',
+    name: 'Enterprise ERP Support',
+    headline: 'Enterprise ERP Support — a dedicated team, one fixed monthly price',
+    summary:
+      'Monthly maintenance and support for your ERP from a team of technical and functional ERP experts, available during office hours (10:00 to 18:00), for a fixed monthly fee.',
+    description:
+      'Enterprise ERP Support gives your business a standing team of ERP experts without hiring in-house. For one fixed price per month you get both technical and functional specialists who keep your ERPNext or other ERP system running, resolve issues, make configuration changes, and help your users during office hours, 10:00 to 18:00 on working days. The plan is sized to your organisation and billed monthly, so costs stay predictable.',
+    category: 'Managed Support Plan',
+    features: [
+      { title: 'Fixed monthly price', text: 'One predictable fee per month, sized to your users and modules. No hourly surprises.' },
+      { title: 'Technical experts', text: 'Developers who handle customisations, scripts, integrations, upgrades, backups, and server health.' },
+      { title: 'Functional experts', text: 'Consultants who understand accounting, stock, sales, purchasing, HR, and manufacturing processes and configure the system accordingly.' },
+      { title: 'Office hours 10:00 to 18:00', text: 'Your team can reach us during office hours on working days through email, phone, or a shared ticket channel.' },
+      { title: 'Issue resolution', text: 'Bug fixes, data corrections, permission changes, and print format or report adjustments.' },
+      { title: 'Changes and small enhancements', text: 'New fields, workflows, reports, and dashboards as your processes evolve.' },
+      { title: 'User help desk', text: 'Answers and guidance for your staff while they work in the system.' },
+      { title: 'Upgrades and monitoring', text: 'Planned version upgrades, patching, backup checks, and performance monitoring.' },
+      { title: 'Monthly review', text: 'A short monthly summary of tickets, changes made, and recommendations.' },
+    ],
+    images: [],
+    links: [{ label: 'Request a quote', href: '/contact' }],
+    technologies: ['ERPNext', 'Frappe Framework', 'ERP Integrations', 'Reports & Dashboards'],
+  },
   {
     slug: 'ninsurance',
     name: 'nInsurance',

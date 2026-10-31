@@ -5,6 +5,7 @@ import { AboutPreview } from '@/components/home/AboutPreview'
 import { ServicesGrid } from '@/components/home/ServicesGrid'
 import { ErpnextFrappe } from '@/components/home/ErpnextFrappe'
 import { ProductsShowcase } from '@/components/home/ProductsShowcase'
+import { SupportPlan } from '@/components/home/SupportPlan'
 import { Technologies } from '@/components/home/Technologies'
 import { ProcessTimeline } from '@/components/home/ProcessTimeline'
 import { Projects } from '@/components/home/Projects'
@@ -37,6 +38,7 @@ export default function Home() {
       <ServicesGrid />
       <ErpnextFrappe />
       <ProductsShowcase />
+      <SupportPlan />
       <Technologies />
       <ProcessTimeline />
       <Projects />

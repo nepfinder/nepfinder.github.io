@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/Button'
 import { Card, Pill } from '@/components/ui/Card'
 
 export function ProductsShowcase() {
-  const ninsurance = products[0]
-  const others = products.slice(1)
+  const ninsurance = products.find((p) => p.slug === 'ninsurance')!
+  const others = products.filter((p) => p.slug !== 'ninsurance')
   return (
     <section id="products" className="section relative">
       <div className="container-x">
@@ -51,7 +51,7 @@ export function ProductsShowcase() {
           </div>
         </Reveal>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-2">
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
           {others.map((p, i) => (
             <Reveal key={p.slug} delay={0.08 * i} className="h-full">
               <Card className="h-full">

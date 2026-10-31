@@ -4,10 +4,10 @@ import { useFrame } from '@react-three/fiber'
 import { Float, RoundedBox } from '@react-three/drei'
 
 const layers = [
-  { y: -0.9, color: '#182621', w: 3.2, label: 'infrastructure' },
-  { y: -0.3, color: '#174A3C', w: 2.9, label: 'data' },
-  { y: 0.3, color: '#2D8065', w: 2.6, label: 'business logic' },
-  { y: 0.9, color: '#EEF1ED', w: 2.3, label: 'experience' },
+  { y: -0.9, color: '#1D1D1F', w: 3.2, label: 'infrastructure' },
+  { y: -0.3, color: '#424245', w: 2.9, label: 'data' },
+  { y: 0.3, color: '#0071E3', w: 2.6, label: 'business logic' },
+  { y: 0.9, color: '#F5F5F7', w: 2.3, label: 'experience' },
 ]
 
 /** Stacked software layers: infrastructure → data → business logic → experience. */
@@ -32,7 +32,7 @@ export default function AboutScene() {
         {/* connector */}
         <mesh position={[0, 0, 0]}>
           <cylinderGeometry args={[0.03, 0.03, 2.4, 12]} />
-          <meshBasicMaterial color="#C9D6CE" />
+          <meshBasicMaterial color="#C7C7CC" />
         </mesh>
       </group>
     </>

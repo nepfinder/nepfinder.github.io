@@ -23,7 +23,7 @@ export function NetworkFallback({ className, labels = [] }: { className?: string
         ))}
         {pts.map(([x, y], i) => (
           <g key={i}>
-            <circle cx={x} cy={y} r={i === 0 ? 4 : 2.2} fill={i === 0 ? '#174A3C' : 'var(--color-surface)'} stroke="#2D8065" strokeWidth={0.5} />
+            <circle cx={x} cy={y} r={i === 0 ? 4 : 2.2} fill={i === 0 ? '#0071E3' : 'var(--color-surface)'} stroke="#0071E3" strokeWidth={0.5} />
             {labels[i - 1] && i > 0 && (
               <text x={x} y={y + 6} fontSize={3} textAnchor="middle" fill="var(--color-muted)" fontFamily="Inter, sans-serif">
                 {labels[i - 1]}

@@ -83,7 +83,7 @@ export function Header() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        'bg-bg/80 backdrop-blur-xl', open && 'bg-bg', scrolled && 'border-b border-line',
+        'bg-white', (scrolled || open) && 'border-b border-line',
       )}
     >
       <a

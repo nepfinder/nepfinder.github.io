@@ -7,28 +7,28 @@ const nodes = [
     label: 'ERPNext',
     sub: 'Accounting · Stock · Sales · HR',
     text: 'Open-source ERP modules configured and customised around your processes.',
-    color: '#2D8065',
+    color: '#0071E3',
   },
   {
     id: 'frappe',
     label: 'Frappe Framework',
     sub: 'Python · JavaScript · MariaDB',
     text: 'The metadata-driven framework underneath ERPNext: DocTypes, permissions, workflows, and REST APIs.',
-    color: '#174A3C',
+    color: '#2997FF',
   },
   {
     id: 'apps',
     label: 'Custom Apps',
     sub: 'DocTypes · Workflows · Portals',
     text: 'Business-specific modules, reports, dashboards, and portals built as Frappe applications.',
-    color: '#5FB08F',
+    color: '#64D2FF',
   },
   {
     id: 'integrations',
     label: 'External Integrations',
     sub: 'Payments · E-commerce · APIs',
     text: 'Webhooks and REST integrations with payment gateways, storefronts, mobile apps, and third-party systems.',
-    color: '#8FB8A8',
+    color: '#A1A1A6',
   },
 ]
 
@@ -43,8 +43,8 @@ export function ArchitectureDiagram() {
         <svg viewBox="0 0 800 240" className="w-full" role="img" aria-label="Architecture: ERPNext built on the Frappe Framework, extended by custom apps and connected to external integrations">
           <defs>
             <linearGradient id="flow" x1="0" x2="1">
-              <stop offset="0" stopColor="#2D8065" />
-              <stop offset="1" stopColor="#5FB08F" />
+              <stop offset="0" stopColor="#0071E3" />
+              <stop offset="1" stopColor="#64D2FF" />
             </linearGradient>
           </defs>
           {/* connection lines */}

@@ -7,13 +7,13 @@ import { useIsMobile } from '@/hooks/useMediaFlags'
 export const heroModules = ['Finance', 'Accounting', 'Inventory', 'Sales', 'Procurement', 'CRM', 'Human Resources', 'Operations']
 
 const C = {
-  forest: '#174A3C',
-  emerald: '#2D8065',
-  stone: '#EEF1ED',
-  charcoal: '#182621',
+  forest: '#1D1D1F',
+  emerald: '#0071E3',
+  stone: '#F5F5F7',
+  charcoal: '#1D1D1F',
   white: '#FFFFFF',
-  line: '#AFC0B6',
-  bar: '#D6DFD9',
+  line: '#C7C7CC',
+  bar: '#E3E3E8',
 }
 
 /** Module tiles laid out on a staggered isometric grid around a central platform tile. */
@@ -58,7 +58,7 @@ function Tile({ position, label, index, mobile }: { position: THREE.Vector3; lab
         </mesh>
         {!mobile && (
           <Html center position={[0, 0.02, 0.62]} style={{ pointerEvents: 'none' }} zIndexRange={[5, 0]}>
-            <span className="whitespace-nowrap rounded-md border border-[#DDE5DE] bg-white/95 px-2 py-0.5 text-[10.5px] font-medium tracking-wide text-[#182621] shadow-sm">
+            <span className="whitespace-nowrap rounded-md bg-white/95 px-2 py-0.5 text-[10.5px] font-medium text-[#1D1D1F] shadow-sm">
               {label}
             </span>
           </Html>
