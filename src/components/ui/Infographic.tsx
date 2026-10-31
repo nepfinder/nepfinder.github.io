@@ -39,29 +39,41 @@ function Modules() {
 
 function Stack() {
   const layers = [
-    { label: 'Portals & mobile apps', sub: 'what users see', c: 'var(--color-bg-2)' },
-    { label: 'Custom Frappe apps', sub: 'your business rules', c: light },
-    { label: 'ERPNext', sub: 'accounting, stock, sales, HR', c: blue },
-    { label: 'Frappe Framework', sub: 'DocTypes · permissions · REST API', c: '#1d1d1f' },
-    { label: 'MariaDB · Linux · Docker', sub: 'infrastructure', c: '#424245' },
+    { label: 'Portals & mobile apps', sub: 'what users see', c: 'var(--color-surface)', dark: false },
+    { label: 'Custom Frappe apps', sub: 'your business rules', c: light, dark: true },
+    { label: 'ERPNext', sub: 'accounting · stock · sales · HR', c: blue, dark: true },
+    { label: 'Frappe Framework', sub: 'DocTypes · permissions · REST API', c: '#1d1d1f', dark: true },
+    { label: 'MariaDB · Linux · Docker', sub: 'infrastructure', c: '#424245', dark: true },
   ]
+  const top = 20
+  const h = 44
+  const gap = 5
+  const widths = [380, 326, 272, 218, 164]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="Software stack from infrastructure to the user interface">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="Funnel from the user interface down to infrastructure: portals and apps, custom Frappe apps, ERPNext, Frappe Framework, infrastructure">
       {layers.map((l, i) => {
-        const y = 20 + i * 54
-        const dark = i >= 1
+        const y = top + i * (h + gap)
+        const wTop = widths[i]
+        const wBottom = widths[i + 1] ?? widths[i] - 40
+        const x1 = 210 - wTop / 2
+        const x2 = 210 + wTop / 2
+        const x3 = 210 + wBottom / 2
+        const x4 = 210 - wBottom / 2
         return (
           <g key={l.label}>
-            <rect x={40 + i * 6} y={y} width={340 - i * 12} height={44} rx={12} fill={l.c} stroke={i === 0 ? 'var(--color-line)' : 'none'} />
-            <text x={60 + i * 6} y={y + 19} fontSize={12} fontWeight={600} fill={dark ? '#fff' : 'var(--color-text)'}>
+            <path d={`M${x1} ${y} H${x2} L${x3} ${y + h} H${x4} Z`} fill={l.c} stroke={l.dark ? 'none' : 'var(--color-line)'} />
+            <text x={210} y={y + 19} textAnchor="middle" fontSize={12} fontWeight={600} fill={l.dark ? '#fff' : 'var(--color-text)'}>
               {l.label}
             </text>
-            <text x={60 + i * 6} y={y + 34} fontSize={10} fill={dark ? 'rgba(255,255,255,0.7)' : 'var(--color-muted)'}>
+            <text x={210} y={y + 33} textAnchor="middle" fontSize={9.5} fill={l.dark ? 'rgba(255,255,255,0.75)' : 'var(--color-muted)'}>
               {l.sub}
             </text>
           </g>
         )
       })}
+      <text x={210} y={292} textAnchor="middle" fontSize={11} fill="var(--color-muted)">
+        Every layer builds on the one below it
+      </text>
     </svg>
   )
 }
