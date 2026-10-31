@@ -59,6 +59,7 @@ export const en = {
     'We design, develop, and implement scalable business software, ERPNext solutions, and Frappe-powered applications that streamline operations, connect business processes, and accelerate digital transformation.',
   'hero.cta.primary': 'Discuss your project',
   'hero.cta.secondary': 'Explore our services',
+  'hero.hint': 'Drag to look around the AI office',
 
   // About preview
   'about.title': 'Technology Solutions Built Around Your Business',

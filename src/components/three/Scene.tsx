@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState, type ComponentProps, type ReactNod
 
 const LazyCanvas = lazy(() => import('./SceneCanvas').then((m) => ({ default: m.SceneCanvas })))
 const scenes = {
-  hero: lazy(() => import('./HeroScene')),
+  hero: lazy(() => import('./AiOfficeScene')),
   about: lazy(() => import('./AboutScene')),
   network: lazy(() => import('./NetworkScene')),
 }

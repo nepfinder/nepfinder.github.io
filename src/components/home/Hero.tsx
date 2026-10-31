@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { Button } from '@/components/ui/Button'
 import { Scene } from '@/components/three/Scene'
 import { NetworkFallback } from '@/components/three/StaticFallback'
-import { heroModules } from '@/components/three/HeroScene'
+import { heroModules } from '@/data/office'
 import { usePrefersReducedMotion } from '@/hooks/useMediaFlags'
 import { useT } from '@/i18n'
 import { useHeroModules } from '@/i18n/useLocalized'
@@ -48,9 +48,10 @@ export function Hero() {
           <Scene
             scene="hero"
             className="absolute inset-0"
-            camera={{ position: [0, 5.2, 7.4], fov: 30 }}
+            camera={{ position: [0, 8.2, 11], fov: 32 }}
             fallback={<NetworkFallback labels={modules} />}
           />
+          <p className="pointer-events-none absolute bottom-3 left-4 hidden rounded-full bg-white/80 px-3 py-1 text-[11px] text-muted backdrop-blur sm:block">{t('hero.hint')}</p>
         </div>
       </div>
       <div className="h-16 sm:h-24" />

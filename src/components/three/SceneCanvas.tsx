@@ -41,7 +41,7 @@ export function SceneCanvas({ children, fallback, className, camera, allowReduce
             shadows={!mobile}
             flat
             gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-            style={{ position: 'absolute', inset: 0 }}
+            style={{ position: 'absolute', inset: 0, touchAction: mobile ? 'pan-y' : 'none' }}
           >
             {children}
           </Canvas>
