@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
-import { ArrowUpRight, Smartphone } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import { GooglePlayIcon } from '@/components/ui/GooglePlayIcon'
 import { products } from '@/data/products'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
@@ -38,11 +39,11 @@ export function ProductsShowcase({ embedded = false }: { embedded?: boolean }) {
                   {t('products.explore')}
                 </Button>
                 <Button to={ninsurance.links[0].href} variant="secondary" external>
-                  <Smartphone className="size-4" aria-hidden /> {ninsurance.links[0].label}
+                  <GooglePlayIcon className="size-[18px]" /> {ninsurance.links[0].label}
                 </Button>
               </div>
             </div>
-            <div className="relative flex items-end justify-center bg-bg-2 px-8 pt-10 lg:pt-16">
+            <div className="relative flex items-center justify-center bg-bg-2 px-8 py-10 lg:py-12">
               <img
                 src={ninsurance.images[0].src}
                 alt={ninsurance.images[0].alt}
@@ -50,7 +51,7 @@ export function ProductsShowcase({ embedded = false }: { embedded?: boolean }) {
                 height={1920}
                 loading="lazy"
                 decoding="async"
-                className="relative w-full max-w-[280px] drop-shadow-[0_24px_40px_rgba(24,38,33,0.25)] transition-transform duration-500 hover:scale-[1.02] sm:max-w-[320px]"
+                className="relative h-auto max-h-[560px] w-auto max-w-[260px] drop-shadow-[0_24px_40px_rgba(24,38,33,0.25)] transition-transform duration-500 hover:scale-[1.02] sm:max-w-[280px]"
               />
             </div>
           </div>

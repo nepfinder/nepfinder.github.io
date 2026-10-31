@@ -1,5 +1,6 @@
 import { useParams } from 'react-router'
 import { ExternalLink } from 'lucide-react'
+import { GooglePlayIcon } from '@/components/ui/GooglePlayIcon'
 import { useSeo } from '@/lib/seo'
 import { getProduct } from '@/data/products'
 import { site } from '@/data/site'
@@ -66,7 +67,8 @@ function ProductView({ slug }: { slug: string }) {
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {product.links.map((l) => (
             <Button key={l.href} to={l.href} external={l.external} variant={l === product.links[0] ? 'primary' : 'secondary'}>
-              {l.label} {l.href.startsWith('http') && <ExternalLink className="size-4" aria-hidden />}
+              {l.href.includes('play.google.com') && <GooglePlayIcon className="size-[18px]" />}
+              {l.label} {l.href.startsWith('http') && !l.href.includes('play.google.com') && <ExternalLink className="size-4" aria-hidden />}
             </Button>
           ))}
           <Button to="/contact" variant="secondary">
@@ -100,17 +102,21 @@ function ProductView({ slug }: { slug: string }) {
           {product.images.length > 0 && isPhone && (
             <Reveal delay={0.1}>
               <div className="glass relative overflow-hidden rounded-3xl bg-bg-2 p-6">
-                                <div className="relative flex items-end justify-center gap-4">
-                  {product.images.map((img, i) => (
+                                <div className="relative flex items-center justify-center gap-4 py-6 sm:gap-8">
+                  {product.images.slice(0, 2).map((img, i) => (
                     <img
                       key={img.src}
                       src={img.src}
                       alt={img.alt}
-                      width={1344}
-                      height={1920}
+                      width={864}
+                      height={1726}
                       loading={i === 0 ? 'eager' : 'lazy'}
                       decoding="async"
-                      className={i === 0 ? 'w-[46%] drop-shadow-[0_24px_40px_rgba(24,38,33,0.25)]' : 'hidden w-[36%] drop-shadow-2xl opacity-90 sm:block'}
+                      className={
+                        i === 0
+                          ? 'h-[360px] w-auto drop-shadow-[0_24px_40px_rgba(29,29,31,0.25)] sm:h-[440px]'
+                          : 'hidden h-[320px] w-auto drop-shadow-xl sm:block sm:h-[390px]'
+                      }
                     />
                   ))}
                 </div>
