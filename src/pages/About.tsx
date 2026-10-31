@@ -89,7 +89,7 @@ export default function About() {
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="card card-border !p-0 flex items-center gap-3 rounded-xl p-4 transition-colors hover:bg-bg-2">
+                <Link to={`/services/${s.slug}`} className="card card-border flex items-center gap-3 !rounded-2xl !p-4">
                   <span className={`inline-flex size-9 items-center justify-center rounded-lg bg-brand/10 text-brand`}>
                     <s.icon className="size-4" aria-hidden />
                   </span>

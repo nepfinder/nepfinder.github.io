@@ -7,7 +7,7 @@ export function TechGrid({ detailed = false }: { detailed?: boolean }) {
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {technologies.map((group, gi) => (
         <Reveal key={group.category} delay={gi * 0.05} className="h-full">
-          <div className="glass h-full rounded-2xl p-5">
+          <div className="card h-full">
             <h3 className="text-xs font-semibold tracking-wider text-accent">{group.category}</h3>
             <ul className="mt-4 grid grid-cols-2 gap-2">
               {group.items.map((t) => (

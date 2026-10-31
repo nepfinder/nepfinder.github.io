@@ -55,7 +55,7 @@ export function ProcessTimeline() {
                     <span className="size-1.5 rounded-full bg-accent" />
                   </span>
                   <Reveal className={left ? 'md:col-start-1 md:text-right' : 'md:col-start-2'} y={16}>
-                    <div className="card card-border !p-0 inline-block w-full rounded-2xl p-6 text-left md:max-w-md">
+                    <div className="card card-border inline-block w-full text-left md:max-w-md">
                       <span className="font-display text-xs font-bold tracking-widest text-accent">STEP {s.step}</span>
                       <h3 className="mt-2 font-display text-xl font-semibold text-text">{s.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>

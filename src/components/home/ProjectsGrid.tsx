@@ -9,8 +9,8 @@ export function ProjectsGrid() {
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((p, i) => (
         <Reveal key={p.slug} delay={i * 0.06} className="h-full">
-          <Link to={`/projects/${p.slug}`} className="card card-border !p-0 group flex h-full flex-col overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1">
-            <div className="relative aspect-[16/10] overflow-hidden bg-bg-2">
+          <Link to={`/projects/${p.slug}`} className="card card-border group flex h-full flex-col overflow-hidden !p-0">
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#e8e8ed]">
                             {p.image ? (
                 <img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width={1344} height={1920} className="absolute left-1/2 top-6 w-[42%] -translate-x-1/2 drop-shadow-2xl transition-transform duration-500 group-hover:scale-105" />
               ) : (

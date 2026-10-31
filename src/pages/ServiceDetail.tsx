@@ -131,7 +131,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">
             {related.map((r) => (
               <li key={r.slug}>
-                <Link to={`/services/${r.slug}`} className="card card-border !p-0 flex items-center gap-3 rounded-xl p-4 hover:bg-bg-2">
+                <Link to={`/services/${r.slug}`} className="card card-border flex items-center gap-3 !rounded-2xl !p-4">
                   <span className={`inline-flex size-9 items-center justify-center rounded-lg bg-brand/10 text-brand`}>
                     <r.icon className="size-4" aria-hidden />
                   </span>

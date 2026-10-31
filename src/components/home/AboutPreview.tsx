@@ -13,7 +13,7 @@ const expertise = [
 
 export function AboutPreview() {
   return (
-    <section id="overview" className="section relative scroll-mt-16 bg-bg-2">
+    <section id="overview" className="section relative scroll-mt-14 bg-bg-2">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal>
