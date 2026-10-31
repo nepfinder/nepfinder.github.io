@@ -13,7 +13,7 @@ export default function Projects() {
   useSeo(seo)
   return (
     <>
-      <PageHero eyebrow="Projects" title="Projects and case studies" text="Software Nepfinder has delivered. Each project lists the challenge, the solution we built, and the technologies involved." crumbs={[{ label: 'Projects' }]} />
+      <PageHero title="Projects and case studies" text="Software Nepfinder has delivered. Each project lists the challenge, the solution we built, and the technologies involved." crumbs={[{ label: 'Projects' }]} />
       <section className="section pt-0">
         <div className="container-x">
           <ProjectsGrid />

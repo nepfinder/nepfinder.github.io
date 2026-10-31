@@ -3,7 +3,6 @@ import { Reveal } from './Reveal'
 import { cn } from '@/utils/cn'
 
 interface Props {
-  eyebrow?: string
   title: ReactNode
   text?: ReactNode
   align?: 'left' | 'center'
@@ -11,12 +10,11 @@ interface Props {
   className?: string
 }
 
-export function SectionHeading({ eyebrow, title, text, align = 'left', as: Tag = 'h2', className }: Props) {
+export function SectionHeading({ title, text, align = 'center', as: Tag = 'h2', className }: Props) {
   return (
     <Reveal className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
-      {eyebrow && <span className="eyebrow mb-4">{eyebrow}</span>}
-      <Tag className={cn('h-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1]', Tag === 'h1' && 'lg:text-6xl')}>{title}</Tag>
-      {text && <p className="mt-5 text-base sm:text-lg text-muted leading-relaxed">{text}</p>}
+      <Tag className={cn('h-display text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]', Tag === 'h1' && 'lg:text-[4.25rem]')}>{title}</Tag>
+      {text && <p className={cn('mt-6 text-lg leading-relaxed text-muted sm:text-xl', align === 'center' && 'mx-auto max-w-2xl')}>{text}</p>}
     </Reveal>
   )
 }

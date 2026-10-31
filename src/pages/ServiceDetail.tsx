@@ -42,7 +42,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero eyebrow={service.navLabel} title={service.title} text={service.description} crumbs={[{ label: 'Services', to: '/services' }, { label: service.title }]}>
+      <PageHero title={service.title} text={service.description} crumbs={[{ label: 'Services', to: '/services' }, { label: service.title }]}>
         <Reveal className="mt-8 flex flex-col gap-3 sm:flex-row" delay={0.1}>
           <Button to="/contact" arrow>
             Request a Consultation
@@ -71,10 +71,10 @@ function ServiceDetailView({ slug }: { slug: string }) {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="glass rounded-3xl p-6 sm:p-8">
-              <h2 className="font-display text-lg font-bold text-text">Capabilities</h2>
+              <h2 className="font-display text-xl font-semibold text-text">Capabilities</h2>
               <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
                 {service.capabilities.map((c) => (
-                  <li key={c} className="rounded-xl border border-line bg-bg-2 px-3.5 py-2.5 text-sm text-text/80">
+                  <li key={c} className="rounded-2xl bg-surface px-3.5 py-2.5 text-sm text-text/80">
                     {c}
                   </li>
                 ))}
@@ -88,7 +88,6 @@ function ServiceDetailView({ slug }: { slug: string }) {
         <section className="section pt-0">
           <div className="container-x grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <Reveal>
-              <span className="eyebrow mb-4">ERPNext &amp; Frappe</span>
               <h2 className="h-display text-2xl sm:text-3xl">Implementation capabilities</h2>
               <ul className="mt-6 grid grid-cols-2 gap-2.5">
                 {erpnextCapabilities.map((c) => (
@@ -108,7 +107,6 @@ function ServiceDetailView({ slug }: { slug: string }) {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <span className="eyebrow mb-4">Process</span>
             <h2 className="h-display text-2xl sm:text-3xl">How we deliver {service.title.toLowerCase()}</h2>
           </Reveal>
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -116,7 +114,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
               <Reveal key={st.title} as="li" delay={i * 0.06} className="h-full">
                 <Card className="h-full">
                   <span className="font-display text-xs font-bold tracking-widest text-accent">0{i + 1}</span>
-                  <h3 className="mt-2 font-display text-base font-bold text-text">{st.title}</h3>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-text">{st.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{st.text}</p>
                 </Card>
               </Reveal>
@@ -133,7 +131,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">
             {related.map((r) => (
               <li key={r.slug}>
-                <Link to={`/services/${r.slug}`} className="glass card-border flex items-center gap-3 rounded-xl p-4 hover:bg-bg-2">
+                <Link to={`/services/${r.slug}`} className="card card-border !p-0 flex items-center gap-3 rounded-xl p-4 hover:bg-bg-2">
                   <span className={`inline-flex size-9 items-center justify-center rounded-lg bg-brand/10 text-brand`}>
                     <r.icon className="size-4" aria-hidden />
                   </span>

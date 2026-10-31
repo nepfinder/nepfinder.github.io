@@ -10,7 +10,7 @@ interface RevealProps {
 }
 
 /** Scroll-triggered fade/slide reveal. Content is rendered immediately in SSR and when reduced motion is on. */
-export function Reveal({ children, delay = 0, className, as = 'div', y = 24 }: RevealProps) {
+export function Reveal({ children, delay = 0, className, as = 'div', y = 12 }: RevealProps) {
   const reduce = useReducedMotion()
   const Comp = motion[as]
   return (
@@ -19,7 +19,7 @@ export function Reveal({ children, delay = 0, className, as = 'div', y = 24 }: R
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </Comp>

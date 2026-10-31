@@ -38,7 +38,7 @@ export function ProcessTimeline() {
   return (
     <section id="process" className="section relative">
       <div className="container-x">
-        <SectionHeading eyebrow="How We Work" title="Our development process" text="A clear, collaborative path from the first conversation to long-term optimisation." />
+        <SectionHeading title="Our development process" text="A clear, collaborative path from the first conversation to long-term optimisation." />
         <div ref={root} className="relative mt-14">
           <div className="absolute left-[19px] top-2 bottom-2 w-px bg-line md:left-1/2" aria-hidden />
           <div data-timeline-line className="absolute left-[19px] top-2 bottom-2 w-px bg-accent md:left-1/2" aria-hidden style={{ transform: reduce ? undefined : 'scaleY(0)' }} />
@@ -55,9 +55,9 @@ export function ProcessTimeline() {
                     <span className="size-1.5 rounded-full bg-accent" />
                   </span>
                   <Reveal className={left ? 'md:col-start-1 md:text-right' : 'md:col-start-2'} y={16}>
-                    <div className="glass card-border inline-block w-full rounded-2xl p-6 text-left md:max-w-md">
+                    <div className="card card-border !p-0 inline-block w-full rounded-2xl p-6 text-left md:max-w-md">
                       <span className="font-display text-xs font-bold tracking-widest text-accent">STEP {s.step}</span>
-                      <h3 className="mt-2 font-display text-lg font-bold text-text">{s.title}</h3>
+                      <h3 className="mt-2 font-display text-xl font-semibold text-text">{s.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
                     </div>
                   </Reveal>

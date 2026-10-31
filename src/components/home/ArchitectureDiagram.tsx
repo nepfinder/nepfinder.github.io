@@ -38,7 +38,7 @@ export function ArchitectureDiagram() {
   const current = nodes[active]
 
   return (
-    <div className="rounded-3xl border border-line bg-surface p-5 sm:p-8">
+    <div className="rounded-[var(--radius-tile)] bg-white/[0.06] p-5 sm:p-8">
       <div className="relative">
         <svg viewBox="0 0 800 240" className="w-full" role="img" aria-label="Architecture: ERPNext built on the Frappe Framework, extended by custom apps and connected to external integrations">
           <defs>
@@ -93,10 +93,10 @@ export function ArchitectureDiagram() {
           })}
         </svg>
       </div>
-      <div className="mt-4 rounded-2xl border border-line bg-bg-2 p-5" aria-live="polite">
+      <div className="mt-4 rounded-2xl bg-white/[0.06] p-5" aria-live="polite">
         <div className="flex items-center gap-2">
           <span className="size-2.5 rounded-full" style={{ background: current.color }} aria-hidden />
-          <h3 className="font-display text-base font-bold text-text">{current.label}</h3>
+          <h3 className="font-display text-lg font-semibold text-text">{current.label}</h3>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-muted">{current.text}</p>
         <div className="mt-3 flex gap-1.5" aria-hidden>

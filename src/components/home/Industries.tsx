@@ -8,7 +8,6 @@ export function Industries({ detailed = false }: { detailed?: boolean }) {
     <section id="industries" className="section relative bg-bg">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Industries & Business Solutions"
           title="Solutions that adapt to your industry"
           text="Our software and ERP solutions can support a wide range of industries. Our insurance work reflects documented product experience; the remaining industries show how our services apply."
           align="center"
@@ -21,9 +20,9 @@ export function Industries({ detailed = false }: { detailed?: boolean }) {
                   <IconBadge>
                     <ind.icon className="size-5 transition-transform duration-300 group-hover:scale-110" aria-hidden />
                   </IconBadge>
-                  {ind.verified && <span className="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent">Product experience</span>}
+                  {ind.verified && <span className="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-accent">Product experience</span>}
                 </div>
-                <h3 className="mt-4 font-display text-lg font-bold text-text">{ind.name}</h3>
+                <h3 className="mt-4 font-display text-xl font-semibold text-text">{ind.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{ind.text}</p>
                 {detailed && (
                   <ul className="mt-4 space-y-1.5">

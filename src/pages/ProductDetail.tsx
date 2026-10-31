@@ -37,7 +37,7 @@ function ProductView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero eyebrow={product.category} title={product.headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]}>
+      <PageHero title={product.headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]}>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {product.links.map((l) => (
             <Button key={l.href} to={l.href} external={l.external} variant={l === product.links[0] ? 'primary' : 'secondary'}>
@@ -66,8 +66,7 @@ function ProductView({ slug }: { slug: string }) {
           {product.images.length > 0 && (
             <Reveal delay={0.1}>
               <div className="glass relative overflow-hidden rounded-3xl bg-bg-2 p-6">
-                <div className="absolute inset-0 grid-fade opacity-60" />
-                <div className="relative flex items-end justify-center gap-4">
+                                <div className="relative flex items-end justify-center gap-4">
                   {product.images.map((img, i) => (
                     <img
                       key={img.src}
@@ -90,14 +89,13 @@ function ProductView({ slug }: { slug: string }) {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <span className="eyebrow mb-4">Features</span>
             <h2 className="h-display text-2xl sm:text-3xl">What {product.name} does</h2>
           </Reveal>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.features.map((f, i) => (
               <Reveal as="li" key={f.title} delay={Math.min(i, 6) * 0.05} className="h-full">
                 <Card className="h-full">
-                  <h3 className="font-display text-base font-bold text-text">{f.title}</h3>
+                  <h3 className="font-display text-lg font-semibold text-text">{f.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
                 </Card>
               </Reveal>

@@ -5,7 +5,7 @@ import Home from '@/pages/Home'
 import type { PageMap } from '@/pages/types'
 
 function PageFallback() {
-  return <div className="min-h-[60dvh] pt-[72px]" aria-busy="true" />
+  return <div className="min-h-[60dvh] pt-16" aria-busy="true" />
 }
 
 export default function App({ pages: P }: { pages: PageMap }) {

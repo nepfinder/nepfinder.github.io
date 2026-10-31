@@ -13,7 +13,7 @@ export default function Products() {
   useSeo(seo)
   return (
     <>
-      <PageHero eyebrow="Products" title="Products developed by Nepfinder" text="Our own software products, built from real operational needs and maintained by our team." crumbs={[{ label: 'Products' }]} />
+      <PageHero title="Products developed by Nepfinder" text="Our own software products, built from real operational needs and maintained by our team." crumbs={[{ label: 'Products' }]} />
       <div className="-mt-20">
         <ProductsShowcase />
       </div>

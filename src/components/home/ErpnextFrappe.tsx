@@ -24,14 +24,13 @@ export function ErpnextFrappe() {
     <section id="erpnext-frappe" className="theme-dark section relative overflow-hidden bg-evergreen">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-px w-[80%] -translate-x-1/2 bg-white/10" />
-        <div className="absolute inset-0 grid-fade opacity-40" />
+        
       </div>
       <div className="container-x">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Reveal>
-              <span className="eyebrow mb-4">ERPNext &amp; Frappe Expertise</span>
-              <h2 className="h-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1]">Transform Your Business with ERPNext &amp; Frappe</h2>
+              <h2 className="h-display text-4xl leading-[1.08] sm:text-5xl">Transform Your Business with ERPNext &amp; Frappe</h2>
               <p className="mt-5 text-muted leading-relaxed sm:text-lg">
                 Build connected and efficient business systems with ERPNext and the Frappe Framework. We provide independent implementation,
                 customization, application development, integration, and technical support services.
@@ -48,7 +47,7 @@ export function ErpnextFrappe() {
               ))}
             </ul>
             <Reveal className="mt-9 flex flex-col gap-3 sm:flex-row" delay={0.15}>
-              <Button to="/services/erpnext-implementation" arrow>
+              <Button to="/services/erpnext-implementation">
                 ERPNext Implementation
               </Button>
               <Button to="/services/frappe-framework-development" variant="secondary">

@@ -22,7 +22,6 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        eyebrow="Contact Us"
         title="Let's discuss your project"
         text="We make it our job to listen, to research, and to understand the requirements unique to your organization. Our mission is always to provide creative, quality solutions that target your goals."
         crumbs={[{ label: 'Contact Us' }]}
@@ -35,7 +34,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Mail className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-base font-bold text-text">Email</h2>
+                <h2 className="mt-4 font-display text-lg font-semibold text-text">Email</h2>
                 <a href={`mailto:${site.email}`} className="mt-1 block text-sm text-accent hover:underline">
                   {site.email}
                 </a>
@@ -45,7 +44,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <MapPin className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-base font-bold text-text">Location</h2>
+                <h2 className="mt-4 font-display text-lg font-semibold text-text">Location</h2>
                 <p className="mt-1 text-sm text-text/80">{site.location}</p>
                 <p className="mt-2 text-xs text-muted">Serving clients across Nepal and working remotely with teams elsewhere.</p>
               </div>
@@ -53,7 +52,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Clock className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-base font-bold text-text">What happens next</h2>
+                <h2 className="mt-4 font-display text-lg font-semibold text-text">What happens next</h2>
                 <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm text-muted">
                   <li>We review your inquiry and reply by email.</li>
                   <li>We schedule a discovery call to understand your needs.</li>

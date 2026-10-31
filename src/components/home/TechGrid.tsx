@@ -8,12 +8,12 @@ export function TechGrid({ detailed = false }: { detailed?: boolean }) {
       {technologies.map((group, gi) => (
         <Reveal key={group.category} delay={gi * 0.05} className="h-full">
           <div className="glass h-full rounded-2xl p-5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-accent">{group.category}</h3>
+            <h3 className="text-xs font-semibold tracking-wider text-accent">{group.category}</h3>
             <ul className="mt-4 grid grid-cols-2 gap-2">
               {group.items.map((t) => (
                 <li
                   key={t.name}
-                  className="group flex items-center gap-3 rounded-xl border border-line bg-bg-2 p-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:bg-bg-2 focus-within:border-accent"
+                  className="group flex items-center gap-3 rounded-2xl bg-surface p-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:bg-bg-2 focus-within:border-accent"
                   title={t.note}
                 >
                   <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-bg-2 text-text/80 transition-colors group-hover:text-text">

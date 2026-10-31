@@ -144,11 +144,6 @@ function Platform() {
 
   return (
     <group ref={group}>
-      {/* base plate */}
-      <mesh position={[0, -0.12, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <planeGeometry args={[mobile ? 4 : 4.5, mobile ? 4 : 4.5]} />
-        <meshStandardMaterial color="#F6F8F5" roughness={1} />
-      </mesh>
       {positions.map((p, i) => (
         <Line key={i} points={[[0, 0.02, 0], [p.x, 0.02, p.z]]} color={C.line} lineWidth={1} />
       ))}

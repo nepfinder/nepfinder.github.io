@@ -13,12 +13,11 @@ const expertise = [
 
 export function AboutPreview() {
   return (
-    <section id="overview" className="section relative scroll-mt-20 bg-bg-2">
+    <section id="overview" className="section relative scroll-mt-16 bg-bg-2">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal>
-            <span className="eyebrow mb-4">About Nepfinder</span>
-            <h2 className="h-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1]">Technology Solutions Built Around Your Business</h2>
+            <h2 className="h-display text-4xl leading-[1.08] sm:text-5xl">Technology Solutions Built Around Your Business</h2>
             <p className="mt-5 text-muted leading-relaxed sm:text-lg">
               At Nepfinder, we focus on understanding business challenges and delivering practical technology solutions. From custom
               software platforms and enterprise applications to ERP implementation and business process automation, our goal is to make
@@ -45,7 +44,7 @@ export function AboutPreview() {
           </Reveal>
         </div>
         <Reveal className="order-1 lg:order-2">
-          <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-surface sm:aspect-[5/4]">
+          <div className="relative aspect-square overflow-hidden rounded-[var(--radius-tile)] bg-surface sm:aspect-[5/4]">
             <Scene scene="about" className="absolute inset-0" camera={{ position: [0, 1.5, 7], fov: 40 }} fallback={<NetworkFallback />} />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-xs text-muted">
               <span>Established 2014 · Nepal</span>

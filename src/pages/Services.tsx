@@ -24,7 +24,7 @@ export default function Services() {
   useSeo(seo)
   return (
     <>
-      <PageHero eyebrow="Services" title="Software engineering and enterprise solutions" text="Every engagement starts with your business requirements. These are the services we deliver to turn them into working software." crumbs={[{ label: 'Services' }]} />
+      <PageHero title="Software engineering and enterprise solutions" text="Every engagement starts with your business requirements. These are the services we deliver to turn them into working software." crumbs={[{ label: 'Services' }]} />
       <section className="section pt-0">
         <div className="container-x grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (

@@ -7,9 +7,9 @@ import { services } from '@/data/services'
 import { Logo } from '@/components/ui/Logo'
 import { cn } from '@/utils/cn'
 
-const linkBase = 'rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-200'
-const linkIdle = 'text-text hover:text-brand hover:bg-brand/5'
-const linkActive = 'text-brand bg-brand/10'
+const linkBase = 'px-3 py-2 text-[13.5px] font-medium transition-colors duration-200'
+const linkIdle = 'text-text/80 hover:text-brand'
+const linkActive = 'text-brand'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -83,7 +83,7 @@ export function Header() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        'border-b border-line bg-bg/95 backdrop-blur-md', open && 'bg-bg', scrolled && 'shadow-[0_1px_0_0_var(--color-line)]',
+        'bg-bg/80 backdrop-blur-xl', open && 'bg-bg', scrolled && 'border-b border-line',
       )}
     >
       <a
@@ -92,7 +92,7 @@ export function Header() {
       >
         Skip to content
       </a>
-      <div className="container-x flex h-[72px] items-center justify-between gap-4">
+      <div className="container-x flex h-16 items-center justify-between gap-4">
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
@@ -119,7 +119,7 @@ export function Header() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.98 }}
                       transition={{ duration: 0.18 }}
-                      className="glass absolute left-1/2 top-full mt-3 w-[560px] -translate-x-1/2 rounded-2xl bg-surface p-3 shadow-[var(--shadow-card-hover)]"
+                      className="absolute left-1/2 top-full mt-3 w-[560px] -translate-x-1/2 rounded-3xl bg-surface p-3 shadow-[0_20px_60px_-20px_rgba(24,38,33,0.3)] ring-1 ring-line"
                     >
                       <div className="grid grid-cols-2 gap-1">
                         {services.map((s) => (
@@ -129,7 +129,7 @@ export function Header() {
                             to={`/services/${s.slug}`}
                             className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-bg-2 focus-visible:bg-bg-2"
                           >
-                            <span className={cn('mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-lg', s.accent)}>
+                            <span className={cn('mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-stone text-brand')}>
                               <s.icon className="size-4" aria-hidden />
                             </span>
                             <span>
@@ -157,12 +157,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link to="/contact" className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
-            Get a Consultation
+          <Link to="/contact" className="btn-primary hidden !px-4 !py-2 !text-[13.5px] md:inline-flex">
+            Get a consultation
           </Link>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-lg border border-line bg-surface text-text lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full text-text lg:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -183,7 +183,7 @@ export function Header() {
             transition={{ duration: 0.25 }}
             className="overflow-hidden border-t border-line bg-bg lg:hidden"
           >
-            <nav aria-label="Mobile" className="container-x max-h-[calc(100dvh-72px)] overflow-y-auto py-4">
+            <nav aria-label="Mobile" className="container-x max-h-[calc(100dvh-64px)] overflow-y-auto py-4">
               <ul className="flex flex-col gap-1">
                 {navLinks.map((item) =>
                   'children' in item && item.children ? (
@@ -231,7 +231,7 @@ export function Header() {
               </ul>
               <div className="mt-4 border-t border-line pt-4">
                 <Link to="/contact" className="btn-primary w-full">
-                  Get a Consultation
+                  Get a consultation
                 </Link>
               </div>
             </nav>

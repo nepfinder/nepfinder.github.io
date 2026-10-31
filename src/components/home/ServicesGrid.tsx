@@ -8,14 +8,13 @@ export function ServicesGrid() {
   return (
     <section id="services" className="section relative">
       <div className="container-x">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col items-center gap-6">
           <SectionHeading
-            eyebrow="Our Services"
             title="Software engineering and ERP services for every stage of growth"
             text="From the first requirement workshop to long-term support, we deliver software that fits the way your organisation works."
           />
           <Reveal>
-            <Button to="/services" variant="secondary" arrow>
+            <Button to="/services" variant="secondary">
               All services
             </Button>
           </Reveal>

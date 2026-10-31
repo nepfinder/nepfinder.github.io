@@ -15,12 +15,12 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
           </IconBadge>
           <ArrowUpRight className="size-5 text-muted transition-colors group-hover:text-brand" aria-hidden />
         </div>
-        <h3 className="mt-5 font-display text-lg font-bold text-text">{service.title}</h3>
+        <h3 className="mt-5 font-display text-xl font-semibold text-text">{service.title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{service.short}</p>
         {!compact && (
           <ul className="mt-5 flex flex-wrap gap-1.5">
             {service.capabilities.slice(0, 4).map((c) => (
-              <li key={c} className={cn('rounded-md border border-line bg-bg-2 px-2 py-1 text-[11px] text-text/75')}>
+              <li key={c} className={cn('rounded-lg bg-surface px-2 py-1 text-[11px] text-text/75')}>
                 {c}
               </li>
             ))}

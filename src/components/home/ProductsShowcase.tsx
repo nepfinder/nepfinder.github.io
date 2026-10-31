@@ -12,24 +12,24 @@ export function ProductsShowcase() {
   return (
     <section id="products" className="section relative">
       <div className="container-x">
-        <SectionHeading eyebrow="Our Products" title="Products built and maintained by Nepfinder" text="Alongside client projects, Nepfinder develops its own software products, led by nInsurance for the insurance sector." />
+        <SectionHeading title="Products built and maintained by Nepfinder" text="Alongside client projects, Nepfinder develops its own software products, led by nInsurance for the insurance sector." />
 
         <Reveal className="mt-12">
-          <div className="card card-border relative grid overflow-hidden rounded-3xl !p-0 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="card relative grid overflow-hidden !p-0 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-7 sm:p-10">
               <Pill className="border-accent/30 text-accent">{ninsurance.category}</Pill>
-              <h3 className="h-display mt-5 text-2xl sm:text-3xl">{ninsurance.headline}</h3>
+              <h3 className="h-display mt-5 text-3xl sm:text-4xl">{ninsurance.headline}</h3>
               <p className="mt-4 text-muted leading-relaxed">{ninsurance.summary}</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {ninsurance.features.slice(0, 6).map((f) => (
-                  <li key={f.title} className="rounded-xl border border-line bg-bg-2 p-3.5">
+                  <li key={f.title} className="rounded-2xl bg-surface p-3.5">
                     <p className="text-sm font-semibold text-text">{f.title}</p>
                     <p className="mt-1 text-xs leading-relaxed text-muted">{f.text}</p>
                   </li>
                 ))}
               </ul>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button to={`/products/${ninsurance.slug}`} arrow>
+                <Button to={`/products/${ninsurance.slug}`}>
                   Explore nInsurance
                 </Button>
                 <Button to={ninsurance.links[0].href} variant="secondary" external>
@@ -38,7 +38,6 @@ export function ProductsShowcase() {
               </div>
             </div>
             <div className="relative flex items-end justify-center bg-bg-2 px-8 pt-10 lg:pt-16">
-              <div className="absolute inset-0 grid-fade opacity-60" />
               <img
                 src={ninsurance.images[0].src}
                 alt={ninsurance.images[0].alt}
@@ -61,7 +60,7 @@ export function ProductsShowcase() {
                     <Pill>{p.category}</Pill>
                     <ArrowUpRight className="size-5 text-muted" aria-hidden />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-bold text-text">{p.name}</h3>
+                  <h3 className="mt-4 font-display text-xl font-semibold text-text">{p.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{p.summary}</p>
                   <span className="mt-auto pt-5 text-sm font-semibold text-accent">View product</span>
                 </Link>

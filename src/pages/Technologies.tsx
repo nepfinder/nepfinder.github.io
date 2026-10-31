@@ -13,7 +13,7 @@ export default function Technologies() {
   useSeo(seo)
   return (
     <>
-      <PageHero eyebrow="Technologies" title="Technologies we work with" text="We select proven platforms and tooling for each project, with ERPNext and the Frappe Framework at the core of our enterprise work." crumbs={[{ label: 'Technologies' }]} />
+      <PageHero title="Technologies we work with" text="We select proven platforms and tooling for each project, with ERPNext and the Frappe Framework at the core of our enterprise work." crumbs={[{ label: 'Technologies' }]} />
       <section className="section pt-0">
         <div className="container-x">
           <TechGrid detailed />

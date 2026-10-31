@@ -29,7 +29,6 @@ export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="About Us"
         title="Technology Solutions Built Around Your Business"
         text="At Nepfinder, we focus on understanding business challenges and delivering practical technology solutions. From custom software platforms and enterprise applications to ERP implementation and business process automation, our goal is to make technology work more effectively for organizations."
         crumbs={[{ label: 'About Us' }]}
@@ -64,7 +63,6 @@ export default function About() {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <span className="eyebrow mb-4">Our Approach</span>
             <h2 className="h-display text-3xl sm:text-4xl">How we work with clients</h2>
           </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -74,7 +72,7 @@ export default function About() {
                   <IconBadge>
                     <a.icon className="size-5" aria-hidden />
                   </IconBadge>
-                  <h3 className="mt-4 font-display text-base font-bold text-text">{a.title}</h3>
+                  <h3 className="mt-4 font-display text-lg font-semibold text-text">{a.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{a.text}</p>
                 </Card>
               </Reveal>
@@ -86,13 +84,12 @@ export default function About() {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <span className="eyebrow mb-4">Expertise</span>
             <h2 className="h-display text-3xl sm:text-4xl">What we do</h2>
           </Reveal>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="glass card-border flex items-center gap-3 rounded-xl p-4 transition-colors hover:bg-bg-2">
+                <Link to={`/services/${s.slug}`} className="card card-border !p-0 flex items-center gap-3 rounded-xl p-4 transition-colors hover:bg-bg-2">
                   <span className={`inline-flex size-9 items-center justify-center rounded-lg bg-brand/10 text-brand`}>
                     <s.icon className="size-4" aria-hidden />
                   </span>

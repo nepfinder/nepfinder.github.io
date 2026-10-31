@@ -39,7 +39,7 @@ function validate(v: Values) {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-line bg-bg-2 px-4 py-3 text-sm text-text placeholder:text-muted transition-colors focus:border-accent focus:bg-white focus:outline-none aria-[invalid=true]:border-red-500'
+  'w-full rounded-2xl bg-surface px-4 py-3 text-sm text-text placeholder:text-muted transition-colors focus:border-accent focus:bg-white focus:outline-none aria-[invalid=true]:border-red-500'
 
 export function ContactForm() {
   const id = useId()
@@ -137,7 +137,7 @@ export function ContactForm() {
 
   const field = (k: keyof Values, label: string, el: React.ReactNode, required = true) => (
     <div>
-      <label htmlFor={`${id}-${k}`} className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-text/75">
+      <label htmlFor={`${id}-${k}`} className="mb-1.5 block text-xs font-semibold tracking-wide text-text/75">
         {label} {required && <span className="text-accent" aria-hidden>*</span>}
       </label>
       {el}

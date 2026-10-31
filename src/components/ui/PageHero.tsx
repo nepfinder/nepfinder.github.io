@@ -8,11 +8,10 @@ interface Crumb {
   to?: string
 }
 
-export function PageHero({ eyebrow, title, text, crumbs, children }: { eyebrow?: string; title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode }) {
+export function PageHero({ title, text, crumbs, children }: { title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode }) {
   return (
-    <section className="relative overflow-hidden bg-bg-2 pt-[72px]">
+    <section className="relative overflow-hidden pt-16">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 grid-fade opacity-50" />
         
       </div>
       <div className="container-x pb-14 pt-14 sm:pb-20 sm:pt-20">
@@ -41,7 +40,7 @@ export function PageHero({ eyebrow, title, text, crumbs, children }: { eyebrow?:
             </ol>
           </nav>
         )}
-        <SectionHeading as="h1" eyebrow={eyebrow} title={title} text={text} />
+        <SectionHeading as="h1" title={title} text={text} align="left" />
         {children}
       </div>
     </section>

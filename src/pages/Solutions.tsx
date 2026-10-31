@@ -14,7 +14,7 @@ export default function Solutions() {
   useSeo(seo)
   return (
     <>
-      <PageHero eyebrow="Solutions" title="Industries and business solutions" text="How our software, ERPNext, and Frappe services apply across different kinds of organisations." crumbs={[{ label: 'Solutions' }]} />
+      <PageHero title="Industries and business solutions" text="How our software, ERPNext, and Frappe services apply across different kinds of organisations." crumbs={[{ label: 'Solutions' }]} />
       <div className="-mt-20">
         <Industries detailed />
       </div>

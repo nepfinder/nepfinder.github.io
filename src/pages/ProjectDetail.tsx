@@ -22,7 +22,7 @@ function ProjectView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero eyebrow={project.category} title={project.title} text={project.summary} crumbs={[{ label: 'Projects', to: '/projects' }, { label: project.title }]}>
+      <PageHero title={project.title} text={project.summary} crumbs={[{ label: 'Projects', to: '/projects' }, { label: project.title }]}>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {project.links.map((l, i) => (
             <Button key={l.href} to={l.href} variant={i === 0 ? 'primary' : 'secondary'}>
@@ -65,8 +65,7 @@ function ProjectView({ slug }: { slug: string }) {
           {project.image && (
             <Reveal delay={0.1}>
               <div className="glass relative overflow-hidden rounded-3xl bg-bg-2 p-8">
-                <div className="absolute inset-0 grid-fade opacity-60" />
-                <img src={project.image.src} alt={project.image.alt} width={1344} height={1920} decoding="async" className="relative mx-auto w-[60%] drop-shadow-[0_24px_40px_rgba(24,38,33,0.25)]" />
+                                <img src={project.image.src} alt={project.image.alt} width={1344} height={1920} decoding="async" className="relative mx-auto w-[60%] drop-shadow-[0_24px_40px_rgba(24,38,33,0.25)]" />
               </div>
             </Reveal>
           )}
