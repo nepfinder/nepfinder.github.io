@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import { AiHeroVisual } from '@/components/ai/AiHeroVisual'
 import { McpDiagram } from '@/components/ai/McpDiagram'
 import { AiRoadmap } from '@/components/ai/AiRoadmap'
+import { AiRecommender } from '@/components/ai/AiRecommender'
 import { CtaSection } from '@/components/home/CtaSection'
 import { useI18n } from '@/i18n'
 
@@ -202,6 +203,9 @@ export default function AiImplementation() {
           </Reveal>
         </div>
       </section>
+
+      {/* Recommendation */}
+      <AiRecommender />
 
       {/* FAQ */}
       <section className="section pt-0">
