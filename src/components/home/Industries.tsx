@@ -5,18 +5,21 @@ import { Card, IconBadge } from '@/components/ui/Card'
 import { useT } from '@/i18n'
 import { useLocalizedIndustries } from '@/i18n/useLocalized'
 
-export function Industries({ detailed = false }: { detailed?: boolean }) {
+/** `embedded` drops the section heading and top padding when the section sits directly under a page title. */
+export function Industries({ detailed = false, embedded = false }: { detailed?: boolean; embedded?: boolean }) {
   const t = useT()
   const list = useLocalizedIndustries(industries)
   return (
-    <section id="industries" className="section relative bg-bg">
+    <section id="industries" className={embedded ? 'section relative bg-bg pt-0' : 'section relative bg-bg'}>
       <div className="container-x">
+        {!embedded && (
         <SectionHeading
-          title={t('industries.title')}
-          text={t('industries.text')}
-          align="center"
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            title={t('industries.title')}
+            text={t('industries.text')}
+            align="center"
+          />
+        )}
+        <div className={embedded ? 'grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}>
           {list.map((ind, i) => (
             <Reveal key={ind.slug} delay={Math.min(i, 6) * 0.05} className="h-full">
               <Card className="h-full" id={ind.slug}>

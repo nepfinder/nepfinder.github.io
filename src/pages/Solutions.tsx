@@ -14,10 +14,12 @@ export default function Solutions() {
   useSeo(seo)
   return (
     <>
-      <PageHero title="Industries and business solutions" text="How our software, ERPNext, and Frappe services apply across different kinds of organisations." crumbs={[{ label: 'Solutions' }]} />
-      <div className="-mt-20">
-        <Industries detailed />
-      </div>
+      <PageHero
+        title="Solutions for your industry"
+        text="How our software, ERPNext, and Frappe services apply across different kinds of organisations. Insurance reflects our documented product experience; the other industries show how our services apply."
+        crumbs={[{ label: 'Solutions' }]}
+      />
+      <Industries detailed embedded />
       <ErpnextFrappe />
       <CtaSection />
     </>

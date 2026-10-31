@@ -14,9 +14,7 @@ export default function Products() {
   return (
     <>
       <PageHero title="Products developed by Nepfinder" text="Our own software products, built from real operational needs and maintained by our team." crumbs={[{ label: 'Products' }]} />
-      <div className="-mt-20">
-        <ProductsShowcase />
-      </div>
+      <ProductsShowcase embedded />
       <CtaSection />
     </>
   )

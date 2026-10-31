@@ -8,17 +8,18 @@ import { Card, Pill } from '@/components/ui/Card'
 import { useT } from '@/i18n'
 import { useLocalizedProducts } from '@/i18n/useLocalized'
 
-export function ProductsShowcase() {
+/** `embedded` drops the section heading and top padding when the section sits directly under a page title. */
+export function ProductsShowcase({ embedded = false }: { embedded?: boolean }) {
   const t = useT()
   const list = useLocalizedProducts(products)
   const ninsurance = list.find((p) => p.slug === 'ninsurance')!
   const others = list.filter((p) => p.slug !== 'ninsurance')
   return (
-    <section id="products" className="section relative">
+    <section id="products" className={embedded ? 'section relative pt-0' : 'section relative'}>
       <div className="container-x">
-        <SectionHeading title={t('products.title')} text={t('products.text')} />
+        {!embedded && <SectionHeading title={t('products.title')} text={t('products.text')} />}
 
-        <Reveal className="mt-12">
+        <Reveal className={embedded ? undefined : 'mt-12'}>
           <div className="card relative grid overflow-hidden !p-0 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-7 sm:p-10">
               <Pill className="border-accent/30 text-accent">{ninsurance.category}</Pill>
