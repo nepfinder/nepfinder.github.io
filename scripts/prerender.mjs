@@ -23,6 +23,8 @@ for (const route of staticRoutes) {
   const outDir = route.path === '/' ? dist : path.join(dist, route.path)
   await mkdir(outDir, { recursive: true })
   await writeFile(path.join(outDir, 'index.html'), page)
+  // GitHub Pages serves `/route` from `route.html` without redirecting; `/route/` uses the directory index.
+  if (route.path !== '/') await writeFile(path.join(dist, `${route.path}.html`), page)
   sitemapEntries.push(
     `  <url>\n    <loc>${SITE_URL}${route.path === '/' ? '/' : route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${route.priority.toFixed(1)}</priority>\n  </url>`,
   )

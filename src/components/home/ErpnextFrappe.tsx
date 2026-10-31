@@ -56,7 +56,7 @@ export function ErpnextFrappe() {
               </Button>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-6 text-xs leading-relaxed text-muted/80">{site.trademarkNotice}</p>
+              <p className="mt-6 text-xs leading-relaxed text-muted">{site.trademarkNotice}</p>
             </Reveal>
           </div>
           <Reveal delay={0.1}>

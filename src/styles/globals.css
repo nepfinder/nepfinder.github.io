@@ -12,7 +12,7 @@
   --color-stone: #eef1ed; /* Soft Stone */
   --color-warm: #f8f9f6; /* Warm White */
   --color-charcoal: #182621;
-  --color-slate: #64716b;
+  --color-slate: #5c6a64;
   --color-border: #dde5de;
 
   --color-bg: var(--color-warm);
@@ -71,7 +71,7 @@
   --color-surface-2: rgba(255, 255, 255, 0.08);
   --color-line: rgba(255, 255, 255, 0.12);
   --color-text: #ffffff;
-  --color-muted: #b7c7c0;
+  --color-muted: #c3d1cb;
   --color-accent: #5fb08f;
   color: var(--color-text);
 }

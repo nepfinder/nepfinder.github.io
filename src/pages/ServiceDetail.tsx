@@ -58,7 +58,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
           <Reveal className="prose-dark">
             <h2 className="h-display text-2xl sm:text-3xl">Overview</h2>
             <p className="mt-4 text-base sm:text-lg">{service.intro}</p>
-            {isErp && <p className="mt-4 text-sm text-muted/80">{site.trademarkNotice}</p>}
+            {isErp && <p className="mt-4 text-sm text-muted">{site.trademarkNotice}</p>}
             <h2 className="h-display mt-10 text-2xl sm:text-3xl">Typical use cases</h2>
             <ul className="mt-5 space-y-3">
               {service.useCases.map((u) => (
