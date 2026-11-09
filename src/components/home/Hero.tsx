@@ -47,14 +47,14 @@ export function Hero() {
       </div>
 
       <div data-hero-item className="container-x mt-10 sm:mt-14" style={{ opacity: reduce ? 1 : 0 }}>
-        <div className="relative mx-auto h-[320px] max-w-5xl overflow-hidden rounded-[var(--radius-tile)] bg-bg-2 sm:h-[440px] lg:h-[560px]">
+        <div className="relative mx-auto h-[320px] max-w-5xl overflow-hidden rounded-[var(--radius-tile)] bg-evergreen sm:h-[440px] lg:h-[560px]">
           <Scene
             scene="hero"
             className="absolute inset-0"
             camera={camera}
             fallback={<NetworkFallback labels={modules} />}
           />
-          <p className="pointer-events-none absolute bottom-3 left-4 hidden rounded-full bg-white/80 px-3 py-1 text-[11px] text-muted backdrop-blur sm:block">{t('hero.hint')}</p>
+          <p className="pointer-events-none absolute bottom-3 left-4 hidden rounded-full bg-[#1d1d1f]/85 px-3 py-1 text-[11px] text-[#f5f5f7] backdrop-blur sm:block">{t('hero.hint')}</p>
         </div>
       </div>
       <div className="h-16 sm:h-24" />
