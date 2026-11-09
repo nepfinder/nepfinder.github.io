@@ -140,10 +140,10 @@ export function useLocalizedAi() {
 /** Intro, glance, capabilities, use cases and steps of a service detail page in the active language. */
 export function useLocalizedServiceDetail(base: Service) {
   const { lang } = useI18n()
-  if (lang !== 'np') return { intro: base.intro, glance: base.glance, capabilities: base.capabilities, useCases: base.useCases, steps: base.steps }
+  if (lang !== 'np') return { intro: base.intro, glance: base.glance, capabilities: base.capabilities, useCases: base.useCases, steps: base.steps, growth: base.growth }
   const tr = serviceDetailNp[base.slug]
-  if (!tr) return { intro: base.intro, glance: base.glance, capabilities: base.capabilities, useCases: base.useCases, steps: base.steps }
-  return { intro: tr.intro, glance: tr.glance, capabilities: tr.capabilities, useCases: tr.useCases, steps: tr.steps.map((st, i) => ({ ...base.steps[i], ...st })) }
+  if (!tr) return { intro: base.intro, glance: base.glance, capabilities: base.capabilities, useCases: base.useCases, steps: base.steps, growth: base.growth }
+  return { intro: tr.intro, glance: tr.glance, capabilities: tr.capabilities, useCases: tr.useCases, steps: tr.steps.map((st, i) => ({ ...base.steps[i], ...st })), growth: tr.growth ?? base.growth }
 }
 
 /** Service FAQs in the active language. The English list is still used for structured data. */

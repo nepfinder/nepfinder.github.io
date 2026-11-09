@@ -6,7 +6,7 @@ import { useT } from '@/i18n'
  * Lightweight SVG infographics that explain each service visually.
  * Pure SVG with theme-aware colours; no runtime cost.
  */
-export type InfographicKind = 'modules' | 'stack' | 'hub' | 'flow' | 'devices' | 'blueprint'
+export type InfographicKind = 'modules' | 'stack' | 'hub' | 'flow' | 'devices' | 'blueprint' | 'iot'
 
 const blue = '#0071E3'
 const light = '#2997FF'
@@ -209,7 +209,54 @@ function Blueprint() {
   )
 }
 
-const map: Record<InfographicKind, () => React.JSX.Element> = { modules: Modules, stack: Stack, hub: Hub, flow: Flow, devices: Devices, blueprint: Blueprint }
+function Iot() {
+  const t = useT()
+  const nodes = [
+    { label: t('info.iot.sensors'), sub: t('info.iot.sensors.sub') },
+    { label: t('info.iot.gateway'), sub: t('info.iot.gateway.sub') },
+    { label: t('info.iot.cloud'), sub: t('info.iot.cloud.sub') },
+    { label: t('info.iot.erp'), sub: t('info.iot.erp.sub') },
+  ]
+  const ai = t('info.iot.ai')
+  return (
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.iot.aria')}>
+      <defs>
+        <marker id="iot-ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill={light} />
+        </marker>
+      </defs>
+      {nodes.map((n, i) => {
+        const x = 12 + i * 100
+        return (
+          <g key={n.label}>
+            <rect x={x} y={70} width={80} height={80} rx={14} fill={i === 1 ? blue : 'var(--color-surface)'} stroke="var(--color-line)" />
+            <text x={x + 40} y={104} textAnchor="middle" fontSize={11.5} fontWeight={600} fill={i === 1 ? '#fff' : 'var(--color-text)'}>
+              {n.label}
+            </text>
+            <text x={x + 40} y={122} textAnchor="middle" fontSize={9} fill={i === 1 ? 'rgba(255,255,255,0.8)' : 'var(--color-muted)'}>
+              {n.sub}
+            </text>
+            {i < nodes.length - 1 && <path d={`M${x + 82} 110 L${x + 98} 110`} stroke={light} strokeWidth={2} markerEnd="url(#iot-ar)" />}
+          </g>
+        )
+      })}
+      <path d="M52 150 L52 220 L128 220" fill="none" stroke={light} strokeWidth={2} strokeDasharray="4 5" markerEnd="url(#iot-ar)" />
+      <path d="M352 150 L352 220 L292 220" fill="none" stroke={light} strokeWidth={2} strokeDasharray="4 5" markerEnd="url(#iot-ar)" />
+      <rect x={130} y={200} width={160} height={40} rx={12} fill={blue} />
+      <text x={210} y={225} textAnchor="middle" fontSize={12} fontWeight={600} fill="#fff">
+        {ai}
+      </text>
+      <text x={210} y={40} textAnchor="middle" fontSize={12} fill="var(--color-muted)">
+        {t('info.iot.top')}
+      </text>
+      <text x={210} y={275} textAnchor="middle" fontSize={11} fill="var(--color-muted)">
+        {t('info.iot.foot')}
+      </text>
+    </svg>
+  )
+}
+
+const map: Record<InfographicKind, () => React.JSX.Element> = { modules: Modules, stack: Stack, hub: Hub, flow: Flow, devices: Devices, blueprint: Blueprint, iot: Iot }
 
 export function Infographic({ kind, className }: { kind: InfographicKind; className?: string }) {
   const Comp = map[kind]

@@ -421,4 +421,18 @@ export const np: Record<TKey, string> = {
   'search.pg.process': 'हाम्रो विकास प्रक्रिया',
   'search.pg.privacy': 'nCafe गोपनीयता नीति',
   'search.pg.delete': 'डेटा मेटाउने अनुरोध',
+  // IoT service
+  'info.iot.aria': 'जडान गरिएका उपकरणले गेटवे र क्लाउडमार्फत ERP मा रिडिङ पठाउँछन्, जहाँ AI ले डेटालाई निर्णयमा बदल्छ',
+  'info.iot.sensors': 'सेन्सर',
+  'info.iot.sensors.sub': 'रिडिङ',
+  'info.iot.gateway': 'गेटवे',
+  'info.iot.gateway.sub': 'जडान',
+  'info.iot.cloud': 'क्लाउड',
+  'info.iot.cloud.sub': 'सुरक्षित डेटा',
+  'info.iot.erp': 'ERP',
+  'info.iot.erp.sub': 'रेकर्ड र कार्यप्रवाह',
+  'info.iot.ai': 'AI विश्लेषण',
+  'info.iot.top': 'उपकरणदेखि निर्णयसम्म',
+  'info.iot.foot': 'सूचना र कारबाही उपकरणमा फर्कन्छन्',
+  'detail.growth': 'IoT र AI ले तपाईंको व्यवसाय कसरी बढाउँछ',
 }

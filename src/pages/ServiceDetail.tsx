@@ -157,6 +157,26 @@ function ServiceDetailView({ slug }: { slug: string }) {
         </section>
       )}
 
+      {detail.growth && (
+        <section className="section pt-0">
+          <div className="container-x">
+            <Reveal>
+              <h2 className="h-display text-2xl sm:text-3xl">{t('detail.growth')}</h2>
+            </Reveal>
+            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {detail.growth.map((g, i) => (
+                <Reveal key={g.title} as="li" delay={i * 0.05} className="h-full">
+                  <Card className="h-full">
+                    <h3 className="font-display text-xl font-semibold text-text">{g.title}</h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted">{g.text}</p>
+                  </Card>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
