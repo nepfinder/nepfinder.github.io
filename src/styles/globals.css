@@ -27,8 +27,8 @@
   --color-on-brand: #ffffff;
 
   /* Apple's own type: SF Pro on Apple devices via the system stack; Inter as the closest open fallback elsewhere. */
-  --font-sans: 'Mulish', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-display: 'Funnel Display', 'Mulish', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: Mulish, sans-serif;
+  --font-display: Mulish, sans-serif;
   --radius-tile: 1.75rem;
 
   --shadow-card: 0 1px 2px rgba(24, 38, 33, 0.04), 0 8px 24px -16px rgba(24, 38, 33, 0.12);
