@@ -432,6 +432,20 @@ export const en = {
   'search.pg.process': 'Our development process',
   'search.pg.privacy': 'nCafe Privacy Policy',
   'search.pg.delete': 'User data deletion request',
+  // IoT service
+  'info.iot.aria': 'Connected devices send readings through a gateway and cloud platform into the ERP, where AI turns the data into decisions',
+  'info.iot.sensors': 'Sensors',
+  'info.iot.sensors.sub': 'readings',
+  'info.iot.gateway': 'Gateway',
+  'info.iot.gateway.sub': 'connects',
+  'info.iot.cloud': 'Cloud',
+  'info.iot.cloud.sub': 'secure data',
+  'info.iot.erp': 'ERP',
+  'info.iot.erp.sub': 'records & workflows',
+  'info.iot.ai': 'AI analytics',
+  'info.iot.top': 'From device to decision',
+  'info.iot.foot': 'Alerts and actions flow back to the devices',
+  'detail.growth': 'How IoT and AI help your business grow',
 } as const
 
 export type TKey = keyof typeof en

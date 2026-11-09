@@ -9,6 +9,7 @@ import {
   Plug,
   Workflow,
   BrainCircuit,
+  Cpu,
 } from 'lucide-react'
 
 export interface ServiceStep {
@@ -33,6 +34,8 @@ export interface Service {
   infographic: InfographicKind
   /** Plain-language summary shown at the top of the service page. */
   glance: { what: string[]; who: string }
+  /** How the service helps the business grow; shown as its own section when present. */
+  growth?: { title: string; text: string }[]
   seo: { title: string; description: string }
 }
 
@@ -408,6 +411,61 @@ export const services: Service[] = [
       title: 'Business Process Automation Services in Nepal',
       description:
         'Automate approvals, notifications, reporting, and document workflows with Nepfinder business process automation services.',
+    },
+  },
+  {
+    slug: 'iot-products-enterprise',
+    navLabel: 'IoT Products',
+    title: 'IoT Products for Enterprise',
+    short: 'Connected devices and live dashboards that give enterprises real-time visibility of stock, assets, and operations.',
+    description:
+      'IoT products and integrations for enterprises: sensors and smart devices connected to your ERP and AI, so operations are measured, automated, and easier to scale.',
+    intro:
+      'Many enterprises learn about a machine fault, a stock shortage, or a cold-storage temperature problem only after it has cost money. Nepfinder designs IoT solutions that connect devices to your ERP, stream readings to live dashboards, raise alerts automatically, and feed the data into AI for forecasting and decision support. The business can see what is happening in its warehouses, factories, branches, and fleets as it happens, and act before small problems become losses.',
+    icon: Cpu,
+    accent: 'bg-brand/10 text-brand',
+    capabilities: [
+      'Device connectivity & gateways',
+      'Asset & inventory tracking',
+      'Real-time monitoring dashboards',
+      'Automated alerts & ERP workflows',
+      'Predictive maintenance with AI',
+      'ERP & cloud integration',
+      'Energy & environment monitoring',
+      'Device security & management',
+    ],
+    useCases: [
+      'Track stock levels and movement in warehouses and cold storage, with reorder suggestions raised in the ERP',
+      'Monitor machine condition and open a maintenance ticket before a breakdown stops production',
+      'See the status of branches, vehicles, or equipment across locations in one dashboard',
+      'Combine historical sensor data with AI to forecast demand, maintenance needs, and energy use',
+    ],
+    steps: [
+      { title: 'Use-case discovery', text: 'Choose the processes where sensor data would reduce losses or delays, and define what success looks like.' },
+      { title: 'Device & connectivity design', text: 'Select sensors and gateways, and plan connectivity, power, and security for each site.' },
+      { title: 'Platform & integration', text: 'Stream readings to a secure cloud platform and connect them to ERP dashboards, alerts, and AI models.' },
+      { title: 'Rollout & growth', text: 'Deploy site by site, train the team, and extend devices and analytics as the business grows.' },
+    ],
+    infographic: 'iot',
+    glance: {
+      what: [
+        'Real-time visibility of stock, assets, and operations',
+        'Alerts that start ERP workflows automatically',
+        'AI analytics that improve as your device data grows',
+      ],
+      who: 'Enterprises with warehouses, factories, branches, fleets, or cold chains that want fewer surprises and faster decisions',
+    },
+    growth: [
+      { title: 'See problems earlier', text: 'Sensor readings can flag temperature, load, or stock issues within minutes, not at month-end.' },
+      { title: 'Reduce downtime with predictive maintenance', text: 'AI can spot early warning patterns in machine data, so repairs happen on your schedule.' },
+      { title: 'Keep inventory accurate', text: 'Live stock data from shelves and bins can feed the ERP, reducing stock-outs and excess buying.' },
+      { title: 'Decide with data, not guesses', text: 'AI models trained on device history can support forecasting, capacity planning, and energy decisions.' },
+      { title: 'Add sites without adding overhead', text: 'One platform and standard devices extend to new branches and warehouses, with monitoring managed centrally.' },
+    ],
+    seo: {
+      title: 'IoT Products for Enterprise in Nepal | Nepfinder',
+      description:
+        'IoT solutions for enterprises in Nepal: connected devices, real-time dashboards, ERP integration, predictive maintenance, and AI analytics from Nepfinder.',
     },
   },
 ]

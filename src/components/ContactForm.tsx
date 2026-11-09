@@ -9,6 +9,7 @@ import type { TKey } from '@/i18n/en'
 
 const serviceOptions = [
   'Custom Software Development',
+  'IoT Products for Enterprise',
   'AI Implementation & MCP',
   'ERP Implementation',
   'ERP Support & Maintenance (monthly plan)',

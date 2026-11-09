@@ -9,6 +9,20 @@ export interface Faq {
 }
 
 export const serviceFaqs: Record<string, Faq[]> = {
+  'iot-products-enterprise': [
+    {
+      q: 'Which devices and sensors can Nepfinder connect?',
+      a: 'Nepfinder designs the device and gateway layer around your use case, such as stock and asset tags, temperature and humidity sensors, machine status and counters, energy meters, and vehicle or location trackers. The hardware choice depends on your site, power, and connectivity.',
+    },
+    {
+      q: 'Does IoT data go into our ERP?',
+      a: 'Yes. Readings can create ERP records, update stock, or start maintenance and reorder workflows through APIs, so people approve actions instead of checking dashboards by hand.',
+    },
+    {
+      q: 'How does AI fit with IoT?',
+      a: 'AI works on the history of device readings. Once enough data is collected, models can flag unusual patterns, forecast demand or maintenance needs, and support planning decisions. Models start simple and improve as the data grows.',
+    },
+  ],
   'erpnext-implementation': [
     {
       q: 'Is Nepfinder an official ERPNext or Frappe partner?',
