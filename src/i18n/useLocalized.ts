@@ -3,7 +3,8 @@ import type { Service } from '@/data/services'
 import type { Product } from '@/data/products'
 import type { Industry } from '@/data/industries'
 import { processSteps } from '@/data/process'
-import { aiNp, erpCapabilitiesNp, heroModulesNp, industriesNp, processNp, productsNp, restaurantBillingNp, serviceDetailNp, serviceFaqsNp, servicesNp } from './content.np'
+import { aiNp, erpCapabilitiesNp, heroModulesNp, industriesNp, productDetailNp, processNp, productsNp, projectsNp, restaurantBillingNp, serviceDetailNp, serviceFaqsNp, servicesNp } from './content.np'
+import type { Project } from '@/data/projects'
 import { serviceFaqs, type Faq } from '@/data/faqs'
 import { restaurantBilling } from '@/data/restaurantBilling'
 import { aiDepartments, aiFaqs, aiOfferings, aiRoadmap, mcpGuardrails } from '@/data/ai'
@@ -30,8 +31,48 @@ export function useLocalizedProducts(list: Product[]): Product[] {
   if (lang !== 'np') return list
   return list.map((p) => {
     const tr = productsNp[p.slug]
-    return tr ? { ...p, name: tr.name ?? p.name, headline: tr.headline, summary: tr.summary } : p
+    const dt = productDetailNp[p.slug]
+    return {
+      ...p,
+      name: tr?.name ?? p.name,
+      headline: tr?.headline ?? p.headline,
+      summary: tr?.summary ?? p.summary,
+      description: dt?.description ?? p.description,
+      features: dt?.features ? p.features.map((f, i) => ({ ...f, ...dt.features![i] })) : p.features,
+      technologies: dt?.technologies ?? p.technologies,
+      links: dt?.links ? p.links.map((l, i) => ({ ...l, label: dt.links![i] ?? l.label })) : p.links,
+      images: dt?.imageAlts ? p.images.map((im, i) => ({ ...im, alt: dt.imageAlts![i] ?? im.alt })) : p.images,
+    }
   })
+}
+
+/** Project case studies in the active language. */
+export function useLocalizedProjects(list: Project[]): Project[] {
+  const { lang } = useI18n()
+  if (lang !== 'np') return list
+  return list.map((p) => localizeProject(p))
+}
+
+export function useLocalizedProject(p: Project): Project {
+  const { lang } = useI18n()
+  return lang === 'np' ? localizeProject(p) : p
+}
+
+function localizeProject(p: Project): Project {
+  const tr = projectsNp[p.slug]
+  if (!tr) return p
+  return {
+    ...p,
+    title: tr.title,
+    category: tr.category,
+    summary: tr.summary,
+    challenge: tr.challenge,
+    solution: tr.solution,
+    outcomes: tr.outcomes,
+    technologies: tr.technologies,
+    links: p.links.map((l, i) => ({ ...l, label: tr.links[i] ?? l.label })),
+    image: p.image && tr.imageAlt ? { ...p.image, alt: tr.imageAlt } : p.image,
+  }
 }
 
 export function useLocalizedIndustries(list: Industry[]): Industry[] {

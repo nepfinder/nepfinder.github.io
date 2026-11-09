@@ -276,6 +276,22 @@ export const en = {
   'rb.demo.btn': 'Request a demo',
   'rb.enlarge': 'Enlarge:',
   'rb.close': 'Close',
+  // Product and project pages
+  'product.about': 'About {name}',
+  'product.does': 'What {name} does',
+  'product.ask': 'Ask about {name}',
+  'project.outcomes': 'Outcomes',
+  // Illustration labels
+  'svg.team': 'Your dedicated ERP team',
+  'svg.functional': 'Functional',
+  'svg.technical': 'Technical',
+  'svg.experts': 'Technical + functional experts, every month',
+  'svg.fixed': 'One fixed price',
+  'svg.permonth': '/ month',
+  'svg.sized': 'Sized to your users and modules',
+  'svg.nohourly': 'No hourly surprises',
+  'svg.hours': 'Office hours',
+  'svg.workdays': 'working days',
 } as const
 
 export type TKey = keyof typeof en

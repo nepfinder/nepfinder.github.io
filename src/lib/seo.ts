@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { site } from '@/data/site'
 import { useI18n } from '@/i18n'
-import { seoNp } from '@/i18n/content.np'
+import { seoDetailNp, seoNp } from '@/i18n/content.np'
 
 export interface SeoProps {
   title: string
@@ -132,7 +132,7 @@ export function useSeo(input: SeoProps) {
   const { lang } = useI18n()
   // Nepali titles and descriptions apply on the client only; the prerendered HTML stays English.
   const p = useMemo<SeoProps>(() => {
-    const tr = lang === 'np' ? seoNp[input.path] : undefined
+    const tr = lang === 'np' ? (seoNp[input.path] ?? seoDetailNp[input.path]) : undefined
     return tr ? { ...input, title: tr.title, description: tr.description } : input
   }, [input, lang])
   if (import.meta.env.SSR) {

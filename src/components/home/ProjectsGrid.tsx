@@ -1,15 +1,17 @@
 import { Link } from 'react-router'
 import { ArrowUpRight, FolderKanban } from 'lucide-react'
 import { projects } from '@/data/projects'
+import { useLocalizedProjects } from '@/i18n/useLocalized'
 import { Reveal } from '@/components/ui/Reveal'
 import { Pill } from '@/components/ui/Card'
 import { useT } from '@/i18n'
 
 export function ProjectsGrid() {
   const t = useT()
+  const items = useLocalizedProjects(projects)
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((p, i) => (
+      {items.map((p, i) => (
         <Reveal key={p.slug} delay={i * 0.06} className="h-full">
           <Link to={`/projects/${p.slug}`} className="card card-border group flex h-full flex-col overflow-hidden !p-0">
             <div className="relative aspect-[16/10] overflow-hidden bg-[#e8e8ed]">

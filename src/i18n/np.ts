@@ -265,4 +265,20 @@ export const np: Record<TKey, string> = {
   'rb.demo.btn': 'डेमो माग्नुहोस्',
   'rb.enlarge': 'ठूलो हेर्नुहोस्:',
   'rb.close': 'बन्द गर्नुहोस्',
+  // Product and project pages
+  'product.about': '{name} बारे',
+  'product.does': '{name} ले के गर्छ',
+  'product.ask': '{name} बारे सोध्नुहोस्',
+  'project.outcomes': 'नतिजाहरू',
+  // Illustration labels
+  'svg.team': 'समर्पित ERP टोली',
+  'svg.functional': 'कार्यात्मक',
+  'svg.technical': 'प्राविधिक',
+  'svg.experts': 'प्राविधिक र कार्यात्मक विज्ञ, हरेक महिना',
+  'svg.fixed': 'एउटै निश्चित मूल्य',
+  'svg.permonth': '/ महिना',
+  'svg.sized': 'प्रयोगकर्ता अनुसार मिलाइएको',
+  'svg.nohourly': 'घण्टाका हिसाबले बिल छैन',
+  'svg.hours': 'कार्यालय समय',
+  'svg.workdays': 'कार्यदिन',
 }
