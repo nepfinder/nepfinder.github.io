@@ -1,5 +1,6 @@
 import { useParams } from 'react-router'
 import { CheckCircle2, ExternalLink } from 'lucide-react'
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { getProject } from '@/data/projects'
 import { PageHero } from '@/components/ui/PageHero'
@@ -17,6 +18,7 @@ export default function ProjectDetail() {
 }
 
 function ProjectView({ slug }: { slug: string }) {
+  const t = useT()
   const project = getProject(slug)!
   useSeo({ title: project.title, description: project.summary, path: `/projects/${project.slug}`, image: project.image?.src.replace('.webp', '.png'), type: 'article' })
 
@@ -36,11 +38,11 @@ function ProjectView({ slug }: { slug: string }) {
         <div className="container-x grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-10">
             <Reveal className="prose-dark">
-              <h2 className="h-display text-2xl">The challenge</h2>
+              <h2 className="h-display text-2xl">{t('project.challenge')}</h2>
               <p className="mt-3">{project.challenge}</p>
             </Reveal>
             <Reveal className="prose-dark">
-              <h2 className="h-display text-2xl">The solution</h2>
+              <h2 className="h-display text-2xl">{t('project.solution')}</h2>
               <p className="mt-3">{project.solution}</p>
             </Reveal>
             <Reveal>
@@ -54,7 +56,7 @@ function ProjectView({ slug }: { slug: string }) {
               </ul>
             </Reveal>
             <Reveal>
-              <h2 className="h-display text-2xl">Technologies</h2>
+              <h2 className="h-display text-2xl">{t('project.tech')}</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.technologies.map((t) => (
                   <Pill key={t}>{t}</Pill>

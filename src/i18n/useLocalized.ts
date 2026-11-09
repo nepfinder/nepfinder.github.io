@@ -3,7 +3,8 @@ import type { Service } from '@/data/services'
 import type { Product } from '@/data/products'
 import type { Industry } from '@/data/industries'
 import { processSteps } from '@/data/process'
-import { heroModulesNp, industriesNp, processNp, productsNp, servicesNp } from './content.np'
+import { aiNp, heroModulesNp, industriesNp, processNp, productsNp, servicesNp } from './content.np'
+import { aiDepartments, aiFaqs, aiOfferings, aiRoadmap, mcpGuardrails } from '@/data/ai'
 
 /** Returns a service with title/short/description swapped to Nepali when that language is active. */
 export function useLocalizedService(service: Service): Service {
@@ -49,4 +50,17 @@ export function useLocalizedProcess() {
 export function useHeroModules(en: string[]) {
   const { lang } = useI18n()
   return lang === 'np' ? heroModulesNp : en
+}
+
+/** AI page data (offerings, departments, guardrails, roadmap, FAQs) in the active language. Icons always come from the English data. */
+export function useLocalizedAi() {
+  const { lang } = useI18n()
+  if (lang !== 'np') return { offerings: aiOfferings, departments: aiDepartments, guardrails: mcpGuardrails, roadmap: aiRoadmap, faqs: aiFaqs }
+  return {
+    offerings: aiOfferings.map((o, i) => ({ ...o, ...aiNp.offerings[i] })),
+    departments: aiDepartments.map((d, i) => ({ ...d, ...aiNp.departments[i] })),
+    guardrails: mcpGuardrails.map((g, i) => ({ ...g, ...aiNp.guardrails[i] })),
+    roadmap: aiRoadmap.map((r, i) => ({ ...r, ...aiNp.roadmap[i] })),
+    faqs: aiFaqs.map((f, i) => ({ ...f, ...aiNp.faqs[i] })),
+  }
 }

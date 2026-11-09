@@ -42,9 +42,9 @@ export function Hero() {
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[var(--radius-tile)] bg-bg-2">
           <img
             src="/images/hero/ai-office.webp"
-            alt="Isometric view of an AI-enabled office: Accounting, Finance, Sales, Inventory, Procurement, Operations, CRM and HR workstations connected to a central ERP server"
+            alt={t('hero.img.alt')}
             width={1600}
-            height={877}
+            height={781}
             fetchPriority="high"
             decoding="async"
             className="block h-auto w-full"

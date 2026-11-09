@@ -1,3 +1,4 @@
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { ProductsShowcase } from '@/components/home/ProductsShowcase'
@@ -10,10 +11,11 @@ const seo = {
 }
 
 export default function Products() {
+  const t = useT()
   useSeo(seo)
   return (
     <>
-      <PageHero title="Products developed by Nepfinder" text="Our own software products, built from real operational needs and maintained by our team." crumbs={[{ label: 'Products' }]} />
+      <PageHero title={t('products.hero.title')} text={t('products.hero.text')} crumbs={[{ label: t('nav.products') }]} />
       <ProductsShowcase embedded />
       <CtaSection />
     </>

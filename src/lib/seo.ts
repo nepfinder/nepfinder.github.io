@@ -1,5 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { site } from '@/data/site'
+import { useI18n } from '@/i18n'
+import { seoNp } from '@/i18n/content.np'
 
 export interface SeoProps {
   title: string
@@ -126,9 +128,15 @@ export const organizationJsonLd = {
  * Sets document metadata. On the server it records tags for the prerender step;
  * on the client it updates <head> after navigation.
  */
-export function useSeo(p: SeoProps) {
+export function useSeo(input: SeoProps) {
+  const { lang } = useI18n()
+  // Nepali titles and descriptions apply on the client only; the prerendered HTML stays English.
+  const p = useMemo<SeoProps>(() => {
+    const tr = lang === 'np' ? seoNp[input.path] : undefined
+    return tr ? { ...input, title: tr.title, description: tr.description } : input
+  }, [input, lang])
   if (import.meta.env.SSR) {
-    headCollector.html = buildHead(p).html
+    headCollector.html = buildHead(input).html
   }
   useEffect(() => {
     const { fullTitle, url, image } = buildHead(p)
