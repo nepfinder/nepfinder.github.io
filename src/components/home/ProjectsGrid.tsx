@@ -28,7 +28,7 @@ export function ProjectsGrid() {
             <div className="flex flex-1 flex-col p-6">
               <Pill className="self-start">{p.category}</Pill>
               <h3 className="mt-4 font-display text-xl font-semibold text-text">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{p.summary}</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.summary}</p>
               <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-accent">
                 {t('projects.view')} <ArrowUpRight className="size-4" aria-hidden />
               </span>

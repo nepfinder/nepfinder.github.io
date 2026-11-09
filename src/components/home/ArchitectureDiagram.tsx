@@ -96,9 +96,9 @@ export function ArchitectureDiagram() {
       <div className="mt-4 rounded-2xl bg-white/[0.06] p-5" aria-live="polite">
         <div className="flex items-center gap-2">
           <span className="size-2.5 rounded-full" style={{ background: current.color }} aria-hidden />
-          <h3 className="font-display text-lg font-semibold text-text">{current.label}</h3>
+          <h3 className="font-display text-xl font-semibold text-text">{current.label}</h3>
         </div>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{current.text}</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-muted">{current.text}</p>
         <div className="mt-3 flex gap-1.5" aria-hidden>
           {nodes.map((n, i) => (
             <button key={n.id} type="button" tabIndex={-1} aria-label={`Show ${n.label}`} onClick={() => setActive(i)} className={cn('h-1.5 rounded-full transition-all', i === active ? 'w-8 bg-accent' : 'w-3 bg-line')} />

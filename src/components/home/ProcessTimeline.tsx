@@ -61,7 +61,7 @@ export function ProcessTimeline() {
                     <div className="card card-border inline-block w-full text-left md:max-w-md">
                       <span className="font-display text-xs font-semibold text-accent">{t('process.step')} {s.step}</span>
                       <h3 className="mt-2 font-display text-xl font-semibold text-text">{s.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
+                      <p className="mt-2 text-[15px] leading-relaxed text-muted">{s.text}</p>
                     </div>
                   </Reveal>
                 </li>

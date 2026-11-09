@@ -36,7 +36,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Mail className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-lg font-semibold text-text">{t('contact.email')}</h2>
+                <h2 className="mt-4 font-display text-xl font-semibold text-text">{t('contact.email')}</h2>
                 <a href={`mailto:${site.email}`} className="mt-1 block text-sm text-accent hover:underline">
                   {site.email}
                 </a>
@@ -46,7 +46,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <MapPin className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-lg font-semibold text-text">{t('contact.location')}</h2>
+                <h2 className="mt-4 font-display text-xl font-semibold text-text">{t('contact.location')}</h2>
                 <p className="mt-1 text-sm text-text/80">{t('footer.location')}</p>
                 <p className="mt-2 text-xs text-muted">{t('contact.location.note')}</p>
               </div>
@@ -54,7 +54,7 @@ export default function Contact() {
                 <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   <Clock className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-4 font-display text-lg font-semibold text-text">{t('contact.next')}</h2>
+                <h2 className="mt-4 font-display text-xl font-semibold text-text">{t('contact.next')}</h2>
                 <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm text-muted">
                   <li>{t('contact.next1')}</li>
                   <li>{t('contact.next2')}</li>

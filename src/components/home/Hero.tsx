@@ -29,7 +29,7 @@ export function Hero() {
   return (
     <section ref={root} className="theme-dark relative isolate overflow-hidden bg-evergreen pt-11">
       <div className="container-x flex flex-col items-center pt-16 text-center sm:pt-24">
-        <h1 data-hero-item className="h-display max-w-4xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]" style={{ opacity: reduce ? 1 : 0 }}>
+        <h1 data-hero-item className="h-display max-w-4xl text-4xl leading-[1.1] sm:text-5xl lg:text-[2.75rem]" style={{ opacity: reduce ? 1 : 0 }}>
           {t('hero.title.a')} <span className="text-highlight">{t('hero.title.b')}</span>
         </h1>
         <p data-hero-item className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={{ opacity: reduce ? 1 : 0 }}>

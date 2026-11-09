@@ -47,7 +47,7 @@ export function RestaurantBillingSections() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">One system, three ways to use it</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">One system, three ways to use it</h2>
             <p className="mt-4 text-base text-muted sm:text-lg">
               Bill at the counter, follow the business from your phone, and let guests pay by scanning the bill.
             </p>
@@ -90,7 +90,7 @@ export function RestaurantBillingSections() {
       <section className="section">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">Everything the counter needs</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">Everything the counter needs</h2>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {rb.groups.map((g, i) => {
@@ -123,7 +123,7 @@ export function RestaurantBillingSections() {
           <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
             <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <Reveal>
-                <h2 className="h-display text-3xl sm:text-4xl">{rb.online.title}</h2>
+                <h2 className="h-display text-3xl sm:text-[2.5rem]">{rb.online.title}</h2>
                 <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{rb.online.text}</p>
                 <ul className="mt-6 space-y-2.5">
                   {rb.online.items.map((it) => (
@@ -192,7 +192,7 @@ export function RestaurantBillingSections() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">Trusted by restaurants and cafés</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">Trusted by restaurants and cafés</h2>
             <p className="mt-4 text-base text-muted sm:text-lg">Some of the businesses that have used Nepfinder billing.</p>
           </Reveal>
           <ul className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2.5">

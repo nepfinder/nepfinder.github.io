@@ -15,7 +15,7 @@ export function AboutPreview() {
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal>
-            <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">{t('about.title')}</h2>
+            <h2 className="h-display text-3xl leading-[1.1] sm:text-[2.5rem]">{t('about.title')}</h2>
             <p className="mt-5 text-muted leading-relaxed sm:text-lg">
               {t('about.text1')}
             </p>

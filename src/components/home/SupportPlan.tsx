@@ -21,7 +21,7 @@ export function SupportPlan() {
       <div className="container-x">
         <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl lg:text-[2.5rem]">{t('support.title')}</h2>
+          <h2 className="h-display text-3xl leading-[1.1] sm:text-[2.5rem]">{t('support.title')}</h2>
           <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
             {t('support.text')}
           </p>

@@ -14,8 +14,8 @@ export function AiRoadmap() {
                 <span className="block h-full rounded-full bg-brand" style={{ width: `${(i + 1) * 20}%` }} />
               </span>
             </div>
-            <h3 className="mt-4 font-display text-lg font-semibold text-text">{s.title}</h3>
-            <p className="mt-1.5 text-[14px] leading-relaxed text-muted">{s.text}</p>
+            <h3 className="mt-4 font-display text-xl font-semibold text-text">{s.title}</h3>
+            <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{s.text}</p>
           </div>
         </Reveal>
       ))}

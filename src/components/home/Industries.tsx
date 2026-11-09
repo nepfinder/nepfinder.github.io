@@ -30,7 +30,7 @@ export function Industries({ detailed = false, embedded = false }: { detailed?: 
                   {ind.verified && <span className="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-accent">{t('industries.badge')}</span>}
                 </div>
                 <h3 className="mt-4 font-display text-xl font-semibold text-text">{ind.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{ind.text}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{ind.text}</p>
                 {detailed && (
                   <ul className="mt-4 space-y-1.5">
                     {ind.solutions.map((s) => (

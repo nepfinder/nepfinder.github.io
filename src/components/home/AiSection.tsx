@@ -16,7 +16,7 @@ export function AiSection() {
       <div className="container-x">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="text-base font-semibold text-accent">{t('ai.kicker')}</p>
-          <h2 className="h-display mt-2 text-3xl leading-[1.1] sm:text-4xl lg:text-[2.5rem]">{t('ai.title')}</h2>
+          <h2 className="h-display mt-2 text-3xl leading-[1.1] sm:text-[2.5rem]">{t('ai.title')}</h2>
           <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">{t('ai.text')}</p>
         </Reveal>
         <Reveal className="mx-auto mt-12 max-w-4xl rounded-[var(--radius-tile)] bg-surface p-4 sm:p-8" delay={0.05}>

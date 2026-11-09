@@ -18,7 +18,7 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
           <ArrowUpRight className="size-5 text-muted transition-colors group-hover:text-brand" aria-hidden />
         </div>
         <h3 className="mt-5 font-display text-xl font-semibold text-text">{service.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{service.short}</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-muted">{service.short}</p>
         {!compact && (
           <ul className="mt-5 flex flex-wrap gap-1.5">
             {service.capabilities.slice(0, 4).map((c) => (

@@ -29,7 +29,7 @@ export function ErpnextFrappe() {
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Reveal>
-              <h2 className="h-display text-3xl leading-[1.1] sm:text-4xl">{t('erp.title')}</h2>
+              <h2 className="h-display text-3xl leading-[1.1] sm:text-[2.5rem]">{t('erp.title')}</h2>
               <p className="mt-5 text-muted leading-relaxed sm:text-lg">
                 {t('erp.text')}
               </p>

@@ -135,8 +135,8 @@ function ProductView({ slug }: { slug: string }) {
             {product.features.map((f, i) => (
               <Reveal as="li" key={f.title} delay={Math.min(i, 6) * 0.05} className="h-full">
                 <Card className="h-full">
-                  <h3 className="font-display text-lg font-semibold text-text">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
+                  <h3 className="font-display text-xl font-semibold text-text">{f.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{f.text}</p>
                 </Card>
               </Reveal>
             ))}

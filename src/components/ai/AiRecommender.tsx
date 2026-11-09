@@ -166,8 +166,8 @@ export function AiRecommender() {
                 {recs.map((r) => (
                   <li key={r.to}>
                     <Link to={r.to} className="group flex h-full flex-col rounded-[var(--radius-tile)] bg-bg-2 p-5 transition-colors hover:bg-brand/5">
-                      <span className="font-display text-lg font-semibold text-text">{r.title}</span>
-                      <span className="mt-2 text-[14px] leading-relaxed text-muted">{r.why}</span>
+                      <span className="font-display text-xl font-semibold text-text">{r.title}</span>
+                      <span className="mt-2 text-[15px] leading-relaxed text-muted">{r.why}</span>
                       <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-semibold text-accent">
                         Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
                       </span>

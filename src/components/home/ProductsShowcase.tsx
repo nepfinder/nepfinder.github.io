@@ -67,7 +67,7 @@ export function ProductsShowcase({ embedded = false }: { embedded?: boolean }) {
                     <ArrowUpRight className="size-5 text-muted" aria-hidden />
                   </div>
                   <h3 className="mt-4 font-display text-xl font-semibold text-text">{p.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.summary}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.summary}</p>
                   <span className="mt-auto pt-5 text-sm font-semibold text-accent">{t('products.view')}</span>
                 </Link>
               </Card>

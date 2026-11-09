@@ -73,7 +73,7 @@ export default function AiImplementation() {
       <section className="section pt-8">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">What we implement</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">What we implement</h2>
             <p className="mt-4 text-base text-muted sm:text-lg">Six ways AI can start saving time in your enterprise software, from answering questions to running whole workflows.</p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -97,7 +97,7 @@ export default function AiImplementation() {
         <div className="container-x">
           <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
             <Reveal className="max-w-3xl">
-              <h2 className="h-display text-3xl sm:text-4xl">MCP implementation: connect AI to your systems, safely</h2>
+              <h2 className="h-display text-3xl sm:text-[2.5rem]">MCP implementation: connect AI to your systems, safely</h2>
               <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
                 The Model Context Protocol (MCP) is an open standard for connecting AI assistants to business systems. Instead of giving AI open access
                 to your database, an MCP server offers a set of specific tools, such as finding an invoice or drafting a purchase order, and checks
@@ -116,8 +116,8 @@ export default function AiImplementation() {
                     <span className="icon-tile">
                       <g.icon className="size-5" aria-hidden />
                     </span>
-                    <h3 className="mt-4 font-display text-lg font-semibold text-text">{g.title}</h3>
-                    <p className="mt-1.5 text-[14px] leading-relaxed text-muted">{g.text}</p>
+                    <h3 className="mt-4 font-display text-xl font-semibold text-text">{g.title}</h3>
+                    <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{g.text}</p>
                   </div>
                 </Reveal>
               ))}
@@ -130,7 +130,7 @@ export default function AiImplementation() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">Overall company automation</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">Overall company automation</h2>
             <p className="mt-4 text-base text-muted sm:text-lg">Examples of what AI can take off each department’s plate once it is connected to your ERP and documents.</p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -161,7 +161,7 @@ export default function AiImplementation() {
       <section className="section bg-bg-2 pt-0">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-4xl">From first pilot to company-wide AI</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">From first pilot to company-wide AI</h2>
             <p className="mt-4 text-base text-muted sm:text-lg">We roll AI out in stages, so each step proves its value before the next one starts.</p>
           </Reveal>
           <div className="mt-12">
@@ -174,7 +174,7 @@ export default function AiImplementation() {
       <section className="section">
         <div className="container-x grid items-center gap-10 lg:grid-cols-2">
           <Reveal>
-            <h2 className="h-display text-3xl sm:text-4xl">AI for ERPNext and Frappe</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">AI for ERPNext and Frappe</h2>
             <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
               ERPNext and the Frappe Framework expose REST APIs and role-based permissions, which makes them a strong base for AI. We build MCP servers
               and Frappe apps that let assistants work with your DocTypes, reports, and workflows, while respecting the permissions your users already have.

@@ -26,7 +26,7 @@ export function Footer() {
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <p className="font-display text-xl font-semibold text-text">Nepfinder</p>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
             {t('footer.tagline')}
           </p>
           <div className="mt-6 flex items-center gap-3">

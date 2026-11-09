@@ -43,7 +43,7 @@ export default function DataDeletion() {
                 </li>
               ))}
             </ol>
-            <div className="mt-4 rounded-2xl bg-bg-2 p-5 text-sm leading-relaxed text-muted">
+            <div className="mt-4 rounded-2xl bg-bg-2 p-5 text-[15px] leading-relaxed text-muted">
               <p>
                 Prefer email? Write to{' '}
                 <a href={`mailto:${site.email}?subject=${encodeURIComponent('User data deletion request')}`} className="text-brand hover:underline">

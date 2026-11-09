@@ -9,7 +9,7 @@ export function CtaSection() {
       <div className="container-x">
         <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-20 text-center sm:px-12 sm:py-28">
           <Reveal className="mx-auto max-w-2xl">
-            <h2 className="h-display text-3xl sm:text-4xl lg:text-[2.5rem]">{t('cta.title')}</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('cta.title')}</h2>
             <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
               {t('cta.text')}
             </p>

@@ -134,7 +134,7 @@ export function ContactForm() {
           <CheckCircle2 className="size-7" aria-hidden />
         </span>
         <h3 className="h-display mt-5 text-2xl">{t('form.thanks')}</h3>
-        <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+        <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-muted">
           {status.via === 'endpoint' ? t('form.sent.endpoint') : t('form.sent.mail', { email: site.email })}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">

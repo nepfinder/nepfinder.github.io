@@ -165,8 +165,8 @@ function ServiceDetailView({ slug }: { slug: string }) {
               <Reveal key={st.title} as="li" delay={i * 0.06} className="h-full">
                 <Card className="h-full">
                   <span className="font-display text-xs font-bold tracking-widest text-accent">0{i + 1}</span>
-                  <h3 className="mt-2 font-display text-lg font-semibold text-text">{st.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{st.text}</p>
+                  <h3 className="mt-2 font-display text-xl font-semibold text-text">{st.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{st.text}</p>
                 </Card>
               </Reveal>
             ))}
@@ -186,7 +186,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
                   <summary className="cursor-pointer list-none font-display text-base font-semibold text-text sm:text-lg">
                     <h3 className="inline">{f.q}</h3>
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">{f.a}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted sm:text-base">{f.a}</p>
                 </details>
               ))}
             </div>

@@ -224,7 +224,7 @@ export function Header() {
                     aria-controls={`flyout-${item.key}`}
                     onClick={() => (openKey === item.key ? setOpenKey(null) : openFlyout(item.key))}
                     className={cn(
-                      'px-3 py-2 text-[12px] font-normal tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                      'px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
                       (openKey === item.key || location.pathname.startsWith(item.to)) && 'text-[#f5f5f7]',
                     )}
                   >
@@ -236,7 +236,7 @@ export function Header() {
                     end={item.to === '/'}
                     className={({ isActive }) =>
                       cn(
-                        'flex items-center gap-1 px-3 py-2 text-[12px] font-normal tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                        'flex items-center gap-1 px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
                         isActive && 'text-[#f5f5f7]',
                       )
                     }
@@ -303,7 +303,7 @@ export function Header() {
               <div className="mx-auto grid max-w-[1024px] grid-cols-[1.4fr_1fr_1fr] gap-10 px-5 pb-16 pt-10 sm:px-6">
                 {active.columns.map((col) => (
                   <div key={col.heading}>
-                    <p className="text-[12px] text-[#86868b]">{t(col.heading)}</p>
+                    <p className="text-[14px] text-[#86868b]">{t(col.heading)}</p>
                     <ul className={cn('mt-4', col.size === 'large' ? 'space-y-2' : 'space-y-2.5')}>
                       {col.links.map((l) => (
                         <li key={l.to + (l.key ?? l.label)}>
@@ -311,7 +311,7 @@ export function Header() {
                             to={l.to}
                             className={cn(
                               'block text-[#f5f5f7] transition-colors hover:text-[#2997ff]',
-                              col.size === 'large' ? 'font-display text-2xl font-semibold tracking-[-0.01em]' : 'text-[12px] font-medium',
+                              col.size === 'large' ? 'font-display text-2xl font-semibold tracking-[-0.01em]' : 'text-[14px] font-medium',
                             )}
                           >
                             {label(l)}
@@ -364,7 +364,7 @@ export function Header() {
                           <div className="space-y-6 pb-6">
                             {item.columns.map((col) => (
                               <div key={col.heading}>
-                                <p className="text-[12px] text-[#86868b]">{t(col.heading)}</p>
+                                <p className="text-[14px] text-[#86868b]">{t(col.heading)}</p>
                                 <ul className="mt-2 space-y-2">
                                   {col.links.map((l) => (
                                     <li key={l.to + (l.key ?? l.label)}>
