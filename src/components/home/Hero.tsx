@@ -1,13 +1,21 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { Button } from '@/components/ui/Button'
-import { usePrefersReducedMotion } from '@/hooks/useMediaFlags'
+import { Scene } from '@/components/three/Scene'
+import { NetworkFallback } from '@/components/three/StaticFallback'
+import { heroModules } from '@/data/office'
+import { useIsMobile, usePrefersReducedMotion } from '@/hooks/useMediaFlags'
 import { useT } from '@/i18n'
+import { useHeroModules } from '@/i18n/useLocalized'
 
 export function Hero() {
   const root = useRef<HTMLDivElement>(null)
   const reduce = usePrefersReducedMotion()
+  const isMobile = useIsMobile()
+  // Pull the camera back so the whole office fits the frame; phones have a narrower frame, so they sit further back.
+  const camera = isMobile ? { position: [0, 13, 20] as [number, number, number], fov: 40 } : { position: [0, 10, 16] as [number, number, number], fov: 36 }
   const t = useT()
+  const modules = useHeroModules(heroModules)
 
   useEffect(() => {
     if (reduce || !root.current) return
@@ -39,16 +47,14 @@ export function Hero() {
       </div>
 
       <div data-hero-item className="container-x mt-10 sm:mt-14" style={{ opacity: reduce ? 1 : 0 }}>
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-[var(--radius-tile)] bg-bg-2">
-          <img
-            src="/images/hero/ai-office.webp"
-            alt={t('hero.img.alt')}
-            width={1600}
-            height={781}
-            fetchPriority="high"
-            decoding="async"
-            className="block h-auto w-full"
+        <div className="relative mx-auto h-[320px] max-w-5xl overflow-hidden rounded-[var(--radius-tile)] bg-bg-2 sm:h-[440px] lg:h-[560px]">
+          <Scene
+            scene="hero"
+            className="absolute inset-0"
+            camera={camera}
+            fallback={<NetworkFallback labels={modules} />}
           />
+          <p className="pointer-events-none absolute bottom-3 left-4 hidden rounded-full bg-white/80 px-3 py-1 text-[11px] text-muted backdrop-blur sm:block">{t('hero.hint')}</p>
         </div>
       </div>
       <div className="h-16 sm:h-24" />
