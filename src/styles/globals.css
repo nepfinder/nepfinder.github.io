@@ -9,7 +9,7 @@
   /* Apple system palette */
   --color-brand: #00d999; /* signal green (primary buttons, dark-section accent) */
   --color-brand-hover: #00f1b5;
-  --color-accent: #008a63; /* green for text on light backgrounds */
+  --color-accent: #007a57; /* green for text on light backgrounds (passes 4.5:1) */
   --color-evergreen: #01040d; /* near-black bands */
   --color-stone: #f5f5f7; /* light grey bands and tiles */
   --color-warm: #ffffff;
@@ -197,7 +197,7 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-[15px] font-semibold text-[#01040d] transition-colors duration-200 hover:bg-brand-hover focus-visible:outline-accent;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand bg-transparent px-6 py-3 text-[15px] font-semibold text-brand transition-colors duration-200 hover:bg-brand hover:text-white focus-visible:outline-accent;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand bg-transparent px-6 py-3 text-[15px] font-semibold text-accent transition-colors duration-200 hover:bg-brand hover:text-[#01040d] focus-visible:outline-accent;
   }
   .theme-dark .btn-secondary {
     @apply border-accent text-accent hover:bg-accent hover:text-white;
