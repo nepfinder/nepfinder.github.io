@@ -209,7 +209,7 @@ export function Header() {
 
         <nav aria-label="Primary" className="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-5 sm:px-6">
           <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
-            <img src={site.logo.icon} alt="" width={512} height={512} className="size-6" decoding="async" />
+            <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
             <span className="sr-only">Nepfinder</span>
           </Link>
 
