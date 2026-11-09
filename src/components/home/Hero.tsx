@@ -27,7 +27,7 @@ export function Hero() {
   }, [reduce])
 
   return (
-    <section ref={root} className="relative isolate overflow-hidden pt-11">
+    <section ref={root} className="theme-dark relative isolate overflow-hidden bg-evergreen pt-11">
       <div className="container-x flex flex-col items-center pt-16 text-center sm:pt-24">
         <h1 data-hero-item className="h-display max-w-4xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]" style={{ opacity: reduce ? 1 : 0 }}>
           {t('hero.title.a')} <span className="text-highlight">{t('hero.title.b')}</span>
