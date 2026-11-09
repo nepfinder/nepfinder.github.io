@@ -59,7 +59,7 @@ export default function NcafePrivacy() {
             <div className="mt-4 rounded-2xl bg-bg-2 p-5">
               <p className="text-sm font-semibold text-text">Want your data removed?</p>
               <p className="mt-1.5 text-sm leading-relaxed text-muted">Submit a request and we will delete the data linked to your nCafe account.</p>
-              <Link to="/user-data-delete-request" className="btn-primary mt-4 w-full !py-2.5 !text-sm">
+              <Link to="/user-data-delete-request" className="btn-primary mt-4 w-full">
                 Request data deletion
               </Link>
               <a href={`mailto:${site.email}`} className="mt-3 block text-center text-sm text-brand hover:underline">
