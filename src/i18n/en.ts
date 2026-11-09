@@ -259,6 +259,23 @@ export const en = {
   'services.hero.title': 'Software engineering and enterprise solutions',
   'services.hero.text': 'Every engagement starts with your business requirements. These are the services we deliver to turn them into working software.',
   'hero.img.alt': 'Illustration of an AI-enabled office: Accounting, Finance, Sales, Inventory, Procurement, Operations, CRM and HR workstations connected to a central ERP server',
+  // Service detail and Restaurant Billing
+  'detail.erpcap': 'Implementation capabilities',
+  'detail.faq': 'Frequently asked questions',
+  'rb.made.title': 'Made for busy counters',
+  'rb.sys.title': 'One system, three ways to use it',
+  'rb.sys.text': 'Bill at the counter, follow the business from your phone, and let guests pay by scanning the bill.',
+  'rb.need.title': 'Everything the counter needs',
+  'rb.shots.title': 'Screenshots',
+  'rb.shots.text': 'Select any screenshot to see it larger.',
+  'rb.trusted.title': 'Trusted by restaurants and cafés',
+  'rb.trusted.text': 'Some of the businesses that have used Nepfinder billing.',
+  'rb.dl.title': 'Try Restaurant Billing on Windows',
+  'rb.dl.text': 'Download the installer, or ask us for a demo and setup for your restaurant.',
+  'rb.dl.btn': 'Download for Windows',
+  'rb.demo.btn': 'Request a demo',
+  'rb.enlarge': 'Enlarge:',
+  'rb.close': 'Close',
 } as const
 
 export type TKey = keyof typeof en

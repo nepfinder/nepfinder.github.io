@@ -15,7 +15,7 @@ import NotFound from './NotFound'
 import { Infographic } from '@/components/ui/Infographic'
 import { CapabilityIcon } from '@/components/ui/CapabilityIcon'
 import { useI18n } from '@/i18n'
-import { useLocalizedService, useLocalizedServices } from '@/i18n/useLocalized'
+import { useLocalizedFaqs, useLocalizedErpCapabilities, useLocalizedService, useLocalizedServiceDetail, useLocalizedServices } from '@/i18n/useLocalized'
 
 export default function ServiceDetail() {
   const { slug = '' } = useParams()
@@ -27,7 +27,10 @@ export default function ServiceDetail() {
 function ServiceDetailView({ slug }: { slug: string }) {
   const base = getService(slug)!
   const service = useLocalizedService(base)
-  const { t, lang } = useI18n()
+  const { t } = useI18n()
+  const detail = useLocalizedServiceDetail(base)
+  const faqsLocal = useLocalizedFaqs(slug)
+  const erpCaps = useLocalizedErpCapabilities(erpnextCapabilities)
   const isErp = slug === 'erpnext-implementation' || slug === 'frappe-framework-development'
   const faqs = serviceFaqs[slug] ?? []
   useSeo({
@@ -72,7 +75,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
                   <dt className="text-[12px] font-semibold text-accent">{t('detail.glance.what')}</dt>
                   <dd className="mt-2">
                     <ul className="space-y-2">
-                      {base.glance.what.map((w) => (
+                      {detail.glance.what.map((w) => (
                         <li key={w} className="flex items-start gap-2.5 text-[15px] text-text">
                           <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden /> {w}
                         </li>
@@ -82,7 +85,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
                 </div>
                 <div>
                   <dt className="text-[12px] font-semibold text-accent">{t('detail.glance.who')}</dt>
-                  <dd className="mt-1.5 text-[15px] text-text">{base.glance.who}</dd>
+                  <dd className="mt-1.5 text-[15px] text-text">{detail.glance.who}</dd>
                 </div>
                 <div>
                   <dt className="text-[12px] font-semibold text-accent">{t('detail.glance.start')}</dt>
@@ -100,13 +103,12 @@ function ServiceDetailView({ slug }: { slug: string }) {
       <section className="section pt-0">
         <div className="container-x grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal className="prose-dark">
-            {lang === 'np' && <p className="mb-4 rounded-xl bg-bg-2 px-4 py-2 text-sm text-muted">{t('detail.notice')}</p>}
             <h2 className="h-display text-2xl sm:text-3xl">{t('detail.overview')}</h2>
-            <p className="mt-4 text-base sm:text-lg">{base.intro}</p>
+            <p className="mt-4 text-base sm:text-lg">{detail.intro}</p>
             {isErp && <p className="mt-4 text-sm text-muted">{site.trademarkNotice}</p>}
             <h2 className="h-display mt-10 text-2xl sm:text-3xl">{t('detail.usecases')}</h2>
             <ul className="mt-5 space-y-3">
-              {service.useCases.map((u) => (
+              {detail.useCases.map((u) => (
                 <li key={u} className="flex items-start gap-3 text-sm text-text/80 sm:text-base">
                   <CheckCircle2 className="mt-1 size-4 shrink-0 text-accent" aria-hidden />
                   {u}
@@ -118,13 +120,13 @@ function ServiceDetailView({ slug }: { slug: string }) {
             <div className="rounded-[var(--radius-tile)] bg-bg-2 p-6 sm:p-8">
               <div className="flex items-baseline justify-between gap-4">
                 <h2 className="font-display text-2xl font-semibold text-text">{t('detail.capabilities')}</h2>
-                <span className="text-sm text-muted">{service.capabilities.length}</span>
+                <span className="text-sm text-muted">{detail.capabilities.length}</span>
               </div>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {service.capabilities.map((c) => (
+                {detail.capabilities.map((c, ci) => (
                   <li key={c} className="flex items-center gap-3.5 rounded-2xl bg-surface p-3.5">
                     <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                      <CapabilityIcon label={c} className="size-[18px]" />
+                      <CapabilityIcon label={base.capabilities[ci]} className="size-[18px]" />
                     </span>
                     <span className="text-[15px] font-medium leading-snug text-text">{c}</span>
                   </li>
@@ -139,9 +141,9 @@ function ServiceDetailView({ slug }: { slug: string }) {
         <section className="section pt-0">
           <div className="container-x grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <Reveal>
-              <h2 className="h-display text-2xl sm:text-3xl">Implementation capabilities</h2>
+              <h2 className="h-display text-2xl sm:text-3xl">{t('detail.erpcap')}</h2>
               <ul className="mt-6 grid grid-cols-2 gap-2.5">
-                {erpnextCapabilities.map((c) => (
+                {erpCaps.map((c) => (
                   <li key={c} className="flex items-center gap-2 text-sm text-text/80">
                     <span className="size-1.5 rounded-full bg-accent" aria-hidden /> {c}
                   </li>
@@ -161,7 +163,7 @@ function ServiceDetailView({ slug }: { slug: string }) {
             <h2 className="h-display text-2xl sm:text-3xl">{t('detail.how')}</h2>
           </Reveal>
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {service.steps.map((st, i) => (
+            {detail.steps.map((st, i) => (
               <Reveal key={st.title} as="li" delay={i * 0.06} className="h-full">
                 <Card className="h-full">
                   <span className="font-display text-xs font-bold tracking-widest text-accent">0{i + 1}</span>
@@ -178,10 +180,10 @@ function ServiceDetailView({ slug }: { slug: string }) {
         <section className="section pt-0" aria-labelledby="faq-heading">
           <div className="container-x max-w-3xl">
             <Reveal>
-              <h2 id="faq-heading" className="h-display text-2xl sm:text-3xl">Frequently asked questions</h2>
+              <h2 id="faq-heading" className="h-display text-2xl sm:text-3xl">{t('detail.faq')}</h2>
             </Reveal>
             <div className="mt-6 divide-y divide-line rounded-[var(--radius-tile)] bg-bg-2 px-5 sm:px-6">
-              {faqs.map((f) => (
+              {faqsLocal.map((f) => (
                 <details key={f.q} className="group py-4">
                   <summary className="cursor-pointer list-none font-display text-base font-semibold text-text sm:text-lg">
                     <h3 className="inline">{f.q}</h3>

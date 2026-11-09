@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
 import { BarChart3, CheckCircle2, ClipboardList, Download, Printer, Settings2, X } from 'lucide-react'
-import { restaurantBilling as rb } from '@/data/restaurantBilling'
+import { useLocalizedRestaurantBilling } from '@/i18n/useLocalized'
+import { useI18n } from '@/i18n'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/utils/cn'
@@ -11,6 +12,8 @@ const groupIcons = { records: ClipboardList, print: Printer, settings: Settings2
 /** Rich sections for the Restaurant Billing product page, built from the product brochure. */
 export function RestaurantBillingSections() {
   const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null)
+  const rb = useLocalizedRestaurantBilling()
+  const { t } = useI18n()
 
   return (
     <>
@@ -18,7 +21,7 @@ export function RestaurantBillingSections() {
       <section className="section pt-0">
         <div className="container-x grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
           <Reveal>
-            <h2 className="h-display text-2xl sm:text-3xl">Made for busy counters</h2>
+            <h2 className="h-display text-2xl sm:text-3xl">{t('rb.made.title')}</h2>
             <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{rb.intro}</p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {rb.audience.map((a) => (
@@ -47,10 +50,8 @@ export function RestaurantBillingSections() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">One system, three ways to use it</h2>
-            <p className="mt-4 text-base text-muted sm:text-lg">
-              Bill at the counter, follow the business from your phone, and let guests pay by scanning the bill.
-            </p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('rb.sys.title')}</h2>
+            <p className="mt-4 text-base text-muted sm:text-lg">{t('rb.sys.text')}</p>
           </Reveal>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {rb.apps.map((a, i) => (
@@ -60,7 +61,7 @@ export function RestaurantBillingSections() {
                     type="button"
                     onClick={() => setZoom(a.image)}
                     className="block aspect-[4/3] overflow-hidden bg-[#e8e8ed]"
-                    aria-label={`Enlarge: ${a.image.alt}`}
+                    aria-label={`${t('rb.enlarge')} ${a.image.alt}`}
                   >
                     <img
                       src={a.image.src}
@@ -90,7 +91,7 @@ export function RestaurantBillingSections() {
       <section className="section">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">Everything the counter needs</h2>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('rb.need.title')}</h2>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {rb.groups.map((g, i) => {
@@ -141,7 +142,7 @@ export function RestaurantBillingSections() {
                       type="button"
                       onClick={() => setZoom(im)}
                       className="overflow-hidden rounded-2xl bg-white"
-                      aria-label={`Enlarge: ${im.alt}`}
+                      aria-label={`${t('rb.enlarge')} ${im.alt}`}
                     >
                       <img src={im.src} alt={im.alt} loading="lazy" className="h-full max-h-[340px] w-full object-cover object-top" />
                     </button>
@@ -157,8 +158,8 @@ export function RestaurantBillingSections() {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <h2 className="h-display text-2xl sm:text-3xl">Screenshots</h2>
-            <p className="mt-2 text-muted">Select any screenshot to see it larger.</p>
+            <h2 className="h-display text-2xl sm:text-3xl">{t('rb.shots.title')}</h2>
+            <p className="mt-2 text-muted">{t('rb.shots.text')}</p>
           </Reveal>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {rb.gallery.map((g, i) => (
@@ -168,7 +169,7 @@ export function RestaurantBillingSections() {
                     type="button"
                     onClick={() => setZoom(g)}
                     className="block aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#e8e8ed]"
-                    aria-label={`Enlarge: ${g.alt}`}
+                    aria-label={`${t('rb.enlarge')} ${g.alt}`}
                   >
                     <img
                       src={g.src}
@@ -192,8 +193,8 @@ export function RestaurantBillingSections() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">Trusted by restaurants and cafés</h2>
-            <p className="mt-4 text-base text-muted sm:text-lg">Some of the businesses that have used Nepfinder billing.</p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('rb.trusted.title')}</h2>
+            <p className="mt-4 text-base text-muted sm:text-lg">{t('rb.trusted.text')}</p>
           </Reveal>
           <ul className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2.5">
             {rb.clients.map((c) => (
@@ -210,15 +211,15 @@ export function RestaurantBillingSections() {
         <div className="container-x">
           <div className="card flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center sm:p-10">
             <div>
-              <h2 className="font-display text-2xl font-semibold text-text">Try Restaurant Billing on Windows</h2>
-              <p className="mt-2 text-muted">Download the installer, or ask us for a demo and setup for your restaurant.</p>
+              <h2 className="font-display text-2xl font-semibold text-text">{t('rb.dl.title')}</h2>
+              <p className="mt-2 text-muted">{t('rb.dl.text')}</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button to="/download/restaurant/update/NepFinderResturentBIlling.exe" external>
-                <Download className="size-4" aria-hidden /> Download for Windows
+                <Download className="size-4" aria-hidden /> {t('rb.dl.btn')}
               </Button>
               <Button to="/contact" data-track="consultation_cta" variant="secondary">
-                Request a demo
+                {t('rb.demo.btn')}
               </Button>
             </div>
           </div>
@@ -238,7 +239,7 @@ export function RestaurantBillingSections() {
           <button
             type="button"
             className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="Close"
+            aria-label={t('rb.close')}
             onClick={() => setZoom(null)}
             autoFocus
           >
