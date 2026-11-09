@@ -209,7 +209,7 @@ export function Header() {
 
         <nav aria-label="Primary" className="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-5 sm:px-6">
           <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
-            <img src={site.logo.icon} alt="" width={512} height={512} className="size-6" decoding="async" />
+            <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
             <span className="sr-only">Nepfinder</span>
           </Link>
 
@@ -297,20 +297,20 @@ export function Header() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="hidden overflow-hidden bg-[#1d1d1f] lg:block"
+              className="hidden overflow-hidden border-t border-white/10 bg-[#1d1d1f] lg:block"
               onMouseEnter={cancelClose}
             >
               <div className="mx-auto grid max-w-[1024px] grid-cols-[1.4fr_1fr_1fr] gap-10 px-5 pb-16 pt-10 sm:px-6">
                 {active.columns.map((col) => (
                   <div key={col.heading}>
-                    <p className="text-[14px] text-[#86868b]">{t(col.heading)}</p>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#86868b]">{t(col.heading)}</p>
                     <ul className={cn('mt-4', col.size === 'large' ? 'space-y-2' : 'space-y-2.5')}>
                       {col.links.map((l) => (
                         <li key={l.to + (l.key ?? l.label)}>
                           <MenuLink
                             to={l.to}
                             className={cn(
-                              'block text-[#f5f5f7] transition-colors hover:text-[#2997ff]',
+                              'block text-[#f5f5f7] transition-colors hover:text-[#2997ff] focus-visible:text-[#2997ff] focus-visible:outline-none',
                               col.size === 'large' ? 'font-display text-2xl font-semibold tracking-[-0.01em]' : 'text-[14px] font-medium',
                             )}
                           >
@@ -364,11 +364,11 @@ export function Header() {
                           <div className="space-y-6 pb-6">
                             {item.columns.map((col) => (
                               <div key={col.heading}>
-                                <p className="text-[14px] text-[#86868b]">{t(col.heading)}</p>
+                                <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#86868b]">{t(col.heading)}</p>
                                 <ul className="mt-2 space-y-2">
                                   {col.links.map((l) => (
                                     <li key={l.to + (l.key ?? l.label)}>
-                                      <MenuLink to={l.to} className="block text-[15px] font-medium text-[#f5f5f7]">
+                                      <MenuLink to={l.to} className="block border-l border-white/10 py-1 pl-4 text-[15px] font-medium text-[#f5f5f7] hover:text-[#2997ff]">
                                         {label(l)}
                                       </MenuLink>
                                     </li>

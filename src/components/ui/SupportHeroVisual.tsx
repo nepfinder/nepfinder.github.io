@@ -7,10 +7,10 @@ import { useT } from '@/i18n'
 export function SupportHeroVisual({ className }: { className?: string }) {
   const t = useT()
   const team = [
-    { x: 86, label: 'Functional', c: '#0071E3' },
-    { x: 150, label: 'Technical', c: '#1d1d1f' },
-    { x: 214, label: 'Functional', c: '#2997FF' },
-    { x: 278, label: 'Technical', c: '#424245' },
+    { x: 86, label: 'functional', c: '#0071E3' },
+    { x: 150, label: 'technical', c: '#1d1d1f' },
+    { x: 214, label: 'functional', c: '#2997FF' },
+    { x: 278, label: 'technical', c: '#424245' },
   ]
   return (
     <div className={className}>
@@ -26,7 +26,7 @@ export function SupportHeroVisual({ className }: { className?: string }) {
           <rect x="30" y="40" width="330" height="200" rx="24" fill="#ffffff" />
         </g>
         <text x="54" y="76" fontSize="13" fontWeight="600" fill="#6e6e73">
-          Your dedicated ERP team
+          {t('svg.team')}
         </text>
         {team.map((m, i) => (
           <g key={i}>
@@ -34,13 +34,13 @@ export function SupportHeroVisual({ className }: { className?: string }) {
             <circle cx={m.x} cy="120" r="10" fill="rgba(255,255,255,0.9)" />
             <path d={`M${m.x - 17} 150 a17 12 0 0 1 34 0`} fill="rgba(255,255,255,0.9)" />
             <text x={m.x} y="180" textAnchor="middle" fontSize="11" fontWeight="600" fill="#1d1d1f">
-              {m.label}
+              {t(m.label === 'functional' ? 'svg.functional' : 'svg.technical')}
             </text>
           </g>
         ))}
         <rect x="54" y="200" width="282" height="22" rx="11" fill="#f5f5f7" />
         <text x="195" y="215" textAnchor="middle" fontSize="11" fill="#6e6e73">
-          Technical + functional experts, every month
+          {t('svg.experts')}
         </text>
 
         {/* Price tag */}
@@ -49,16 +49,16 @@ export function SupportHeroVisual({ className }: { className?: string }) {
         </g>
         <circle cx="262" cy="258" r="6" fill="rgba(255,255,255,0.5)" />
         <text x="285" y="268" fontSize="12" fontWeight="600" fill="rgba(255,255,255,0.8)">
-          One fixed price
+          {t('svg.fixed')}
         </text>
         <text x="250" y="316" fontSize="38" fontWeight="700" fill="#ffffff" letterSpacing="-1">
-          / month
+          {t('svg.permonth')}
         </text>
         <text x="252" y="346" fontSize="12" fill="rgba(255,255,255,0.85)">
-          Sized to your users and modules
+          {t('svg.sized')}
         </text>
         <text x="252" y="366" fontSize="12" fill="rgba(255,255,255,0.85)">
-          No hourly surprises
+          {t('svg.nohourly')}
         </text>
 
         {/* Office hours badge */}
@@ -68,13 +68,13 @@ export function SupportHeroVisual({ className }: { className?: string }) {
         <circle cx="72" cy="326" r="16" fill="none" stroke="#ffffff" strokeWidth="2.5" />
         <path d="M72 316 v10 l7 5" fill="none" stroke="#2997FF" strokeWidth="2.5" strokeLinecap="round" />
         <text x="100" y="321" fontSize="12" fontWeight="600" fill="#ffffff">
-          Office hours
+          {t('svg.hours')}
         </text>
         <text x="100" y="342" fontSize="16" fontWeight="700" fill="#ffffff">
           10:00 – 18:00
         </text>
         <text x="100" y="360" fontSize="10.5" fill="#a1a1a6">
-          working days
+          {t('svg.workdays')}
         </text>
       </svg>
     </div>

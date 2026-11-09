@@ -1,3 +1,4 @@
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Industries } from '@/components/home/Industries'
@@ -11,13 +12,14 @@ const seo = {
 }
 
 export default function Solutions() {
+  const t = useT()
   useSeo(seo)
   return (
     <>
       <PageHero
-        title="Solutions for your industry"
-        text="How our software, ERPNext, and Frappe services apply across different kinds of organisations. Insurance reflects our documented product experience; the other industries show how our services apply."
-        crumbs={[{ label: 'Solutions' }]}
+        title={t('solutions.hero.title')}
+        text={t('solutions.hero.text')}
+        crumbs={[{ label: t('nav.solutions') }]}
       />
       <Industries detailed embedded />
       <ErpnextFrappe />

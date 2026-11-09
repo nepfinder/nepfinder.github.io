@@ -1,7 +1,9 @@
 import { useParams } from 'react-router'
 import { CheckCircle2, ExternalLink } from 'lucide-react'
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { getProject } from '@/data/projects'
+import { useLocalizedProject } from '@/i18n/useLocalized'
 import { PageHero } from '@/components/ui/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
@@ -17,12 +19,13 @@ export default function ProjectDetail() {
 }
 
 function ProjectView({ slug }: { slug: string }) {
-  const project = getProject(slug)!
+  const t = useT()
+  const project = useLocalizedProject(getProject(slug)!)
   useSeo({ title: project.title, description: project.summary, path: `/projects/${project.slug}`, image: project.image?.src.replace('.webp', '.png'), type: 'article' })
 
   return (
     <>
-      <PageHero title={project.title} text={project.summary} crumbs={[{ label: 'Projects', to: '/projects' }, { label: project.title }]}>
+      <PageHero title={project.title} text={project.summary} crumbs={[{ label: t('nav.projects'), to: '/projects' }, { label: project.title }]}>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
           {project.links.map((l, i) => (
             <Button key={l.href} to={l.href} variant={i === 0 ? 'primary' : 'secondary'}>
@@ -36,15 +39,15 @@ function ProjectView({ slug }: { slug: string }) {
         <div className="container-x grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-10">
             <Reveal className="prose-dark">
-              <h2 className="h-display text-2xl">The challenge</h2>
+              <h2 className="h-display text-2xl">{t('project.challenge')}</h2>
               <p className="mt-3">{project.challenge}</p>
             </Reveal>
             <Reveal className="prose-dark">
-              <h2 className="h-display text-2xl">The solution</h2>
+              <h2 className="h-display text-2xl">{t('project.solution')}</h2>
               <p className="mt-3">{project.solution}</p>
             </Reveal>
             <Reveal>
-              <h2 className="h-display text-2xl">Outcomes</h2>
+              <h2 className="h-display text-2xl">{t('project.outcomes')}</h2>
               <ul className="mt-4 space-y-2.5">
                 {project.outcomes.map((o) => (
                   <li key={o} className="flex items-start gap-3 text-sm text-text/80 sm:text-base">
@@ -54,7 +57,7 @@ function ProjectView({ slug }: { slug: string }) {
               </ul>
             </Reveal>
             <Reveal>
-              <h2 className="h-display text-2xl">Technologies</h2>
+              <h2 className="h-display text-2xl">{t('project.tech')}</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.technologies.map((t) => (
                   <Pill key={t}>{t}</Pill>

@@ -13,6 +13,7 @@ import NotFound from './NotFound'
 import { SupportHeroVisual } from '@/components/ui/SupportHeroVisual'
 import { RestaurantBillingSections } from '@/components/products/RestaurantBillingSections'
 import { useLocalizedProducts } from '@/i18n/useLocalized'
+import { useI18n } from '@/i18n'
 
 export default function ProductDetail() {
   const { slug = '' } = useParams()
@@ -24,6 +25,7 @@ export default function ProductDetail() {
 function ProductView({ slug }: { slug: string }) {
   const base = getProduct(slug)!
   const product = useLocalizedProducts([base])[0]
+  const { t } = useI18n()
   const isSupport = slug === 'enterprise-support'
   const isRestaurant = slug === 'restaurant-billing'
   const isPhone = slug === 'ninsurance'
@@ -57,11 +59,11 @@ function ProductView({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHero title={headline} text={product.summary} crumbs={[{ label: 'Products', to: '/products' }, { label: product.name }]} visual={
+      <PageHero title={headline} text={product.summary} crumbs={[{ label: t('nav.products'), to: '/products' }, { label: product.name }]} visual={
           isSupport ? (
             <SupportHeroVisual />
           ) : isRestaurant ? (
-            <img src="/images/restaurant-billing/hero.webp" alt={base.images[0].alt} width={1600} height={1200} className="w-full rounded-[var(--radius-tile)]" />
+            <img src="/images/restaurant-billing/hero.webp" alt={product.images[0].alt} width={1600} height={1200} className="w-full rounded-[var(--radius-tile)]" />
           ) : undefined
         }>
         <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.1}>
@@ -72,7 +74,7 @@ function ProductView({ slug }: { slug: string }) {
             </Button>
           ))}
           <Button to="/contact" data-track="consultation_cta" variant="secondary">
-            Ask about {product.name}
+            {t('product.ask', { name: product.name })}
           </Button>
         </Reveal>
       </PageHero>
@@ -84,7 +86,7 @@ function ProductView({ slug }: { slug: string }) {
       <section className="section pt-0">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr]">
           <Reveal className="prose-dark">
-            <h2 className="h-display text-2xl sm:text-3xl">About {product.name}</h2>
+            <h2 className="h-display text-2xl sm:text-3xl">{t('product.about', { name: product.name })}</h2>
             <p className="mt-4 text-base sm:text-lg">{product.description}</p>
             {product.technologies && (
               <div className="mt-6 flex flex-wrap gap-2">
@@ -129,7 +131,7 @@ function ProductView({ slug }: { slug: string }) {
       <section className="section pt-0">
         <div className="container-x">
           <Reveal>
-            <h2 className="h-display text-2xl sm:text-3xl">What {product.name} does</h2>
+            <h2 className="h-display text-2xl sm:text-3xl">{t('product.does', { name: product.name })}</h2>
           </Reveal>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.features.map((f, i) => (

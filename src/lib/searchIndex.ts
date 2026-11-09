@@ -3,6 +3,8 @@ import { products } from '@/data/products'
 import { projects } from '@/data/projects'
 import { industries } from '@/data/industries'
 import { technologies } from '@/data/technologies'
+import type { Lang } from '@/i18n'
+import { industriesNp, productsNp, projectsNp, searchPagesNp, servicesNp } from '@/i18n/content.np'
 
 export type SearchGroup = 'services' | 'products' | 'projects' | 'industries' | 'pages'
 
@@ -28,7 +30,7 @@ const pages: SearchEntry[] = [
   { group: 'pages', title: 'User data deletion request', text: 'Ask us to delete your account data', to: '/user-data-delete-request', keywords: 'delete account remove data gdpr' },
 ]
 
-export const searchIndex: SearchEntry[] = [
+const englishIndex: SearchEntry[] = [
   ...services.map((s) => ({ group: 'services' as const, title: s.title, text: s.short, to: serviceHref(s), keywords: [...s.capabilities, ...s.useCases, s.description, s.slug === 'ai-implementation' ? 'ai artificial intelligence mcp model context protocol llm agent copilot chatgpt claude' : ''].join(' ') })),
   ...products.map((p) => ({ group: 'products' as const, title: p.name, text: p.summary, to: `/products/${p.slug}`, keywords: [p.category, p.description, ...p.features.map((f) => f.title)].join(' ') })),
   ...projects.map((p) => ({ group: 'projects' as const, title: p.title, text: p.summary, to: `/projects/${p.slug}`, keywords: [p.category, ...p.technologies].join(' ') })),
@@ -36,14 +38,49 @@ export const searchIndex: SearchEntry[] = [
   ...pages,
 ]
 
+/** Nepali titles and text, keeping the English keywords so English queries still match. */
+function localizeIndex(list: SearchEntry[]): SearchEntry[] {
+  return list.map((e) => {
+    if (e.group === 'services') {
+      const slug = services.find((sv) => sv.title === e.title)?.slug
+      const t2 = slug ? servicesNp[slug] : undefined
+      return t2 ? { ...e, title: t2.title, text: t2.short, keywords: e.keywords + ' ' + t2.title } : e
+    }
+    if (e.group === 'products') {
+      const slug = products.find((p) => p.name === e.title)?.slug
+      const t2 = slug ? productsNp[slug] : undefined
+      return t2 ? { ...e, title: t2.name ?? e.title, text: t2.summary, keywords: e.keywords + ' ' + t2.headline } : e
+    }
+    if (e.group === 'projects') {
+      const slug = projects.find((p) => p.title === e.title)?.slug
+      const t2 = slug ? projectsNp[slug] : undefined
+      return t2 ? { ...e, title: t2.title, text: t2.summary, keywords: e.keywords + ' ' + t2.category } : e
+    }
+    if (e.group === 'industries') {
+      const slug = industries.find((i) => i.name === e.title)?.slug
+      const t2 = slug ? industriesNp[slug] : undefined
+      return t2 ? { ...e, title: t2.name, text: t2.text } : e
+    }
+    if (e.group === 'pages') {
+      const i = englishIndex.filter((x) => x.group === 'pages').indexOf(e)
+      const t2 = searchPagesNp[i]
+      return t2 ? { ...e, title: t2.title, text: t2.text || e.text } : e
+    }
+    return e
+  })
+}
+
+const npIndex = localizeIndex(englishIndex)
+const indexFor = (lang: Lang) => (lang === 'np' ? npIndex : englishIndex)
+
 const norm = (s: string) => s.toLowerCase().normalize('NFKD')
 
 /** Simple weighted substring search; good enough for a few dozen entries, no dependencies. */
-export function search(query: string, limit = 12): SearchEntry[] {
+export function search(query: string, limit = 12, lang: Lang = 'en'): SearchEntry[] {
   const q = norm(query).trim()
   if (q.length < 2) return []
   const terms = q.split(/\s+/)
-  return searchIndex
+  return indexFor(lang)
     .map((e) => {
       const title = norm(e.title)
       const text = norm(e.text)

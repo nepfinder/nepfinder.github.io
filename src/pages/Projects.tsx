@@ -1,3 +1,4 @@
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { ProjectsGrid } from '@/components/home/ProjectsGrid'
@@ -10,10 +11,11 @@ const seo = {
 }
 
 export default function Projects() {
+  const t = useT()
   useSeo(seo)
   return (
     <>
-      <PageHero title="Projects and case studies" text="Software Nepfinder has delivered. Each project lists the challenge, the solution we built, and the technologies involved." crumbs={[{ label: 'Projects' }]} />
+      <PageHero title={t('projects.hero.title')} text={t('projects.hero.text')} crumbs={[{ label: t('nav.projects') }]} />
       <section className="section pt-0">
         <div className="container-x">
           <ProjectsGrid />

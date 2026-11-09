@@ -1,11 +1,12 @@
-import { aiRoadmap } from '@/data/ai'
+import { useLocalizedAi } from '@/i18n/useLocalized'
 import { Reveal } from '@/components/ui/Reveal'
 
 /** Five-step rollout shown as connected stages that grow in scope from left to right. */
 export function AiRoadmap() {
+  const { roadmap } = useLocalizedAi()
   return (
     <ol className="grid gap-3 md:grid-cols-5">
-      {aiRoadmap.map((s, i) => (
+      {roadmap.map((s, i) => (
         <Reveal as="li" key={s.title} delay={i * 0.06} className="h-full">
           <div className="relative flex h-full flex-col rounded-[var(--radius-tile)] bg-surface p-5">
             <div className="flex items-center gap-2">

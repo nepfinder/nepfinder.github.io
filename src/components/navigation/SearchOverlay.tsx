@@ -3,19 +3,19 @@ import { useNavigate } from 'react-router'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, Search, X } from 'lucide-react'
 import { search, type SearchGroup } from '@/lib/searchIndex'
-import { useT } from '@/i18n'
+import { useI18n } from '@/i18n'
 import { cn } from '@/utils/cn'
 
 const groupOrder: SearchGroup[] = ['services', 'products', 'projects', 'industries', 'pages']
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const t = useT()
+  const { t, lang } = useI18n()
   const navigate = useNavigate()
   const reduce = useReducedMotion()
   const [q, setQ] = useState('')
   const [cursor, setCursor] = useState(0)
   const input = useRef<HTMLInputElement>(null)
-  const results = useMemo(() => search(q), [q])
+  const results = useMemo(() => search(q, 12, lang), [q, lang])
 
   useEffect(() => {
     if (open) {

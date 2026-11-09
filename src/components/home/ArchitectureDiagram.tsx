@@ -1,12 +1,28 @@
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
+import { useT } from '@/i18n'
+import type { TKey } from '@/i18n/en'
 
-const nodes = [
+interface Node {
+  id: string
+  /** Product names stay in English; other labels come from translation keys. */
+  label: string
+  labelKey?: TKey
+  sub: string
+  subKey?: TKey
+  text: string
+  textKey?: TKey
+  color: string
+}
+
+const nodes: Node[] = [
   {
     id: 'erpnext',
     label: 'ERPNext',
     sub: 'Accounting · Stock · Sales · HR',
+    subKey: 'arch.erp.sub',
     text: 'Open-source ERP modules configured and customised around your processes.',
+    textKey: 'arch.erp.text',
     color: '#0071E3',
   },
   {
@@ -14,33 +30,44 @@ const nodes = [
     label: 'Frappe Framework',
     sub: 'Python · JavaScript · MariaDB',
     text: 'The metadata-driven framework underneath ERPNext: DocTypes, permissions, workflows, and REST APIs.',
+    textKey: 'arch.frappe.text',
     color: '#2997FF',
   },
   {
     id: 'apps',
     label: 'Custom Apps',
+    labelKey: 'arch.apps.label',
     sub: 'DocTypes · Workflows · Portals',
+    subKey: 'arch.apps.sub',
     text: 'Business-specific modules, reports, dashboards, and portals built as Frappe applications.',
+    textKey: 'arch.apps.text',
     color: '#64D2FF',
   },
   {
     id: 'integrations',
     label: 'External Integrations',
+    labelKey: 'arch.int.label',
     sub: 'Payments · E-commerce · APIs',
+    subKey: 'arch.int.sub',
     text: 'Webhooks and REST integrations with payment gateways, storefronts, mobile apps, and third-party systems.',
+    textKey: 'arch.int.text',
     color: '#A1A1A6',
   },
 ]
 
 /** Animated, keyboard-accessible SVG architecture visualisation: ERPNext → Frappe → Custom Apps → Integrations. */
 export function ArchitectureDiagram() {
+  const t = useT()
   const [active, setActive] = useState(1)
+  const label = (n: Node) => (n.labelKey ? t(n.labelKey) : n.label)
+  const sub = (n: Node) => (n.subKey ? t(n.subKey) : n.sub)
+  const text = (n: Node) => (n.textKey ? t(n.textKey) : n.text)
   const current = nodes[active]
 
   return (
     <div className="rounded-[var(--radius-tile)] bg-white/[0.06] p-5 sm:p-8">
       <div className="relative">
-        <svg viewBox="0 0 800 240" className="w-full" role="img" aria-label="Architecture: ERPNext built on the Frappe Framework, extended by custom apps and connected to external integrations">
+        <svg viewBox="0 0 800 240" className="w-full" role="img" aria-label={t('arch.aria')}>
           <defs>
             <linearGradient id="flow" x1="0" x2="1">
               <stop offset="0" stopColor="#0071E3" />
@@ -68,7 +95,7 @@ export function ArchitectureDiagram() {
                 role="button"
                 tabIndex={0}
                 aria-pressed={isActive}
-                aria-label={`${n.label}: ${n.text}`}
+                aria-label={`${label(n)}: ${text(n)}`}
                 className="cursor-pointer outline-none"
                 onClick={() => setActive(i)}
                 onMouseEnter={() => setActive(i)}
@@ -83,10 +110,10 @@ export function ArchitectureDiagram() {
                 <circle cx={cx} cy={120} r={isActive ? 92 : 80} fill={n.color} opacity={isActive ? 0.14 : 0.06} className="transition-all duration-300" />
                 <rect x={cx - 88} y={78} width={176} height={84} rx={18} fill="var(--color-bg-2)" stroke={isActive ? n.color : 'var(--color-line)'} strokeWidth={isActive ? 2 : 1} className="transition-all duration-300" />
                 <text x={cx} y={115} textAnchor="middle" fill="var(--color-text)" fontSize={14} fontWeight={700} fontFamily="inherit">
-                  {n.label}
+                  {label(n)}
                 </text>
                 <text x={cx} y={138} textAnchor="middle" fill="var(--color-muted)" fontSize={9.5} fontFamily="Inter, sans-serif">
-                  {n.sub}
+                  {sub(n)}
                 </text>
               </g>
             )
@@ -96,12 +123,12 @@ export function ArchitectureDiagram() {
       <div className="mt-4 rounded-2xl bg-white/[0.06] p-5" aria-live="polite">
         <div className="flex items-center gap-2">
           <span className="size-2.5 rounded-full" style={{ background: current.color }} aria-hidden />
-          <h3 className="font-display text-xl font-semibold text-text">{current.label}</h3>
+          <h3 className="font-display text-xl font-semibold text-text">{label(current)}</h3>
         </div>
-        <p className="mt-2 text-[15px] leading-relaxed text-muted">{current.text}</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-muted">{text(current)}</p>
         <div className="mt-3 flex gap-1.5" aria-hidden>
           {nodes.map((n, i) => (
-            <button key={n.id} type="button" tabIndex={-1} aria-label={`Show ${n.label}`} onClick={() => setActive(i)} className={cn('h-1.5 rounded-full transition-all', i === active ? 'w-8 bg-accent' : 'w-3 bg-line')} />
+            <button key={n.id} type="button" tabIndex={-1} aria-label={t('arch.show', { name: label(n) })} onClick={() => setActive(i)} className={cn('h-1.5 rounded-full transition-all', i === active ? 'w-8 bg-accent' : 'w-3 bg-line')} />
           ))}
         </div>
       </div>

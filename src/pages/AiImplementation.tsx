@@ -2,7 +2,8 @@ import { Link } from 'react-router'
 import { ChevronDown } from 'lucide-react'
 import { useSeo } from '@/lib/seo'
 import { site } from '@/data/site'
-import { aiDepartments, aiFaqs, aiOfferings, mcpGuardrails } from '@/data/ai'
+import { aiOfferings, aiFaqs } from '@/data/ai'
+import { useLocalizedAi } from '@/i18n/useLocalized'
 import { PageHero } from '@/components/ui/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
@@ -47,37 +48,37 @@ const seo = {
 
 export default function AiImplementation() {
   useSeo(seo)
-  const { lang, t } = useI18n()
+  const { t } = useI18n()
+  const { offerings, departments, guardrails, faqs } = useLocalizedAi()
   return (
     <>
       <PageHero
         title={
           <>
-            AI Implementation for Enterprise. <span className="text-brand">Built on your ERP.</span>
+            {t('aipage.hero.a')} <span className="text-brand">{t('aipage.hero.b')}</span>
           </>
         }
-        text="Practical AI for the systems you already run. We connect AI assistants and agents to ERPNext, ERP, and enterprise software through secure MCP servers, and automate work across your company with people in control."
-        crumbs={[{ label: t('nav.services'), to: '/services' }, { label: 'AI Implementation' }]}
+        text={t('aipage.hero.text')}
+        crumbs={[{ label: t('nav.services'), to: '/services' }, { label: t('aipage.crumb') }]}
         visual={<AiHeroVisual />}
       >
         <Reveal className="mt-8 flex flex-col gap-3 sm:flex-row" delay={0.1}>
-          <Button to="/contact" data-track="consultation_cta">Book an AI assessment</Button>
+          <Button to="/contact" data-track="consultation_cta">{t('ai.cta2')}</Button>
           <Button to="/ai-implementation#mcp" variant="secondary">
-            How MCP works
+            {t('aipage.cta.mcp')}
           </Button>
         </Reveal>
-        {lang === 'np' && <p className="mt-4 text-sm text-muted">{t('detail.notice')}</p>}
       </PageHero>
 
       {/* What we implement */}
       <section className="section pt-8">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">What we implement</h2>
-            <p className="mt-4 text-base text-muted sm:text-lg">Six ways AI can start saving time in your enterprise software, from answering questions to running whole workflows.</p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('aipage.offer.title')}</h2>
+            <p className="mt-4 text-base text-muted sm:text-lg">{t('aipage.offer.text')}</p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {aiOfferings.map((o, i) => (
+            {offerings.map((o, i) => (
               <Reveal key={o.title} delay={Math.min(i, 5) * 0.05} className="h-full">
                 <div className="card h-full">
                   <span className="icon-tile">
@@ -97,12 +98,8 @@ export default function AiImplementation() {
         <div className="container-x">
           <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
             <Reveal className="max-w-3xl">
-              <h2 className="h-display text-3xl sm:text-[2.5rem]">MCP implementation: connect AI to your systems, safely</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-                The Model Context Protocol (MCP) is an open standard for connecting AI assistants to business systems. Instead of giving AI open access
-                to your database, an MCP server offers a set of specific tools, such as finding an invoice or drafting a purchase order, and checks
-                permissions on every call.
-              </p>
+              <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('aipage.mcp.title')}</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{t('aipage.mcp.text')}</p>
             </Reveal>
             <Reveal className="mt-10 rounded-[var(--radius-tile)] bg-white/[0.06] p-4 sm:p-8" delay={0.05}>
               <div className="overflow-x-auto">
@@ -110,7 +107,7 @@ export default function AiImplementation() {
               </div>
             </Reveal>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {mcpGuardrails.map((g, i) => (
+              {guardrails.map((g, i) => (
                 <Reveal key={g.title} delay={i * 0.05} className="h-full">
                   <div className="card h-full">
                     <span className="icon-tile">
@@ -130,11 +127,11 @@ export default function AiImplementation() {
       <section className="section bg-bg-2">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">Overall company automation</h2>
-            <p className="mt-4 text-base text-muted sm:text-lg">Examples of what AI can take off each department’s plate once it is connected to your ERP and documents.</p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('aipage.dept.title')}</h2>
+            <p className="mt-4 text-base text-muted sm:text-lg">{t('aipage.dept.text')}</p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {aiDepartments.map((d, i) => (
+            {departments.map((d, i) => (
               <Reveal key={d.name} delay={Math.min(i, 5) * 0.05} className="h-full">
                 <div className="card h-full">
                   <div className="flex items-center gap-3">
@@ -161,8 +158,8 @@ export default function AiImplementation() {
       <section className="section bg-bg-2 pt-0">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">From first pilot to company-wide AI</h2>
-            <p className="mt-4 text-base text-muted sm:text-lg">We roll AI out in stages, so each step proves its value before the next one starts.</p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('aipage.road.title')}</h2>
+            <p className="mt-4 text-base text-muted sm:text-lg">{t('aipage.road.text')}</p>
           </Reveal>
           <div className="mt-12">
             <AiRoadmap />
@@ -174,29 +171,26 @@ export default function AiImplementation() {
       <section className="section">
         <div className="container-x grid items-center gap-10 lg:grid-cols-2">
           <Reveal>
-            <h2 className="h-display text-3xl sm:text-[2.5rem]">AI for ERPNext and Frappe</h2>
-            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-              ERPNext and the Frappe Framework expose REST APIs and role-based permissions, which makes them a strong base for AI. We build MCP servers
-              and Frappe apps that let assistants work with your DocTypes, reports, and workflows, while respecting the permissions your users already have.
-            </p>
+            <h2 className="h-display text-3xl sm:text-[2.5rem]">{t('aipage.erp.title')}</h2>
+            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{t('aipage.erp.text')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/services/erpnext-implementation" className="text-[15px] font-semibold text-accent hover:underline">
-                ERPNext implementation
+                {t('aipage.erp.link1')}
               </Link>
               <Link to="/services/frappe-framework-development" className="text-[15px] font-semibold text-accent hover:underline">
-                Frappe development
+                {t('aipage.erp.link2')}
               </Link>
               <Link to="/products/enterprise-support" className="text-[15px] font-semibold text-accent hover:underline">
-                Enterprise ERP Support
+                {t('aipage.erp.link3')}
               </Link>
             </div>
             <p className="mt-6 text-xs text-muted">{site.trademarkNotice}</p>
           </Reveal>
           <Reveal delay={0.05}>
             <ul className="grid grid-cols-2 gap-3">
-              {['Ask ERPNext in plain language', 'Draft documents for approval', 'Summaries of reports', 'Alerts on exceptions'].map((x) => (
-                <li key={x} className="rounded-2xl bg-bg-2 p-5 text-[15px] font-semibold text-text">
-                  {x}
+              {(['aipage.erp.item1', 'aipage.erp.item2', 'aipage.erp.item3', 'aipage.erp.item4'] as const).map((k) => (
+                <li key={k} className="rounded-2xl bg-bg-2 p-5 text-[15px] font-semibold text-text">
+                  {t(k)}
                 </li>
               ))}
             </ul>
@@ -211,10 +205,10 @@ export default function AiImplementation() {
       <section className="section pt-0">
         <div className="container-x max-w-3xl">
           <Reveal>
-            <h2 className="h-display text-center text-3xl sm:text-4xl">Questions about enterprise AI</h2>
+            <h2 className="h-display text-center text-3xl sm:text-4xl">{t('aipage.faq.title')}</h2>
           </Reveal>
           <div className="mt-10 divide-y divide-line rounded-[var(--radius-tile)] bg-bg-2 px-6">
-            {aiFaqs.map((f) => (
+            {faqs.map((f) => (
               <details key={f.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-semibold text-text">
                   {f.q}

@@ -1,3 +1,4 @@
+import { useT } from '@/i18n'
 import { useSeo } from '@/lib/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
@@ -22,11 +23,12 @@ const seo = {
 }
 
 export default function Services() {
+  const t = useT()
   useSeo(seo)
   const list = useLocalizedServices(services)
   return (
     <>
-      <PageHero title="Software engineering and enterprise solutions" text="Every engagement starts with your business requirements. These are the services we deliver to turn them into working software." crumbs={[{ label: 'Services' }]} />
+      <PageHero title={t('services.hero.title')} text={t('services.hero.text')} crumbs={[{ label: t('nav.services') }]} />
       <section className="section pt-0">
         <div className="container-x grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((s, i) => (

@@ -1,5 +1,6 @@
 import { ChartColumn, Factory, FolderKanban, Handshake, Landmark, Package, ShoppingCart, Store, Users, type LucideIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
+import { useT } from '@/i18n'
 
 /**
  * Lightweight SVG infographics that explain each service visually.
@@ -11,20 +12,21 @@ const blue = '#0071E3'
 const light = '#2997FF'
 
 function Modules() {
+  const t = useT()
   // Lucide icons (ISC). These are the same icon names ERPNext uses for its workspace sidebar.
   const cells: { label: string; Icon: LucideIcon }[] = [
-    { label: 'Accounting', Icon: Landmark },
-    { label: 'Stock', Icon: Package },
-    { label: 'Selling', Icon: Store },
-    { label: 'Buying', Icon: ShoppingCart },
-    { label: 'CRM', Icon: Handshake },
-    { label: 'HR', Icon: Users },
-    { label: 'Projects', Icon: FolderKanban },
-    { label: 'Manufacturing', Icon: Factory },
-    { label: 'Reports', Icon: ChartColumn },
+    { label: t('info.mod.accounting'), Icon: Landmark },
+    { label: t('info.mod.stock'), Icon: Package },
+    { label: t('info.mod.selling'), Icon: Store },
+    { label: t('info.mod.buying'), Icon: ShoppingCart },
+    { label: t('info.mod.crm'), Icon: Handshake },
+    { label: t('info.mod.hr'), Icon: Users },
+    { label: t('info.mod.projects'), Icon: FolderKanban },
+    { label: t('info.mod.manufacturing'), Icon: Factory },
+    { label: t('info.mod.reports'), Icon: ChartColumn },
   ]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="ERPNext modules connected to one shared database">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.mod.aria')}>
       {cells.map(({ label, Icon }, i) => {
         const x = 30 + (i % 3) * 125
         const y = 12 + Math.floor(i / 3) * 74
@@ -44,26 +46,27 @@ function Modules() {
       ))}
       <rect x={30} y={248} width={360} height={36} rx={12} fill={blue} />
       <text x={210} y={271} textAnchor="middle" fontSize={12} fontWeight={600} fill="#fff">
-        One shared database · one source of truth
+        {t('info.mod.db')}
       </text>
     </svg>
   )
 }
 
 function Stack() {
+  const t = useT()
   const layers = [
-    { label: 'Portals & mobile apps', sub: 'what users see', c: 'var(--color-surface)', dark: false },
-    { label: 'Custom Frappe apps', sub: 'your business rules', c: light, dark: true },
-    { label: 'ERPNext', sub: 'accounting · stock · sales · HR', c: blue, dark: true },
-    { label: 'Frappe Framework', sub: 'DocTypes · permissions · REST API', c: '#1d1d1f', dark: true },
-    { label: 'MariaDB · Linux · Docker', sub: 'infrastructure', c: '#424245', dark: true },
+    { label: t('info.stack.portals'), sub: t('info.stack.portals.sub'), c: 'var(--color-surface)', dark: false },
+    { label: t('info.stack.custom'), sub: t('info.stack.custom.sub'), c: light, dark: true },
+    { label: 'ERPNext', sub: t('info.stack.erpnext.sub'), c: blue, dark: true },
+    { label: 'Frappe Framework', sub: t('info.stack.frappe.sub'), c: '#1d1d1f', dark: true },
+    { label: t('info.stack.infra'), sub: t('info.stack.infra.sub'), c: '#424245', dark: true },
   ]
   const top = 20
   const h = 44
   const gap = 5
   const widths = [380, 326, 272, 218, 164]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="Funnel from the user interface down to infrastructure: portals and apps, custom Frappe apps, ERPNext, Frappe Framework, infrastructure">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.stack.aria')}>
       {layers.map((l, i) => {
         const y = top + i * (h + gap)
         const wTop = widths[i]
@@ -85,16 +88,17 @@ function Stack() {
         )
       })}
       <text x={210} y={292} textAnchor="middle" fontSize={11} fill="var(--color-muted)">
-        Every layer builds on the one below it
+        {t('info.stack.foot')}
       </text>
     </svg>
   )
 }
 
 function Hub() {
-  const nodes = ['ERP', 'Payments', 'E-commerce', 'Mobile app', 'Bank / SMS', 'Partners']
+  const t = useT()
+  const nodes = [t('info.hub.erp'), t('info.hub.payments'), t('info.hub.ecom'), t('info.hub.mobile'), t('info.hub.bank'), t('info.hub.partners')]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="APIs connecting the ERP with payments, e-commerce, mobile apps and partners">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.hub.aria')}>
       {nodes.map((n, i) => {
         const a = (i / nodes.length) * Math.PI * 2 - Math.PI / 2
         const x = 210 + Math.cos(a) * 130
@@ -115,16 +119,17 @@ function Hub() {
         REST API
       </text>
       <text x={210} y={161} textAnchor="middle" fontSize={9} fill="rgba(255,255,255,0.8)">
-        + webhooks
+        {t('info.hub.webhooks')}
       </text>
     </svg>
   )
 }
 
 function Flow() {
-  const steps = ['Request', 'Approve', 'Notify', 'Report']
+  const t = useT()
+  const steps = [t('info.flow.request'), t('info.flow.approve'), t('info.flow.notify'), t('info.flow.report')]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="Automated workflow: request, approve, notify, report">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.flow.aria')}>
       {steps.map((s, i) => {
         const x = 20 + i * 100
         return (
@@ -143,18 +148,19 @@ function Flow() {
         </marker>
       </defs>
       <text x={210} y={70} textAnchor="middle" fontSize={12} fill="var(--color-muted)">
-        Manual steps become rules the system runs for you
+        {t('info.flow.top')}
       </text>
       <text x={210} y={230} textAnchor="middle" fontSize={12} fill="var(--color-muted)">
-        Every step is logged for audit
+        {t('info.flow.bottom')}
       </text>
     </svg>
   )
 }
 
 function Devices() {
+  const t = useT()
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="One backend serving a website, a web app, and a mobile app">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.dev.aria')}>
       <rect x={40} y={60} width={200} height={130} rx={14} fill="var(--color-surface)" stroke="var(--color-line)" />
       <rect x={40} y={60} width={200} height={22} rx={14} fill="var(--color-bg-2)" />
       <rect x={60} y={100} width={120} height={10} rx={5} fill="var(--color-bg-2)" />
@@ -167,7 +173,7 @@ function Devices() {
       <rect x={312} y={126} width={46} height={30} rx={6} fill="#fff" />
       <rect x={110} y={244} width={200} height={36} rx={12} fill="#1d1d1f" />
       <text x={210} y={267} textAnchor="middle" fontSize={12} fontWeight={600} fill="#fff">
-        One secure backend & API
+        {t('info.dev.backend')}
       </text>
       <line x1={140} y1={190} x2={190} y2={244} stroke="var(--color-line)" strokeWidth={2} />
       <line x1={335} y1={220} x2={250} y2={244} stroke="var(--color-line)" strokeWidth={2} />
@@ -176,9 +182,10 @@ function Devices() {
 }
 
 function Blueprint() {
-  const rows = ['Your processes', 'Your data', 'Your users & roles']
+  const t = useT()
+  const rows = [t('info.bp.processes'), t('info.bp.data'), t('info.bp.users')]
   return (
-    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label="Custom software built from your processes, data and users">
+    <svg viewBox="0 0 420 300" className="h-full w-full" role="img" aria-label={t('info.bp.aria')}>
       {rows.map((r, i) => (
         <g key={r}>
           <rect x={30} y={40 + i * 60} width={150} height={44} rx={12} fill="var(--color-surface)" stroke="var(--color-line)" />
@@ -190,13 +197,13 @@ function Blueprint() {
       ))}
       <rect x={250} y={100} width={140} height={100} rx={16} fill={blue} />
       <text x={320} y={142} textAnchor="middle" fontSize={13} fontWeight={700} fill="#fff">
-        Your software
+        {t('info.bp.software')}
       </text>
       <text x={320} y={162} textAnchor="middle" fontSize={10} fill="rgba(255,255,255,0.8)">
-        built to fit, ready to grow
+        {t('info.bp.fit')}
       </text>
       <text x={210} y={262} textAnchor="middle" fontSize={12} fill="var(--color-muted)">
-        No forcing your business into a generic template
+        {t('info.bp.foot')}
       </text>
     </svg>
   )
