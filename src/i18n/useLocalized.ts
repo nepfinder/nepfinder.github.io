@@ -3,27 +3,56 @@ import type { Service } from '@/data/services'
 import type { Product } from '@/data/products'
 import type { Industry } from '@/data/industries'
 import { processSteps } from '@/data/process'
-import { aiNp, erpCapabilitiesNp, heroModulesNp, industriesNp, productDetailNp, processNp, productsNp, projectsNp, restaurantBillingNp, serviceDetailNp, serviceFaqsNp, servicesNp } from './content.np'
+import { industrySolutionsNp, techNotesNp, aiNp, erpCapabilitiesNp, heroModulesNp, industriesNp, productDetailNp, processNp, productsNp, projectsNp, restaurantBillingNp, serviceDetailNp, serviceFaqsNp, servicesNp } from './content.np'
 import type { Project } from '@/data/projects'
+import { technologies, type TechGroup } from '@/data/technologies'
+import type { TKey } from './en'
+
+const techCategoryKeys: Record<string, TKey> = {
+  'Enterprise Platforms': 'tech.cat.enterprise',
+  Backend: 'tech.cat.backend',
+  Frontend: 'tech.cat.frontend',
+  Databases: 'tech.cat.db',
+  Infrastructure: 'tech.cat.infra',
+  Integrations: 'tech.cat.integrations',
+}
+
+/** Technology groups with Nepali category names and notes; technology names stay in English. */
+export function useLocalizedTechnologies(): TechGroup[] {
+  const { lang, t } = useI18n()
+  if (lang !== 'np') return technologies
+  return technologies.map((g) => ({
+    category: techCategoryKeys[g.category] ? t(techCategoryKeys[g.category]) : g.category,
+    items: g.items.map((i) => ({ ...i, note: techNotesNp[i.name] ?? i.note })),
+  }))
+}
 import { serviceFaqs, type Faq } from '@/data/faqs'
 import { restaurantBilling } from '@/data/restaurantBilling'
 import { aiDepartments, aiFaqs, aiOfferings, aiRoadmap, mcpGuardrails } from '@/data/ai'
 
-/** Returns a service with title/short/description swapped to Nepali when that language is active. */
+/** Returns a service with its visible text (title, short, description, capabilities) in Nepali when that language is active. */
 export function useLocalizedService(service: Service): Service {
   const { lang } = useI18n()
-  if (lang !== 'np') return service
-  const tr = servicesNp[service.slug]
-  return tr ? { ...service, title: tr.title, navLabel: tr.title, short: tr.short, description: tr.description } : service
+  return lang === 'np' ? localizeService(service) : service
 }
 
 export function useLocalizedServices(list: Service[]): Service[] {
   const { lang } = useI18n()
-  if (lang !== 'np') return list
-  return list.map((s) => {
-    const tr = servicesNp[s.slug]
-    return tr ? { ...s, title: tr.title, navLabel: tr.title, short: tr.short, description: tr.description } : s
-  })
+  return lang === 'np' ? list.map(localizeService) : list
+}
+
+function localizeService(s: Service): Service {
+  const tr = servicesNp[s.slug]
+  const detail = serviceDetailNp[s.slug]
+  if (!tr) return s
+  return {
+    ...s,
+    title: tr.title,
+    navLabel: tr.title,
+    short: tr.short,
+    description: tr.description,
+    capabilities: detail?.capabilities ?? s.capabilities,
+  }
 }
 
 export function useLocalizedProducts(list: Product[]): Product[] {
@@ -80,7 +109,7 @@ export function useLocalizedIndustries(list: Industry[]): Industry[] {
   if (lang !== 'np') return list
   return list.map((i) => {
     const tr = industriesNp[i.slug]
-    return tr ? { ...i, name: tr.name, text: tr.text } : i
+    return tr ? { ...i, name: tr.name, text: tr.text, solutions: industrySolutionsNp[i.slug] ?? i.solutions } : i
   })
 }
 

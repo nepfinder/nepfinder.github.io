@@ -1,8 +1,9 @@
-import { technologies } from '@/data/technologies'
+import { useLocalizedTechnologies } from '@/i18n/useLocalized'
 import { Reveal } from '@/components/ui/Reveal'
 import { TechIcon } from '@/components/ui/TechIcon'
 
 export function TechGrid({ detailed = false }: { detailed?: boolean }) {
+  const technologies = useLocalizedTechnologies()
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {technologies.map((group, gi) => (

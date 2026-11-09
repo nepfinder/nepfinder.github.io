@@ -668,3 +668,51 @@ export const seoDetailNp: Record<string, { title: string; description: string }>
     description: 'Restaurant Billing बाट बिक्री, बिल र खर्चको वास्तविक समय जानकारी दिने Android एप।',
   },
 }
+
+/** Nepali notes for each technology (src/data/technologies.ts). Technology names stay in English. */
+export const techNotesNp: Record<string, string> = {
+  ERPNext: 'ओपन-सोर्स ERP कार्यान्वयन र कस्टमाइजेसन',
+  'Frappe Framework': 'व्यावसायिक एपका लागि पूर्ण-स्ट्याक Python/JS फ्रेमवर्क',
+  Python: 'Frappe एप, API र स्वचालन',
+  'Node.js': 'सेवा, एकीकरण र उपकरण',
+  React: 'इन्टरएक्टिभ वेब एप्लिकेसन',
+  'Next.js': 'सर्भर-रेन्डर गरिएका React साइट',
+  TypeScript: 'टाइप गरिएको, सजिलै मर्मत हुने फ्रन्टएन्ड कोड',
+  JavaScript: 'वेब र Frappe क्लाइन्ट स्क्रिप्टिङ',
+  MariaDB: 'ERPNext र Frappe का लागि पूर्वनिर्धारित डेटाबेस',
+  PostgreSQL: 'कस्टम एपका लागि सम्बन्धित डेटा',
+  Linux: 'सर्भर व्यवस्थापन र डिप्लोयमेन्ट',
+  Docker: 'कन्टेनराइज्ड वातावरण',
+  'Cloud Infrastructure': 'क्लाउड वा अन-प्रिमाइसेस सर्भरमा होस्टिङ',
+  'CI/CD': 'स्वचालित बिल्ड र डिप्लोयमेन्ट',
+  'REST APIs': 'प्रणाली-देखि-प्रणाली सञ्चार',
+  Webhooks: 'घटनामा आधारित स्वचालन',
+  'Payment Gateways': 'eSewa, Khalti र IME Pay एकीकरण',
+  'Third-Party Systems': 'ERP, ई-कमर्स र SaaS कनेक्टर',
+}
+
+/** Nepali page titles and descriptions for site search, index-aligned with the English pages list in searchIndex.ts. */
+export const searchPagesNp: { title: string; text: string }[] = [
+  { title: 'गृहपृष्ठ', text: 'Nepfinder को सफ्टवेयर विकास र ERP समाधान' },
+  { title: 'Nepfinder बारे', text: 'कम्पनीको पृष्ठभूमि, दृष्टिकोण र विशेषज्ञता' },
+  { title: 'हाम्रा सेवाहरू', text: 'सबै सफ्टवेयर इन्जिनियरिङ र ERP सेवा' },
+  { title: 'उद्योग अनुसार समाधान', text: 'हाम्रा समाधान विभिन्न उद्योगमा कसरी लागू हुन्छन्' },
+  { title: 'प्रविधिहरू', text: '' },
+  { title: 'उत्पादनहरू', text: 'nInsurance, nCafe, Restaurant Billing, Enterprise ERP Support' },
+  { title: 'हाम्रा प्रोजेक्टहरू', text: 'प्रदान गरिएका एप्लिकेसनका केस स्टडी' },
+  { title: 'Nepfinder सम्पर्क', text: 'इमेल: info@nepfinder.com.np वा सोधपुछ पठाउनुहोस्' },
+  { title: 'हाम्रो विकास प्रक्रिया', text: 'खोज, संरचना, विकास, गुणस्तर परीक्षण, डिप्लोयमेन्ट, मर्मत' },
+  { title: 'nCafe गोपनीयता नीति', text: 'nCafe एपले डेटा कसरी सङ्कलन र प्रयोग गर्छ' },
+  { title: 'डेटा मेटाउने अनुरोध', text: 'तपाईंको खाता डेटा मेटाउन हामीलाई अनुरोध गर्नुहोस्' },
+]
+
+/** Nepali solution items for each industry, index-matched to src/data/industries.ts. */
+export const industrySolutionsNp: Record<string, string[]> = {
+  insurance: ['पोलिसी र दाबीका एप', 'प्रिमियम क्याल्कुलेटर', 'भुक्तानी गेटवे एकीकरण', 'ERP एकीकरण'],
+  'retail-distribution': ['व्यापारका लागि ERPNext', 'स्टक र गोदाम नियन्त्रण', 'पोइन्ट-अफ-सेल बिलिङ', 'बिक्री ड्यासबोर्ड'],
+  'logistics-delivery': ['अर्डर र डिस्प्याच प्रणाली', 'डेलिभरी ट्र्याकिङ एप', 'स्वचालित सूचना', 'रुट र फ्लिट डेटा'],
+  manufacturing: ['उत्पादन मोड्युल सेटअप', 'BOM र कार्य आदेश', 'सामग्री योजना', 'शप-फ्लोर रिपोर्ट'],
+  'professional-services': ['परियोजना र समय-विवरण ट्र्याकिङ', 'ग्राहक पोर्टल', 'इनभ्वाइस स्वचालन', 'स्रोत रिपोर्ट'],
+  'e-commerce': ['ई-कमर्सबाट ERP मा सिंक', 'भुक्तानी एकीकरण', 'अर्डर वर्कफ्लो', 'ग्राहक खाता'],
+  'enterprise-operations': ['स्वीकृति र कागजात वर्कफ्लो', 'HR र पेरोल सेटअप', 'व्यवस्थापन ड्यासबोर्ड', 'प्रणाली एकीकरण'],
+}
