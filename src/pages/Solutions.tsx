@@ -21,9 +21,9 @@ export default function Solutions() {
         text={t('solutions.hero.text')}
         crumbs={[{ label: t('nav.solutions') }]}
       />
-      <Industries detailed embedded />
-      <ErpnextFrappe />
-      <CtaSection />
+      <Industries detailed embedded className="pb-16 sm:pb-20" />
+      <ErpnextFrappe className="pt-0 pb-0" />
+      <CtaSection className="pt-16 sm:pt-20" />
     </>
   )
 }
