@@ -107,7 +107,6 @@ function useMenu(): MenuItem[] {
   ]
 }
 
-
 function MenuLink({ to, className, children, onClick }: { to: string; className?: string; children: React.ReactNode; onClick?: () => void }) {
   if (to.startsWith('http')) {
     return (
@@ -220,44 +219,11 @@ export function Header() {
 
         <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between">
 
+          <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
+            <img src={site.logo.icon} alt="" width={192} height={192} className="size-9" decoding="async" />
+            <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
+          </Link>
           <div className="flex items-center">
-          <div className="flex items-center gap-1">
-            <button
-              type="button"
-              aria-label={t('nav.search')}
-              aria-expanded={searchOpen}
-              aria-controls="site-search"
-              onClick={() => {
-                setOpenKey(null)
-                setSearchOpen((v) => !v)
-              }}
-              onMouseEnter={scheduleClose}
-              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
-            >
-              <Search className="size-[17px]" strokeWidth={1.6} aria-hidden />
-            </button>
-            <LanguageSwitch className="hidden sm:inline-flex" />
-            <Link
-              to="/contact"
-              aria-label={t('nav.consultation')}
-              title={t('nav.consultation')}
-              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
-              onMouseEnter={scheduleClose}
-            >
-              <Mail className="size-[17px]" strokeWidth={1.6} aria-hidden />
-            </Link>
-            <button
-              type="button"
-              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 hover:text-[#f5f5f7] lg:hidden"
-              aria-label={mobileOpen ? t('nav.menu.close') : t('nav.menu.open')}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              {mobileOpen ? <X className="size-5" strokeWidth={1.6} /> : <Menu className="size-5" strokeWidth={1.6} />}
-            </button>
-          </div>
-
           <ul className="hidden items-center lg:flex">
             {menu.map((item) => (
               <li key={item.key} onMouseEnter={() => (item.columns ? openFlyout(item.key) : scheduleClose())}>
@@ -295,11 +261,44 @@ export function Header() {
               </li>
             ))}
           </ul>
+
+          <div className="flex items-center gap-1">
+            <LanguageSwitch className="hidden sm:inline-flex" />
+            <Link
+              to="/contact"
+              aria-label={t('nav.consultation')}
+              title={t('nav.consultation')}
+              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
+              onMouseEnter={scheduleClose}
+            >
+              <Mail className="size-[17px]" strokeWidth={1.6} aria-hidden />
+            </Link>
+            <button
+              type="button"
+              aria-label={t('nav.search')}
+              aria-expanded={searchOpen}
+              aria-controls="site-search"
+              onClick={() => {
+                setOpenKey(null)
+                setSearchOpen((v) => !v)
+              }}
+              onMouseEnter={scheduleClose}
+              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]"
+            >
+              <Search className="size-[17px]" strokeWidth={1.6} aria-hidden />
+            </button>
+            <button
+              type="button"
+              className="inline-flex size-9 items-center justify-center rounded-full text-[#f5f5f7]/80 hover:text-[#f5f5f7] lg:hidden"
+              aria-label={mobileOpen ? t('nav.menu.close') : t('nav.menu.open')}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              {mobileOpen ? <X className="size-5" strokeWidth={1.6} /> : <Menu className="size-5" strokeWidth={1.6} />}
+            </button>
           </div>
-          <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
-            <img src={site.logo.icon} alt="" width={192} height={192} className="size-9" decoding="async" />
-            <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
-          </Link>
+          </div>
         </nav>
 
         {/* Desktop flyout */}
