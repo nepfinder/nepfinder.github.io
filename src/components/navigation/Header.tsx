@@ -309,7 +309,7 @@ export function Header() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="hidden overflow-hidden border-t border-white/10 bg-[#1d1d1f] lg:block"
+              className="hidden max-h-[calc(100dvh-64px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#1d1d1f] lg:block"
               onMouseEnter={cancelClose}
             >
               <div className="mx-auto grid max-w-[1024px] grid-cols-1 gap-10 px-5 pb-16 pt-10 sm:px-6 lg:[grid-template-columns:var(--flyout-cols)]" style={{ "--flyout-cols": active.columns.map((c) => (c.aside ? "0.9fr" : c.size === "large" ? "1.5fr" : "1fr")).join(" ") } as React.CSSProperties}>

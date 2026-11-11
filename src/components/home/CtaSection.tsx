@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/ui/Reveal'
 import { useT } from '@/i18n'
+import { cn } from '@/utils/cn'
 
-export function CtaSection() {
+export function CtaSection({ className }: { className?: string }) {
   const t = useT()
   return (
-    <section className="section">
+    <section className={cn('section', className)}>
       <div className="container-x">
         <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-20 text-center sm:px-12 sm:py-28">
           <Reveal className="mx-auto max-w-2xl">

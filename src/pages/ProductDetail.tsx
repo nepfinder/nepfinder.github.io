@@ -83,7 +83,7 @@ function ProductView({ slug }: { slug: string }) {
         <RestaurantBillingSections />
       ) : (
         <>
-      <section className="section pt-0">
+      <section className="section pt-0 pb-16 sm:pb-20">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr]">
           <Reveal className="prose-dark">
             <h2 className="h-display text-2xl sm:text-3xl">{t('product.about', { name: product.name })}</h2>
@@ -128,7 +128,7 @@ function ProductView({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="section pt-0">
+      <section className="section pt-0 pb-0">
         <div className="container-x">
           <Reveal>
             <h2 className="h-display text-2xl sm:text-3xl">{t('product.does', { name: product.name })}</h2>
@@ -147,7 +147,7 @@ function ProductView({ slug }: { slug: string }) {
       </section>
         </>
       )}
-      <CtaSection />
+      <CtaSection className="pt-16 sm:pt-20" />
     </>
   )
 }
