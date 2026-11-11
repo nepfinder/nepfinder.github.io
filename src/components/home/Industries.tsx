@@ -1,3 +1,4 @@
+import { cn } from '@/utils/cn'
 import { industries } from '@/data/industries'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
@@ -6,11 +7,11 @@ import { useT } from '@/i18n'
 import { useLocalizedIndustries } from '@/i18n/useLocalized'
 
 /** `embedded` drops the section heading and top padding when the section sits directly under a page title. */
-export function Industries({ detailed = false, embedded = false }: { detailed?: boolean; embedded?: boolean }) {
+export function Industries({ detailed = false, embedded = false, className }: { detailed?: boolean; embedded?: boolean; className?: string }) {
   const t = useT()
   const list = useLocalizedIndustries(industries)
   return (
-    <section id="industries" className={embedded ? 'section relative bg-bg pt-0' : 'section relative bg-bg'}>
+    <section id="industries" className={cn('section relative bg-bg', embedded && 'pt-0', className)}>
       <div className="container-x">
         {!embedded && (
         <SectionHeading

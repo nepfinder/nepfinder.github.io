@@ -1,3 +1,4 @@
+import { cn } from '@/utils/cn'
 import { Check } from 'lucide-react'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
@@ -20,10 +21,10 @@ export const erpnextCapabilities = [
   'Technical Support',
 ]
 
-export function ErpnextFrappe() {
+export function ErpnextFrappe({ className }: { className?: string }) {
   const t = useT()
   return (
-    <section id="erpnext-frappe" className="section">
+    <section id="erpnext-frappe" className={cn('section', className)}>
       <div className="container-x">
         <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
