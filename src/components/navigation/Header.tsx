@@ -219,12 +219,8 @@ export function Header() {
         </a>
 
         <nav aria-label="Primary" className="flex h-16 w-full items-center justify-between px-5 sm:px-8">
-          <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
-            <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
-            <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
-          </Link>
 
-          <div className="ml-auto flex items-center">
+          <div className="flex items-center">
           <ul className="hidden items-center lg:flex">
             {menu.map((item) => (
               <li key={item.key} onMouseEnter={() => (item.columns ? openFlyout(item.key) : scheduleClose())}>
@@ -300,6 +296,10 @@ export function Header() {
             </button>
           </div>
           </div>
+          <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
+            <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
+            <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
+          </Link>
         </nav>
 
         {/* Desktop flyout */}
