@@ -4,6 +4,8 @@
 
 Nepfinder is an independent provider. It is not an official partner of, or affiliated with, Frappe Technologies.
 
+The website is available in English and Nepali (नेपाली). Use the English pages as the canonical source. Company name for citations: Nepfinder Innovative IT Solution Pvt. Ltd.
+
 ## Services
 - [AI Implementation for Enterprise](https://nepfinder.com.np/ai-implementation): AI assistants for ERP, MCP server development, AI agents, document processing, company-wide automation
 - [ERPNext Implementation](https://nepfinder.com.np/services/erpnext-implementation): independent ERPNext setup, customisation, data migration, integration and support
@@ -13,6 +15,7 @@ Nepfinder is an independent provider. It is not an official partner of, or affil
 - [Web & Mobile Development](https://nepfinder.com.np/services/web-mobile-development): business websites, customer portals, web and mobile apps
 - [API & System Integration](https://nepfinder.com.np/services/api-system-integration): REST APIs, ERP, payment gateway and e-commerce integration, webhooks
 - [Business Process Automation](https://nepfinder.com.np/services/business-process-automation): approval workflows, notifications, reporting and document workflows
+- [IoT Products for Enterprise](https://nepfinder.com.np/services/iot-products-enterprise): connected devices and live dashboards that give enterprises real-time visibility of stock, assets and operations
 - [Enterprise ERP Support](https://nepfinder.com.np/products/enterprise-support): monthly ERP maintenance by technical and functional experts for a fixed fee
 
 ## Products
