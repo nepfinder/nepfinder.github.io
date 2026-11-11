@@ -218,7 +218,7 @@ export function Header() {
           {t('nav.skip')}
         </a>
 
-        <nav aria-label="Primary" className="flex h-16 w-full items-center justify-between px-5 sm:px-8">
+        <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between">
 
           <div className="flex items-center">
           <ul className="hidden items-center lg:flex">
@@ -297,7 +297,7 @@ export function Header() {
           </div>
           </div>
           <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
-            <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
+            <img src={site.logo.icon} alt="" width={192} height={192} className="size-9" decoding="async" />
             <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
           </Link>
         </nav>
