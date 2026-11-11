@@ -16,7 +16,7 @@ export function PageHero({ title, text, crumbs, children, visual }: { title: Rea
       <div className="pointer-events-none absolute inset-0 -z-10">
         
       </div>
-      <div className="container-x pb-12 pt-14 sm:pb-16 sm:pt-20">
+      <div className="container-x pb-12 pt-8 sm:pb-16 sm:pt-10">
         {crumbs && (
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
