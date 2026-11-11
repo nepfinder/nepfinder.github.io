@@ -435,4 +435,5 @@ export const np: Record<TKey, string> = {
   'info.iot.top': 'उपकरणदेखि निर्णयसम्म',
   'info.iot.foot': 'सूचना र कारबाही उपकरणमा फर्कन्छन्',
   'detail.growth': 'IoT र AI ले तपाईंको व्यवसाय कसरी बढाउँछ',
+  'nav.getstarted': 'सुरु गर्नुहोस्',
 }
