@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import { Header } from '@/components/navigation/Header'
+import { LanguageChooser } from '@/components/navigation/LanguageChooser'
 import { Footer } from './Footer'
 
 function ScrollToTop() {
@@ -27,6 +28,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <LanguageChooser />
     </div>
   )
 }

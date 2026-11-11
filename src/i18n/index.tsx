@@ -8,23 +8,32 @@ const STORAGE_KEY = 'nepfinder-lang'
 interface I18n {
   lang: Lang
   setLang: (l: Lang) => void
+  /** True on a first visit, before the visitor has picked a language (never true for returning visitors). */
+  needsChoice: boolean
   /** Translate a UI string; `{name}` placeholders are replaced from `vars`. */
   t: (key: TKey, vars?: Record<string, string>) => string
 }
 
-const Ctx = createContext<I18n>({ lang: 'en', setLang: () => {}, t: (k) => en[k] })
+const Ctx = createContext<I18n>({ lang: 'en', setLang: () => {}, needsChoice: false, t: (k) => en[k] })
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   // Always start in English so server HTML and first client render match; restore the saved choice after mount.
   const [lang, setLangState] = useState<Lang>('en')
+  const [chosen, setChosen] = useState(false)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
+    let saved: string | null = null
     try {
-      const saved = window.localStorage.getItem(STORAGE_KEY)
-      if (saved === 'np' || saved === 'en') setLangState(saved)
+      saved = window.localStorage.getItem(STORAGE_KEY)
     } catch {
       /* storage unavailable */
     }
+    if (saved === 'np' || saved === 'en') {
+      setLangState(saved)
+      setChosen(true)
+    }
+    setReady(true)
   }, [])
 
   useEffect(() => {
@@ -33,6 +42,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l)
+    setChosen(true)
     try {
       window.localStorage.setItem(STORAGE_KEY, l)
     } catch {
@@ -49,7 +59,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [lang],
   )
 
-  const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t])
+  const value = useMemo(() => ({ lang, setLang, needsChoice: ready && !chosen, t }), [lang, setLang, ready, chosen, t])
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }
 
