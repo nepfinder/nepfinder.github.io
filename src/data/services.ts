@@ -221,7 +221,7 @@ export const services: Service[] = [
       who: 'Trading, distribution, service, and manufacturing businesses',
     },
     seo: {
-      title: 'ERPNext Implementation in Nepal | Independent ERPNext Services',
+      title: 'ERPNext Implementation in Nepal',
       description:
         'Independent ERPNext implementation, customization, data migration, integration, and support in Nepal. Nepfinder is not an official Frappe partner.',
     },
@@ -270,7 +270,7 @@ export const services: Service[] = [
       who: 'Organisations with needs that standard ERP modules do not cover',
     },
     seo: {
-      title: 'Frappe Framework Development in Nepal | Custom Frappe Apps',
+      title: 'Frappe Framework Development in Nepal',
       description:
         'Custom Frappe Framework apps: DocTypes, workflows, dashboards, portals, and API integrations by Nepfinder, an independent Frappe developer in Nepal.',
     },
@@ -362,7 +362,7 @@ export const services: Service[] = [
       who: 'Businesses re-typing data between two or more systems',
     },
     seo: {
-      title: 'API Development & System Integration Services in Nepal',
+      title: 'API & System Integration in Nepal',
       description:
         'REST API development, ERP integration, payment gateway integration, e-commerce integration, and webhook automation by Nepfinder.',
     },
