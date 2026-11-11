@@ -8,7 +8,7 @@ export function SupportHeroVisual({ className }: { className?: string }) {
   const { t, lang } = useI18n()
   return (
     <img
-      src={lang === 'np' ? '/images/support/enterprise-support-np.webp' : '/images/support/enterprise-support-en.webp'}
+      src={lang === 'np' ? '/images/support/enterprise-support-np-v2.webp' : '/images/support/enterprise-support-en-v2.webp'}
       alt={`${t('support.p2.title')}, ${t('support.p3.title')}, ${t('support.p1.title')}, ${t('support.p4.title')}`}
       width={1118}
       height={904}
