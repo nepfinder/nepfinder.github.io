@@ -16,7 +16,7 @@ export function TechGrid({ detailed = false }: { detailed?: boolean }) {
               {group.items.map((t) => (
                 <li
                   key={t.name}
-                  className="group flex items-start gap-3 rounded-2xl bg-surface p-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-bg-2 focus-within:border-accent"
+                  className="group flex items-center gap-3 rounded-2xl bg-surface p-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-bg-2 focus-within:border-accent"
                   title={t.note}
                 >
                   <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-bg-2 text-text/80 transition-colors group-hover:text-text">
