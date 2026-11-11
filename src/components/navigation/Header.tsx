@@ -29,6 +29,8 @@ interface FlyoutColumn {
   size: 'large' | 'small'
   /** Right-hand column with simple links and chevrons, separated by a divider. */
   aside?: boolean
+  /** Bordered button at the bottom of an aside column. */
+  cta?: { key: TKey; to: string }
   links: FlyoutLink[]
 }
 
@@ -79,7 +81,7 @@ function useMenu(): MenuItem[] {
             { label: '', key: 'nav.consultation', to: '/contact' },
           ],
         },
-        { heading: 'nav.getstarted', size: 'small', aside: true, links: [{ label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.projects', to: '/projects' }, { label: '', key: 'nav.process', to: '/services#process' }] },
+        { heading: 'nav.getstarted', size: 'small', aside: true, cta: { key: 'nav.all.services', to: '/services' }, links: [{ label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.projects', to: '/projects' }, { label: '', key: 'nav.process', to: '/services#process' }] },
       ],
     },
     { key: 'ai', label: 'nav.ai', to: '/ai-implementation' },
@@ -108,7 +110,7 @@ function useMenu(): MenuItem[] {
             { label: '', key: 'nav.deletion', to: '/user-data-delete-request' },
           ],
         },
-        { heading: 'nav.getstarted', size: 'small', aside: true, links: [{ label: '', key: 'nav.quote', to: '/contact' }, { label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.all.products', to: '/products' }] },
+        { heading: 'nav.getstarted', size: 'small', aside: true, cta: { key: 'nav.all.products', to: '/products' }, links: [{ label: '', key: 'nav.quote', to: '/contact' }, { label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.all.products', to: '/products' }] },
       ],
     },
     { key: 'projects', label: 'nav.projects', to: '/projects' },
@@ -230,7 +232,7 @@ export function Header() {
         <nav aria-label="Primary" className="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-5 sm:px-6">
           <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
             <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
-            <span className="sr-only">Nepfinder</span>
+            <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
           </Link>
 
           <ul className="hidden items-center lg:flex">
@@ -244,12 +246,13 @@ export function Header() {
                     aria-controls={`flyout-${item.key}`}
                     onClick={() => (openKey === item.key ? setOpenKey(null) : openFlyout(item.key))}
                     className={cn(
-                      'rounded-md px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                      'whitespace-nowrap rounded-md px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
                       (openKey === item.key || location.pathname.startsWith(item.to)) && 'text-[#f5f5f7]',
                       openKey === item.key && 'bg-white/10',
                     )}
                   >
                     {t(item.label)}
+                    <ChevronDown className={cn('ml-1 inline size-3.5 transition-transform', openKey === item.key && 'rotate-180')} aria-hidden />
                   </button>
                 ) : (
                   <NavLink
@@ -257,7 +260,7 @@ export function Header() {
                     end={item.to === '/'}
                     className={({ isActive }) =>
                       cn(
-                        'flex items-center gap-1 px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                        'flex items-center gap-1 whitespace-nowrap px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
                         isActive && 'text-[#f5f5f7]',
                       )
                     }
@@ -325,23 +328,15 @@ export function Header() {
                 {active.columns.map((col) => (
                   <div key={col.heading} className={cn(col.aside && 'lg:border-l lg:border-white/10 lg:pl-8')}>
                     <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#86868b]">{t(col.heading)}</p>
-                    <ul className={cn('mt-5', col.aside ? 'space-y-3' : col.size === 'large' ? 'space-y-4' : 'space-y-3.5')}>
+                    <ul className="mt-5 space-y-4">
                       {col.links.map((l) => {
                         const Icon = l.icon
-                        const titleLarge = col.size === 'large' && !col.aside
                         return (
                           <li key={l.to + (l.key ?? l.label)}>
                             <MenuLink to={l.to} className="group -mx-2 flex items-start gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none">
                               {Icon && <Icon className="mt-0.5 size-[18px] shrink-0 text-[#86868b] transition-colors group-hover:text-[#2997ff]" strokeWidth={1.6} aria-hidden />}
                               <span className="min-w-0 flex-1">
-                                <span
-                                  className={cn(
-                                    'block text-[#f5f5f7] transition-colors group-hover:text-[#2997ff]',
-                                    titleLarge ? 'font-display text-xl font-semibold tracking-[-0.01em]' : 'text-[15px] font-medium',
-                                  )}
-                                >
-                                  {label(l)}
-                                </span>
+                                <span className="block text-[15px] font-medium text-[#f5f5f7] transition-colors group-hover:text-[#2997ff]">{label(l)}</span>
                                 {l.desc && <span className="mt-1 line-clamp-2 block text-[13px] leading-snug text-[#86868b]">{l.desc}</span>}
                               </span>
                               {col.aside && <ChevronRight className="mt-1 size-4 shrink-0 text-[#86868b] transition-colors group-hover:text-[#2997ff]" aria-hidden />}
@@ -350,6 +345,14 @@ export function Header() {
                         )
                       })}
                     </ul>
+                    {col.cta && (
+                      <MenuLink
+                        to={col.cta.to}
+                        className="mt-8 inline-flex items-center gap-2 rounded-lg border border-white/15 px-3.5 py-2 text-[14px] font-medium text-[#f5f5f7] transition-colors hover:bg-white/10"
+                      >
+                        {t(col.cta.key)}
+                      </MenuLink>
+                    )}
                   </div>
                 ))}
               </div>
