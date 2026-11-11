@@ -118,7 +118,7 @@ export function AiRecommender() {
   const recs = useMemo(() => (done ? recommend(answers as Record<Q['id'], string>) : []), [done, answers])
 
   return (
-    <section id="recommend" className="section scroll-mt-14 pt-0">
+    <section id="recommend" className="section scroll-mt-16 pt-0">
       <div className="container-x">
         <div className="card mx-auto max-w-4xl !p-6 sm:!p-10">
           <Reveal>

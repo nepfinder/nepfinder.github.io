@@ -62,23 +62,12 @@ function useMenu(): MenuItem[] {
       columns: [
         { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: serviceHref(s), icon: s.icon, desc: s.short }))] },
         {
-          heading: 'nav.erp.frappe',
-          size: 'small',
-          links: [
-            { label: svc.find((x) => x.slug === 'erpnext-implementation')?.title ?? '', to: '/services/erpnext-implementation' },
-            { label: svc.find((x) => x.slug === 'frappe-framework-development')?.title ?? '', to: '/services/frappe-framework-development' },
-            { label: svc.find((x) => x.slug === 'erp-implementation')?.title ?? '', to: '/services/erp-implementation' },
-            { label: prod.find((x) => x.slug === 'enterprise-support')?.name ?? '', to: '/products/enterprise-support' },
-          ],
-        },
-        {
           heading: 'nav.more',
           size: 'small',
           links: [
             { label: '', key: 'nav.industry', to: '/solutions' },
             { label: '', key: 'nav.technologies', to: '/technologies' },
             { label: '', key: 'nav.process', to: '/services#process' },
-            { label: '', key: 'nav.consultation', to: '/contact' },
           ],
         },
         { heading: 'nav.getstarted', size: 'small', aside: true, cta: { key: 'nav.all.services', to: '/services' }, links: [{ label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.projects', to: '/projects' }, { label: '', key: 'nav.process', to: '/services#process' }] },
@@ -229,7 +218,7 @@ export function Header() {
           {t('nav.skip')}
         </a>
 
-        <nav aria-label="Primary" className="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-5 sm:px-6">
+        <nav aria-label="Primary" className="mx-auto flex h-16 max-w-[1024px] items-center justify-between px-5 sm:px-6">
           <Link to="/" aria-label="Nepfinder home" className="inline-flex items-center rounded-md" onMouseEnter={scheduleClose}>
             <img src={site.logo.icon} alt="" width={192} height={192} className="size-6" decoding="async" />
             <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
@@ -324,7 +313,7 @@ export function Header() {
               className="hidden overflow-hidden border-t border-white/10 bg-[#1d1d1f] lg:block"
               onMouseEnter={cancelClose}
             >
-              <div className="mx-auto grid max-w-[1024px] grid-cols-1 gap-10 px-5 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_0.9fr]">
+              <div className="mx-auto grid max-w-[1024px] grid-cols-1 gap-10 px-5 pb-16 pt-10 sm:px-6 lg:[grid-template-columns:var(--flyout-cols)]" style={{ "--flyout-cols": active.columns.map((c) => (c.aside ? "0.9fr" : c.size === "large" ? "1.5fr" : "1fr")).join(" ") } as React.CSSProperties}>
                 {active.columns.map((col) => (
                   <div key={col.heading} className={cn(col.aside && 'lg:border-l lg:border-white/10 lg:pl-8')}>
                     <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#86868b]">{t(col.heading)}</p>
@@ -375,7 +364,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="h-[calc(100dvh-44px)] overflow-y-auto bg-[#1d1d1f] lg:hidden"
+              className="h-[calc(100dvh-64px)] overflow-y-auto bg-[#1d1d1f] lg:hidden"
             >
               <div className="mx-auto max-w-[1024px] px-6 pt-4 sm:hidden">
                 <LanguageSwitch />
