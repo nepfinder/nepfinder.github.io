@@ -446,6 +446,7 @@ export const en = {
   'info.iot.top': 'From device to decision',
   'info.iot.foot': 'Alerts and actions flow back to the devices',
   'detail.growth': 'How IoT and AI help your business grow',
+  'nav.getstarted': 'Get started',
 } as const
 
 export type TKey = keyof typeof en

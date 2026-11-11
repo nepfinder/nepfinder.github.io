@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ChevronDown, Mail, Menu, Search, Sparkles, X } from 'lucide-react'
+import { ChevronDown, ChevronRight, Headset, Mail, Menu, Search, ShieldCheck, Smartphone, Sparkles, Store, X, type LucideIcon } from 'lucide-react'
 import { useT } from '@/i18n'
 import type { TKey } from '@/i18n/en'
 import { useLocalizedProducts, useLocalizedServices } from '@/i18n/useLocalized'
@@ -16,10 +16,28 @@ import { cn } from '@/utils/cn'
 /* Menu content                                                        */
 /* ------------------------------------------------------------------ */
 
+interface FlyoutLink {
+  label: string
+  to: string
+  key?: TKey
+  icon?: LucideIcon
+  desc?: string
+}
+
 interface FlyoutColumn {
   heading: TKey
   size: 'large' | 'small'
-  links: { label: string; to: string; key?: TKey }[]
+  /** Right-hand column with simple links and chevrons, separated by a divider. */
+  aside?: boolean
+  links: FlyoutLink[]
+}
+
+/** Icons for product entries in the menu, keyed by product slug. */
+const productIcons: Record<string, LucideIcon> = {
+  'enterprise-support': Headset,
+  ninsurance: ShieldCheck,
+  'restaurant-billing': Store,
+  ncafe: Smartphone,
 }
 
 interface MenuItem {
@@ -40,7 +58,7 @@ function useMenu(): MenuItem[] {
       label: 'nav.services',
       to: '/services',
       columns: [
-        { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: serviceHref(s) }))] },
+        { heading: 'nav.explore.services', size: 'large', links: [{ label: '', key: 'nav.all.services', to: '/services' }, ...svc.map((s) => ({ label: s.title, to: serviceHref(s), icon: s.icon, desc: s.short }))] },
         {
           heading: 'nav.erp.frappe',
           size: 'small',
@@ -61,6 +79,7 @@ function useMenu(): MenuItem[] {
             { label: '', key: 'nav.consultation', to: '/contact' },
           ],
         },
+        { heading: 'nav.getstarted', size: 'small', aside: true, links: [{ label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.projects', to: '/projects' }, { label: '', key: 'nav.process', to: '/services#process' }] },
       ],
     },
     { key: 'ai', label: 'nav.ai', to: '/ai-implementation' },
@@ -71,7 +90,7 @@ function useMenu(): MenuItem[] {
       label: 'nav.products',
       to: '/products',
       columns: [
-        { heading: 'nav.explore.products', size: 'large', links: [{ label: '', key: 'nav.all.products', to: '/products' }, ...prod.map((p) => ({ label: p.name, to: `/products/${p.slug}` }))] },
+        { heading: 'nav.explore.products', size: 'large', links: [{ label: '', key: 'nav.all.products', to: '/products' }, ...prod.map((p) => ({ label: p.name, to: `/products/${p.slug}`, icon: productIcons[p.slug], desc: p.summary }))] },
         {
           heading: 'nav.support',
           size: 'small',
@@ -89,6 +108,7 @@ function useMenu(): MenuItem[] {
             { label: '', key: 'nav.deletion', to: '/user-data-delete-request' },
           ],
         },
+        { heading: 'nav.getstarted', size: 'small', aside: true, links: [{ label: '', key: 'nav.quote', to: '/contact' }, { label: '', key: 'nav.consultation', to: '/contact' }, { label: '', key: 'nav.all.products', to: '/products' }] },
       ],
     },
     { key: 'projects', label: 'nav.projects', to: '/projects' },
@@ -224,8 +244,9 @@ export function Header() {
                     aria-controls={`flyout-${item.key}`}
                     onClick={() => (openKey === item.key ? setOpenKey(null) : openFlyout(item.key))}
                     className={cn(
-                      'px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
+                      'rounded-md px-3 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#f5f5f7]/80 transition-colors hover:text-[#f5f5f7]',
                       (openKey === item.key || location.pathname.startsWith(item.to)) && 'text-[#f5f5f7]',
+                      openKey === item.key && 'bg-white/10',
                     )}
                   >
                     {t(item.label)}
@@ -300,24 +321,34 @@ export function Header() {
               className="hidden overflow-hidden border-t border-white/10 bg-[#1d1d1f] lg:block"
               onMouseEnter={cancelClose}
             >
-              <div className="mx-auto grid max-w-[1024px] grid-cols-[1.4fr_1fr_1fr] gap-10 px-5 pb-16 pt-10 sm:px-6">
+              <div className="mx-auto grid max-w-[1024px] grid-cols-1 gap-10 px-5 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_0.9fr]">
                 {active.columns.map((col) => (
-                  <div key={col.heading}>
+                  <div key={col.heading} className={cn(col.aside && 'lg:border-l lg:border-white/10 lg:pl-8')}>
                     <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#86868b]">{t(col.heading)}</p>
-                    <ul className={cn('mt-4', col.size === 'large' ? 'space-y-2' : 'space-y-2.5')}>
-                      {col.links.map((l) => (
-                        <li key={l.to + (l.key ?? l.label)}>
-                          <MenuLink
-                            to={l.to}
-                            className={cn(
-                              'block text-[#f5f5f7] transition-colors hover:text-[#2997ff] focus-visible:text-[#2997ff] focus-visible:outline-none',
-                              col.size === 'large' ? 'font-display text-2xl font-semibold tracking-[-0.01em]' : 'text-[14px] font-medium',
-                            )}
-                          >
-                            {label(l)}
-                          </MenuLink>
-                        </li>
-                      ))}
+                    <ul className={cn('mt-5', col.aside ? 'space-y-3' : col.size === 'large' ? 'space-y-4' : 'space-y-3.5')}>
+                      {col.links.map((l) => {
+                        const Icon = l.icon
+                        const titleLarge = col.size === 'large' && !col.aside
+                        return (
+                          <li key={l.to + (l.key ?? l.label)}>
+                            <MenuLink to={l.to} className="group -mx-2 flex items-start gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none">
+                              {Icon && <Icon className="mt-0.5 size-[18px] shrink-0 text-[#86868b] transition-colors group-hover:text-[#2997ff]" strokeWidth={1.6} aria-hidden />}
+                              <span className="min-w-0 flex-1">
+                                <span
+                                  className={cn(
+                                    'block text-[#f5f5f7] transition-colors group-hover:text-[#2997ff]',
+                                    titleLarge ? 'font-display text-xl font-semibold tracking-[-0.01em]' : 'text-[15px] font-medium',
+                                  )}
+                                >
+                                  {label(l)}
+                                </span>
+                                {l.desc && <span className="mt-1 line-clamp-2 block text-[13px] leading-snug text-[#86868b]">{l.desc}</span>}
+                              </span>
+                              {col.aside && <ChevronRight className="mt-1 size-4 shrink-0 text-[#86868b] transition-colors group-hover:text-[#2997ff]" aria-hidden />}
+                            </MenuLink>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 ))}
