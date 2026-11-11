@@ -6,7 +6,7 @@ export default function NotFound() {
   useSeo({ title: 'Page Not Found', description: 'The page you requested could not be found on nepfinder.com.np.', path: '/404' })
   const t = useT()
   return (
-    <section className="relative flex min-h-[70dvh] items-center pt-11">
+    <section className="relative flex min-h-[70dvh] items-center pt-16">
       <div className="container-x text-center">
         <h1 className="h-display text-4xl sm:text-5xl">{t('common.notfound')}</h1>
         <p className="mx-auto mt-4 max-w-md text-muted">{t('common.notfound.text')}</p>

@@ -94,7 +94,7 @@ export default function AiImplementation() {
       </section>
 
       {/* MCP */}
-      <section id="mcp" className="section scroll-mt-14 pt-0">
+      <section id="mcp" className="section scroll-mt-16 pt-0">
         <div className="container-x">
           <div className="theme-dark rounded-[var(--radius-tile)] bg-evergreen px-6 py-16 sm:px-12 sm:py-20">
             <Reveal className="max-w-3xl">

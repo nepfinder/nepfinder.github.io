@@ -11,7 +11,7 @@ const expertise: TKey[] = ['about.e1', 'about.e2', 'about.e3', 'about.e4']
 export function AboutPreview() {
   const t = useT()
   return (
-    <section id="overview" className="section relative scroll-mt-14 bg-bg-2">
+    <section id="overview" className="section relative scroll-mt-16 bg-bg-2">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal>

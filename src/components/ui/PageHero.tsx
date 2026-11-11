@@ -12,7 +12,7 @@ interface Crumb {
 export function PageHero({ title, text, crumbs, children, visual }: { title: ReactNode; text?: ReactNode; crumbs?: Crumb[]; children?: ReactNode; visual?: ReactNode }) {
   const t = useT()
   return (
-    <section className="relative overflow-hidden pt-11">
+    <section className="relative overflow-hidden pt-16">
       <div className="pointer-events-none absolute inset-0 -z-10">
         
       </div>
