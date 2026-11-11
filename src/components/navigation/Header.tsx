@@ -223,8 +223,7 @@ export function Header() {
             <img src={site.logo.icon} alt="" width={192} height={192} className="size-9" decoding="async" />
             <span className="ml-2 hidden font-display text-[15px] font-semibold tracking-[-0.01em] text-[#f5f5f7] 2xl:inline">Nepfinder</span>
           </Link>
-          <div className="flex items-center">
-          <ul className="hidden items-center lg:flex">
+          <ul className="ml-8 hidden items-center lg:flex">
             {menu.map((item) => (
               <li key={item.key} onMouseEnter={() => (item.columns ? openFlyout(item.key) : scheduleClose())}>
                 {item.columns ? (
@@ -262,7 +261,7 @@ export function Header() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-1">
+          <div className="ml-auto flex items-center gap-1">
             <LanguageSwitch className="hidden sm:inline-flex" />
             <Link
               to="/contact"
@@ -297,7 +296,6 @@ export function Header() {
             >
               {mobileOpen ? <X className="size-5" strokeWidth={1.6} /> : <Menu className="size-5" strokeWidth={1.6} />}
             </button>
-          </div>
           </div>
         </nav>
 
