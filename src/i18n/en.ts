@@ -39,6 +39,8 @@ export const en = {
   'nav.licenses': 'Open-source licenses',
   'nav.skip': 'Skip to content',
   'lang.switch': 'Switch language',
+  'lang.choose.title': 'Choose your language',
+  'lang.choose.text': 'We will remember your choice. You can change it any time from the menu bar.',
 
   // Search
   'search.placeholder': 'Search services, products, pages…',

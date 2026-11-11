@@ -44,6 +44,8 @@ export const np: Record<TKey, string> = {
   'nav.licenses': 'ओपन-सोर्स लाइसेन्स',
   'nav.skip': 'मुख्य सामग्रीमा जानुहोस्',
   'lang.switch': 'भाषा बदल्नुहोस्',
+  'lang.choose.title': 'तपाईंको भाषा छान्नुहोस्',
+  'lang.choose.text': 'तपाईंको छनोट सम्झिइनेछ। मेनु बारबाट जुनसुकै बेला बदल्न सकिन्छ।',
 
   'search.placeholder': 'सेवा, उत्पादन, पृष्ठ खोज्नुहोस्…',
   'search.empty': 'साइटभित्र खोज्न टाइप गर्नुहोस्।',
